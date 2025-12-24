@@ -28,8 +28,8 @@ func RelayResponsesHelper(c *gin.Context) *model.ErrorWithStatusCode {
 		return openai.ErrorWrapper(err, "invalid_request_error", http.StatusBadRequest)
 	}
 
-	// Log request details (without sensitive data)
-	logger.Infof(ctx, "responses request: model=%s, stream=%v, has_input=%v, has_messages=%v",
+	// Log request details (without sensitive data) - use debug level for high-traffic scenarios
+	logger.Debugf(ctx, "responses request: model=%s, stream=%v, has_input=%v, has_messages=%v",
 		responsesReq.Model, responsesReq.Stream, responsesReq.Input != nil, len(responsesReq.Messages) > 0)
 
 	// Validate request
@@ -181,17 +181,16 @@ func (w *responsesResponseWriter) finalizeNonStream() error {
 	if len(chatResp.Choices) == 0 {
 		logger.Warnf(w.context.Request.Context(), "chat response has no choices, returning error")
 		// Return an error response instead of empty response
-		errorResp := &model.ErrorWithStatusCode{
-			Error: model.Error{
-				Message: "upstream provider returned empty response",
-				Type:    "upstream_error",
-				Code:    "empty_response",
+		errorData := map[string]any{
+			"error": map[string]string{
+				"message": "upstream provider returned empty response",
+				"type":    "upstream_error",
+				"code":    "empty_response",
 			},
-			StatusCode: http.StatusBadGateway,
 		}
 		w.ResponseWriter.WriteHeader(http.StatusBadGateway)
-		errorData, _ := json.Marshal(gin.H{"error": errorResp.Error})
-		_, writeErr := w.ResponseWriter.Write(errorData)
+		errorBytes, _ := json.Marshal(errorData)
+		_, writeErr := w.ResponseWriter.Write(errorBytes)
 		return writeErr
 	}
 

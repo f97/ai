@@ -120,8 +120,8 @@ func TestResponsesRequestValidation(t *testing.T) {
 }
 
 func TestChatCompletionToResponsesConversion(t *testing.T) {
-	// Import OpenAI adapter for TextResponse type
-	// This test verifies the conversion logic works correctly
+	// Verify that the conversion from ChatCompletion to Responses format works correctly
+	// This ensures proper mapping of message content, usage stats, and metadata
 	
 	t.Run("convert valid chat completion", func(t *testing.T) {
 		// Create a mock chat completion response
@@ -171,7 +171,9 @@ func TestChatCompletionToResponsesConversion(t *testing.T) {
 	})
 
 	t.Run("convert empty chat completion", func(t *testing.T) {
-		// Create a chat completion with no choices (should not happen in practice)
+		// Test error handling when upstream returns a response with no choices
+		// This validates that our error handling gracefully handles edge cases
+		// even though the OpenAI API should always include at least one choice
 		chatResp := &openai.TextResponse{
 			Id:      "chatcmpl-456",
 			Object:  "chat.completion",
