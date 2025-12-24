@@ -28,6 +28,10 @@ func RelayResponsesHelper(c *gin.Context) *model.ErrorWithStatusCode {
 		return openai.ErrorWrapper(err, "invalid_request_error", http.StatusBadRequest)
 	}
 
+	// Log request details (without sensitive data) - use debug level for high-traffic scenarios
+	logger.Debugf(ctx, "responses request: model=%s, stream=%v, has_input=%v, has_messages=%v",
+		responsesReq.Model, responsesReq.Stream, responsesReq.Input != nil, len(responsesReq.Messages) > 0)
+
 	// Validate request
 	if responsesReq.Model == "" {
 		return openai.ErrorWrapper(fmt.Errorf("model is required"), "invalid_request_error", http.StatusBadRequest)
@@ -38,6 +42,8 @@ func RelayResponsesHelper(c *gin.Context) *model.ErrorWithStatusCode {
 	if len(messages) == 0 {
 		return openai.ErrorWrapper(fmt.Errorf("either input or messages must be provided"), "invalid_request_error", http.StatusBadRequest)
 	}
+
+	logger.Debugf(ctx, "converted to %d message(s) for chat completion", len(messages))
 
 	// Create a ChatCompletion request from Responses request
 	chatReq := &model.GeneralOpenAIRequest{
@@ -55,6 +61,8 @@ func RelayResponsesHelper(c *gin.Context) *model.ErrorWithStatusCode {
 		logger.Errorf(ctx, "failed to marshal chat request: %s", err.Error())
 		return openai.ErrorWrapper(err, "internal_error", http.StatusInternalServerError)
 	}
+
+	logger.Debugf(ctx, "converted request body length: %d bytes", len(reqBody))
 
 	// Replace request body with chat completions format
 	c.Request.Body = io.NopCloser(strings.NewReader(string(reqBody)))
@@ -81,6 +89,7 @@ func relayResponsesNonStream(c *gin.Context, chatReq *model.GeneralOpenAIRequest
 		ResponseWriter: c.Writer,
 		context:        c,
 		isStream:       false,
+		buffer:         make([]byte, 0, 4096),
 	}
 	c.Writer = writer
 
@@ -88,6 +97,12 @@ func relayResponsesNonStream(c *gin.Context, chatReq *model.GeneralOpenAIRequest
 	err := RelayTextHelper(c)
 	if err != nil {
 		return err
+	}
+
+	// Finalize and convert the buffered response
+	if finalizeErr := writer.finalizeNonStream(); finalizeErr != nil {
+		logger.Errorf(c.Request.Context(), "failed to finalize non-stream response: %s", finalizeErr.Error())
+		return openai.ErrorWrapper(finalizeErr, "finalize_response_failed", http.StatusInternalServerError)
 	}
 
 	return nil
@@ -100,6 +115,7 @@ func relayResponsesStream(c *gin.Context, chatReq *model.GeneralOpenAIRequest) *
 		ResponseWriter: c.Writer,
 		context:        c,
 		isStream:       true,
+		buffer:         make([]byte, 0),
 	}
 	c.Writer = writer
 
@@ -115,41 +131,93 @@ func relayResponsesStream(c *gin.Context, chatReq *model.GeneralOpenAIRequest) *
 // responsesResponseWriter intercepts the response and converts ChatCompletion to Responses format
 type responsesResponseWriter struct {
 	gin.ResponseWriter
-	context  *gin.Context
-	isStream bool
-	captured bool
+	context    *gin.Context
+	isStream   bool
+	buffer     []byte
+	statusCode int
 }
 
 func (w *responsesResponseWriter) Write(data []byte) (int, error) {
-	// Only convert if we haven't already and if this is responses mode
-	if w.captured {
-		return w.ResponseWriter.Write(data)
-	}
-
 	if !w.isStream {
-		// Non-streaming: convert entire response
-		var chatResp openai.TextResponse
-		err := json.Unmarshal(data, &chatResp)
-		if err != nil {
-			// If it's an error response, pass through
-			logger.Debugf(w.context.Request.Context(), "failed to parse chat response, passing through: %s", err.Error())
-			return w.ResponseWriter.Write(data)
-		}
-
-		// Convert to Responses format
-		responsesResp := convertChatCompletionToResponses(&chatResp)
-		respData, err := json.Marshal(responsesResp)
-		if err != nil {
-			logger.Errorf(w.context.Request.Context(), "failed to marshal responses response: %s", err.Error())
-			return w.ResponseWriter.Write(data)
-		}
-
-		w.captured = true
-		return w.ResponseWriter.Write(respData)
+		// Non-streaming: buffer all data until we have the complete response
+		w.buffer = append(w.buffer, data...)
+		// Return the length of data to indicate successful write
+		return len(data), nil
 	}
 
 	// Streaming: need to convert each SSE chunk
 	return w.writeStreamChunk(data)
+}
+
+// WriteHeader captures the status code
+func (w *responsesResponseWriter) WriteHeader(statusCode int) {
+	w.statusCode = statusCode
+	// Don't write header yet for non-stream, we'll do it after conversion
+	if w.isStream {
+		w.ResponseWriter.WriteHeader(statusCode)
+	}
+}
+
+// Flush is called after all writes are done, convert and send the response
+func (w *responsesResponseWriter) finalizeNonStream() error {
+	if w.isStream || len(w.buffer) == 0 {
+		return nil
+	}
+
+	// Try to unmarshal as chat completion response
+	var chatResp openai.TextResponse
+	err := json.Unmarshal(w.buffer, &chatResp)
+	if err != nil {
+		// If it's an error response or can't parse, pass through as-is
+		logger.Warnf(w.context.Request.Context(), "failed to parse chat response for conversion, passing through: %s", err.Error())
+		if w.statusCode != 0 {
+			w.ResponseWriter.WriteHeader(w.statusCode)
+		}
+		_, writeErr := w.ResponseWriter.Write(w.buffer)
+		return writeErr
+	}
+
+	// Check if response has valid data
+	if len(chatResp.Choices) == 0 {
+		logger.Warnf(w.context.Request.Context(), "chat response has no choices, returning error")
+		// Return an error response instead of empty response
+		errorData := map[string]any{
+			"error": map[string]string{
+				"message": "upstream provider returned empty response",
+				"type":    "upstream_error",
+				"code":    "empty_response",
+			},
+		}
+		w.ResponseWriter.WriteHeader(http.StatusBadGateway)
+		errorBytes, _ := json.Marshal(errorData)
+		_, writeErr := w.ResponseWriter.Write(errorBytes)
+		return writeErr
+	}
+
+	// Convert to Responses format
+	responsesResp := convertChatCompletionToResponses(&chatResp)
+	
+	// Log warning if output is empty
+	if len(responsesResp.Output) == 0 || (len(responsesResp.Output) > 0 && len(responsesResp.Output[0].Content) == 0) {
+		logger.Warnf(w.context.Request.Context(), "converted response has empty output, chat response had %d choices", len(chatResp.Choices))
+	}
+	
+	respData, err := json.Marshal(responsesResp)
+	if err != nil {
+		logger.Errorf(w.context.Request.Context(), "failed to marshal responses response: %s", err.Error())
+		if w.statusCode != 0 {
+			w.ResponseWriter.WriteHeader(w.statusCode)
+		}
+		_, writeErr := w.ResponseWriter.Write(w.buffer)
+		return writeErr
+	}
+
+	// Write the converted response
+	if w.statusCode != 0 {
+		w.ResponseWriter.WriteHeader(w.statusCode)
+	}
+	_, writeErr := w.ResponseWriter.Write(respData)
+	return writeErr
 }
 
 func (w *responsesResponseWriter) writeStreamChunk(data []byte) (int, error) {
@@ -263,11 +331,6 @@ func convertChatStreamToResponsesStream(chatResp *openai.ChatCompletionsStreamRe
 		Output:  output,
 		Usage:   chatResp.Usage,
 	}
-}
-
-// WriteHeader captures headers but delays actual write
-func (w *responsesResponseWriter) WriteHeader(statusCode int) {
-	w.ResponseWriter.WriteHeader(statusCode)
 }
 
 func (w *responsesResponseWriter) Flush() {
