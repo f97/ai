@@ -200,12 +200,12 @@ func convertChatCompletionToResponses(chatResp *openai.TextResponse) *model.Resp
 	for _, choice := range chatResp.Choices {
 		content := choice.Message.StringContent()
 		outputItem := model.ResponsesOutputItem{
-			ID:   fmt.Sprintf("msg_%s", uuid.New().String()[:8]),
-			Type: "message",
+			ID:   fmt.Sprintf("msg_%s", uuid.New().String()[:model.ResponsesIDPrefixLength]),
+			Type: model.ResponsesOutputTypeMessage,
 			Role: choice.Message.Role,
 			Content: []model.ResponsesOutputContent{
 				{
-					Type: "output_text",
+					Type: model.ResponsesContentTypeOutputText,
 					Text: content,
 				},
 			},
@@ -234,7 +234,7 @@ func convertChatStreamToResponsesStream(chatResp *openai.ChatCompletionsStreamRe
 		deltaContent := choice.Delta.StringContent()
 		if deltaContent != "" {
 			content = append(content, model.ResponsesStreamResponseOutputContent{
-				Type:  "output_text",
+				Type:  model.ResponsesContentTypeOutputText,
 				Delta: &deltaContent,
 			})
 		}
@@ -247,7 +247,7 @@ func convertChatStreamToResponsesStream(chatResp *openai.ChatCompletionsStreamRe
 
 		outputItem := model.ResponsesStreamResponseOutputItem{
 			Index:   choice.Index,
-			Type:    "message",
+			Type:    model.ResponsesOutputTypeMessage,
 			Role:    role,
 			Content: content,
 		}
