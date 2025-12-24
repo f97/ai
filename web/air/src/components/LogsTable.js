@@ -216,8 +216,8 @@ const LogsTable = () => {
         title: '用户信息', content: <div style={{ padding: 12 }}>
           <p>用户名: {data.username}</p>
           <p>余额: {renderQuota(data.quota)}</p>
-          <p>已用额度：{renderQuota(data.used_quota)}</p>
-          <p>请求次数：{renderNumber(data.request_count)}</p>
+          <p>已用额度:{renderQuota(data.used_quota)}</p>
+          <p>请求次数:{renderNumber(data.request_count)}</p>
         </div>, centered: true
       });
     } else {
@@ -293,10 +293,10 @@ const LogsTable = () => {
 
   const copyText = async (text) => {
     if (await copy(text)) {
-      showSuccess('已复制：' + text);
+      showSuccess('已复制:' + text);
     } else {
       // setSearchKeyword(text);
-      Modal.error({ title: '无法复制到剪贴板，请手动复制', content: text });
+      Modal.error({ title: '无法复制到剪贴板,请手动复制', content: text });
     }
   };
 
@@ -334,11 +334,11 @@ const LogsTable = () => {
     <Layout>
       <Header>
         <Spin spinning={loadingStat}>
-          <h3>使用明细（总消耗额度：
+          <h3>使用明细(总消耗额度:
             <span onClick={handleEyeClick} style={{
               cursor: 'pointer', color: 'gray'
             }}>{showStat ? renderQuota(stat.quota) : '点击查看'}</span>
-            ）
+            )
           </h3>
         </Spin>
       </Header>

@@ -31,7 +31,7 @@ const WechatModal = ({ open, handleClose, wechatLogin, qrCode }) => {
             color="text.secondary"
             style={{ marginTop: '10px', textAlign: 'center', wordWrap: 'break-word', maxWidth: '300px' }}
           >
-            请使用微信扫描二维码关注公众号，输入「验证码」获取验证码（三分钟内有效）
+            请使用微信扫描二维码关注公众号,输入「验证码」获取验证码(三分钟内有效)
           </Typography>
           <Formik initialValues={{ code: '' }} validationSchema={validationSchema} onSubmit={handleSubmit}>
             {({ errors, touched }) => (

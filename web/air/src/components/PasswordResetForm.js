@@ -38,7 +38,7 @@ const PasswordResetForm = () => {
     setDisableButton(true);
     if (!email) return;
     if (turnstileEnabled && turnstileToken === '') {
-      showInfo('请稍后几秒重试，Turnstile 正在检查用户环境！');
+      showInfo('请稍后几秒重试,Turnstile 正在检查用户环境!');
       return;
     }
     setLoading(true);
@@ -47,7 +47,7 @@ const PasswordResetForm = () => {
     );
     const { success, message } = res.data;
     if (success) {
-      showSuccess('重置邮件发送成功，请检查邮箱！');
+      showSuccess('重置邮件发送成功,请检查邮箱!');
       setInputs({ ...inputs, email: '' });
     } else {
       showError(message);

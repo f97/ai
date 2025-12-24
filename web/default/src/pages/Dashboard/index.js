@@ -110,7 +110,7 @@ const Dashboard = () => {
     setSummaryData(summary);
   };
 
-  // 处理数据以供折线图使用，补充缺失的日期
+  // 处理数据以供折线图使用,补充缺失的日期
   const processTimeSeriesData = () => {
     const dailyData = {};
 
@@ -230,7 +230,7 @@ const Dashboard = () => {
     tickFormatter: formatDate,
     interval: 0,
     minTickGap: 5,
-    padding: { left: 30, right: 30 }, // 增加两侧的内边距，确保首尾标签完整显示
+    padding: { left: 30, right: 30 }, // 增加两侧的内边距,确保首尾标签完整显示
   };
 
   return (

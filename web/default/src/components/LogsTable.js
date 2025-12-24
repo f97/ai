@@ -30,9 +30,9 @@ function renderTimestamp(timestamp, request_id) {
     <code
       onClick={async () => {
         if (await copy(request_id)) {
-          showSuccess(`已复制请求 ID：${request_id}`);
+          showSuccess(`已复制请求 ID:${request_id}`);
         } else {
-          showWarning(`请求 ID 复制失败：${request_id}`);
+          showWarning(`请求 ID 复制失败:${request_id}`);
         }
       }}
       style={{ cursor: 'pointer' }}
@@ -311,7 +311,7 @@ const LogsTable = () => {
   return (
     <>
       <Header as='h3'>
-        {t('log.usage_details')}（{t('log.total_quota')}：
+        {t('log.usage_details')}({t('log.total_quota')}:
         {showStat && renderQuota(stat.quota, t)}
         {!showStat && (
           <span
@@ -321,7 +321,7 @@ const LogsTable = () => {
             {t('log.click_to_view')}
           </span>
         )}
-        ）
+        )
       </Header>
       <Form>
         <Form.Group>

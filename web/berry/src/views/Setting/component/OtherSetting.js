@@ -113,7 +113,7 @@ const OtherSetting = () => {
     const res = await API.get('https://api.github.com/repos/songquanpeng/one-api/releases/latest');
     const { tag_name, body } = res.data;
     if (tag_name === process.env.REACT_APP_VERSION) {
-      showSuccess(`已是最新版本：${tag_name}`);
+      showSuccess(`已是最新版本:${tag_name}`);
     } else {
       setUpdateData({
         tag_name: tag_name,
@@ -144,7 +144,7 @@ const OtherSetting = () => {
                   name="Notice"
                   onChange={handleInputChange}
                   minRows={10}
-                  placeholder="在此输入新的公告内容，支持 Markdown & HTML 代码"
+                  placeholder="在此输入新的公告内容,支持 Markdown & HTML 代码"
                 />
               </FormControl>
             </Grid>
@@ -192,7 +192,7 @@ const OtherSetting = () => {
             </Grid>
             <Grid xs={12}>
               <Button variant="contained" onClick={submitTheme}>
-                设置主题（重启生效）
+                设置主题(重启生效)
               </Button>
             </Grid>
             <Grid xs={12}>
@@ -225,7 +225,7 @@ const OtherSetting = () => {
                   name="HomePageContent"
                   onChange={handleInputChange}
                   minRows={10}
-                  placeholder="在此输入首页内容，支持 Markdown & HTML 代码，设置后首页的状态信息将不再显示。如果输入的是一个链接，则会使用该链接作为 iframe 的 src 属性，这允许你设置任意网页作为首页。"
+                  placeholder="在此输入首页内容,支持 Markdown & HTML 代码,设置后首页的状态信息将不再显示.如果输入的是一个链接,则会使用该链接作为 iframe 的 src 属性,这允许你设置任意网页作为首页."
                 />
               </FormControl>
             </Grid>
@@ -245,7 +245,7 @@ const OtherSetting = () => {
                   name="About"
                   onChange={handleInputChange}
                   minRows={10}
-                  placeholder="在此输入新的关于内容，支持 Markdown & HTML 代码。如果输入的是一个链接，则会使用该链接作为 iframe 的 src 属性，这允许你设置任意网页作为关于页面。"
+                  placeholder="在此输入新的关于内容,支持 Markdown & HTML 代码.如果输入的是一个链接,则会使用该链接作为 iframe 的 src 属性,这允许你设置任意网页作为关于页面."
                 />
               </FormControl>
             </Grid>
@@ -256,7 +256,7 @@ const OtherSetting = () => {
             </Grid>
             <Grid xs={12}>
               <Alert severity="warning">
-                移除 One API 的版权标识必须首先获得授权，项目维护需要花费大量精力，如果本项目对你有意义，请主动支持本项目。
+                移除 One API 的版权标识必须首先获得授权,项目维护需要花费大量精力,如果本项目对你有意义,请主动支持本项目.
               </Alert>
             </Grid>
             <Grid xs={12}>
@@ -270,7 +270,7 @@ const OtherSetting = () => {
                   name="Footer"
                   onChange={handleInputChange}
                   minRows={10}
-                  placeholder="在此输入新的页脚，留空则使用默认页脚，支持 HTML 代码"
+                  placeholder="在此输入新的页脚,留空则使用默认页脚,支持 HTML 代码"
                 />
               </FormControl>
             </Grid>
@@ -284,7 +284,7 @@ const OtherSetting = () => {
       </Stack>
       <Dialog open={showUpdateModal} onClose={() => setShowUpdateModal(false)} fullWidth maxWidth={'md'}>
         <DialogTitle sx={{ margin: '0px', fontWeight: 700, lineHeight: '1.55556', padding: '24px', fontSize: '1.125rem' }}>
-          新版本：{updateData.tag_name}
+          新版本:{updateData.tag_name}
         </DialogTitle>
         <Divider />
         <DialogContent>

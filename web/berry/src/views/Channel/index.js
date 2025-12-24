@@ -113,7 +113,7 @@ export default function ChannelPage() {
     }
     const { success, message } = res.data;
     if (success) {
-      showSuccess('操作成功完成！');
+      showSuccess('操作成功完成!');
       if (action === 'delete') {
         await handleRefresh();
       }
@@ -134,7 +134,7 @@ export default function ChannelPage() {
     const res = await API.get(`/api/channel/test`);
     const { success, message } = res.data;
     if (success) {
-      showInfo('已成功开始测试所有渠道，请刷新页面查看结果。');
+      showInfo('已成功开始测试所有渠道,请刷新页面查看结果.');
     } else {
       showError(message);
     }
@@ -145,7 +145,7 @@ export default function ChannelPage() {
     const res = await API.delete(`/api/channel/disabled`);
     const { success, message, data } = res.data;
     if (success) {
-      showSuccess(`已删除所有禁用渠道，共计 ${data} 个`);
+      showSuccess(`已删除所有禁用渠道,共计 ${data} 个`);
       await handleRefresh();
     } else {
       showError(message);
@@ -158,7 +158,7 @@ export default function ChannelPage() {
     const res = await API.get(`/api/channel/update_balance`);
     const { success, message } = res.data;
     if (success) {
-      showInfo('已更新完毕所有已启用渠道余额！');
+      showInfo('已更新完毕所有已启用渠道余额!');
     } else {
       showError(message);
     }
@@ -201,7 +201,7 @@ export default function ChannelPage() {
       </Stack>
       <Card>
         <Box component="form" onSubmit={searchChannels} noValidate sx={{ marginTop: 2 }}>
-          <TableToolBar filterName={searchKeyword} handleFilterName={handleSearchKeyword} placeholder={'搜索渠道的 ID，名称和密钥 ...'} />
+          <TableToolBar filterName={searchKeyword} handleFilterName={handleSearchKeyword} placeholder={'搜索渠道的 ID,名称和密钥 ...'} />
         </Box>
         <Toolbar
           sx={{

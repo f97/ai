@@ -96,7 +96,7 @@ export default function Redemption() {
     }
     const { success, message } = res.data;
     if (success) {
-      showSuccess('操作成功完成！');
+      showSuccess('操作成功完成!');
       if (action === 'delete') {
         await loadRedemptions(0);
       }

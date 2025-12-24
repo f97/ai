@@ -42,10 +42,10 @@ export SQLITE_CACHE_SIZE=-64000  # 64MB
 # 内存映射大小
 export SQLITE_MMAP_SIZE=268435456  # 256MB
 
-# 临时表存储在内存
+# 临hour表存储在内存
 export SQLITE_TEMP_STORE=MEMORY
 
-# 繁忙超时 (毫秒)
+# 繁忙Timeout (毫second)
 export SQLITE_BUSY_TIMEOUT=5000
 
 # WAL 自动检查点
@@ -77,7 +77,7 @@ export SQLITE_MAX_IDLE_CONNS=2
 ### 2. HTTP 客户端优化
 
 ```bash
-# Keep-alive 时间
+# Keep-alive hour间
 export HTTP_KEEPALIVE=90  # 90
 
 # 连接池设置
@@ -85,7 +85,7 @@ export HTTP_MAX_IDLE_CONNS=100
 export HTTP_MAX_IDLE_CONNS_PER_HOST=20
 export HTTP_MAX_CONNS_PER_HOST=50
 
-# 超时设置
+# Timeout设置
 export HTTP_DIAL_TIMEOUT=10
 export HTTP_TLS_TIMEOUT=10
 export HTTP_RESPONSE_HEADER_TIMEOUT=30
@@ -101,28 +101,28 @@ export HTTP_IDLE_CONN_TIMEOUT=90
 
 ## Phase B: Medium Optimizations (≤ 1 day)
 
-### 3. 异步批量日志
+### 3. 异步Batchday志
 
 ```bash
-# 启用批量日志
+# 启用Batchday志
 export LOG_BATCH_ENABLED=true
 
-# 批量大小
+# Batch大小
 export LOG_BATCH_SIZE=50
 
-# 刷新间隔 (秒)
+# Refresh间隔 (second)
 export LOG_BATCH_FLUSH_INTERVAL=5
 ```
 
 **效果
-- ✅✅ 大幅减少数据库写入次数
+- ✅✅ 大幅减少数据库写入times数
 - ✅ 降低流式请求开销
-- ⚠️ 崩溃可能丢失最近 5 秒的日志
+- ⚠️ 崩溃可能丢失Recent 5 second的day志
 
-**关闭日志功能
+**关闭day志功能
 
 ```bash
-# 完全禁用消费日志
+# 完全禁用消费day志
 export LOG_CONSUME_ENABLED=false
 ```
 
@@ -134,7 +134,7 @@ export LOG_CONSUME_ENABLED=false
 # 启用本地缓存
 export LOCAL_CACHE_ENABLED=true
 
-# 缓存 TTL (秒)
+# 缓存 TTL (second)
 export LOCAL_CACHE_TTL=60
 ```
 
@@ -150,10 +150,10 @@ export LOCAL_CACHE_TTL=60
 
 ---
 
-### 5. 启用批量更新
+### 5. 启用Batch更新
 
 ```bash
-# 批量更新配额等信息
+# Batch更新配额等信息
 export BATCH_UPDATE_ENABLED=true
 export BATCH_UPDATE_INTERVAL=5  # 5
 ```
@@ -202,10 +202,10 @@ curl http://localhost:6060/debug/pprof/block?debug=2
 
 - **延迟
 - **TTFT**: Time to first token (streaming)
-- **数据库时间
+- **数据库hour间
 - **锁等待
 - **GC 暂停
-- **内存分配
+- **内存minute配
 
 **实现方式
 
@@ -250,7 +250,7 @@ http.Handle("/metrics", promhttp.Handler())
 
 ## 🎯 Priority Checklist
 
-### 高优先级
+### 高Priority
 
 - [ ] ✅  SQLite WAL
 - [ ] ✅  `SYNCHRONOUS=NORMAL`
@@ -258,14 +258,14 @@ http.Handle("/metrics", promhttp.Handler())
 - [ ] ✅  (`LOCAL_CACHE_ENABLED=true`)
 - [ ] ✅  (`LOG_CONSUME_ENABLED=false`)
 
-### 中优先级
+### 中Priority
 
 - [ ] ⚠️  (`LOG_BATCH_ENABLED=true`)
 - [ ] ⚠️  (`BATCH_UPDATE_ENABLED=true`)
 - [ ] ⚠️  SQLite
 - [ ] ⚠️
 
-### 低优先级
+### 低Priority
 
 - [ ] 🔧  pprof
 - [ ] 🔧  Prometheus metrics
@@ -295,7 +295,7 @@ export SQLITE_OPTIMIZE_ENABLED=false
 export LOCAL_CACHE_ENABLED=false
 export LOG_BATCH_ENABLED=false
 
-# 2. 恢复默认 SQLite 设置
+# 2. 恢复Default SQLite 设置
 export SQLITE_SYNCHRONOUS=FULL
 export SQLITE_JOURNAL_MODE=DELETE
 
@@ -316,7 +316,7 @@ ab -n 1000 -c 10 http://localhost:3000/v1/chat/completions
 # 2. 启用优化
 # ... apply optimizations ...
 
-# 3. 再次测试
+# 3. 再times测试
 ab -n 1000 -c 10 http://localhost:3000/v1/chat/completions
 
 # 4. 对比结果

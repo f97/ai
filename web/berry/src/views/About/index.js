@@ -39,8 +39,8 @@ const About = () => {
             <Container sx={{ paddingTop: '40px' }}>
               <MainCard title="About">
                 <Typography variant="body2">
-                  可在设置页面设置关于内容，支持 HTML & Markdown <br />
-                  项目仓库地址：
+                  可在设置页面设置关于内容,支持 HTML & Markdown <br />
+                  项目仓库地址:
                   <a href="https://github.com/songquanpeng/one-api">https://github.com/songquanpeng/one-api</a>
                 </Typography>
               </MainCard>

@@ -58,7 +58,7 @@
 
 ## 🔗
 
-- [One-API 主项目](https:
+- [One-API 主items目](https:
 - [SQLite WAL 模式文档](https:
 - [Go pprof 使用指南](https:
 

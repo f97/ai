@@ -23,7 +23,7 @@ const ResponseTimeLabel = ({ test_time, response_time, handle_action }) => {
     <>
       点击测速
       <br />
-      {test_time != 0 ? '上次测速时间：' + timestamp2string(test_time) : '未测试'}
+      {test_time != 0 ? '上次测速时间:' + timestamp2string(test_time) : '未测试'}
     </>
   );
 

@@ -102,7 +102,7 @@ const RedemptionsTable = () => {
                   }}
           >Copy</Button>
           <Popconfirm
-            title="确定是否要删除此兑换码？"
+            title="确定是否要删除此兑换码?"
             content="此修改将不可逆"
             okType={'danger'}
             position={'left'}
@@ -216,10 +216,10 @@ const RedemptionsTable = () => {
 
   const copyText = async (text) => {
     if (await copy(text)) {
-      showSuccess('已复制到剪贴板！');
+      showSuccess('已复制到剪贴板!');
     } else {
       // setSearchKeyword(text);
-      Modal.error({ title: '无法复制到剪贴板，请手动复制', content: text });
+      Modal.error({ title: '无法复制到剪贴板,请手动复制', content: text });
     }
   };
 
@@ -263,7 +263,7 @@ const RedemptionsTable = () => {
     }
     const { success, message } = res.data;
     if (success) {
-      showSuccess('操作成功完成！');
+      showSuccess('操作成功完成!');
       let redemption = res.data.data;
       let newRedemptions = [...redemptions];
       // let realIdx = (activePage - 1) * ITEMS_PER_PAGE + idx;
@@ -370,7 +370,7 @@ const RedemptionsTable = () => {
         total: tokenCount,
         // showSizeChanger: true,
         // pageSizeOptions: [10, 20, 50, 100],
-        formatPageText: (page) => `第 ${page.currentStart} - ${page.currentEnd} 条，共 ${redemptions.length} 条`,
+        formatPageText: (page) => `第 ${page.currentStart} - ${page.currentEnd} 条,共 ${redemptions.length} 条`,
         // onPageSizeChange: (size) => {
         //   setPageSize(size);
         //   setActivePage(1);
@@ -389,7 +389,7 @@ const RedemptionsTable = () => {
       <Button label="复制所选兑换码" type="warning" onClick={
         async () => {
           if (selectedKeys.length === 0) {
-            showError('请至少选择一个兑换码！');
+            showError('请至少选择一个兑换码!');
             return;
           }
           let keys = '';

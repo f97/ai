@@ -33,7 +33,7 @@ function renderStatus(status, model_limits_enabled = false) {
   switch (status) {
     case 1:
       if (model_limits_enabled) {
-        return <Tag color="green" size="large">已启用：限制模型</Tag>;
+        return <Tag color="green" size="large">已启用:限制模型</Tag>;
       } else {
         return <Tag color="green" size="large">Enabled</Tag>;
       }
@@ -176,7 +176,7 @@ const TokensTable = () => {
                   }
                 },
                 {
-                  node: 'item', key: 'ama', name: 'AMA 问天（BotGem）', onClick: () => {
+                  node: 'item', key: 'ama', name: 'AMA 问天(BotGem)', onClick: () => {
                     onOpenLink('ama', record.key);
                   }
                 },
@@ -198,7 +198,7 @@ const TokensTable = () => {
             </Dropdown>
           </SplitButtonGroup>
           <Popconfirm
-            title="确定是否要删除此令牌？"
+            title="确定是否要删除此令牌?"
             content="此修改将不可逆"
             okType={'danger'}
             position={'left'}
@@ -349,19 +349,19 @@ const TokensTable = () => {
         url = `sk-${key}`;
     }
     // if (await copy(url)) {
-    //     showSuccess('已复制到剪贴板！');
+    //     showSuccess('已复制到剪贴板!');
     // } else {
-    //     showWarning('无法复制到剪贴板，请手动复制，已将令牌填入搜索框。');
+    //     showWarning('无法复制到剪贴板,请手动复制,已将令牌填入搜索框.');
     //     setSearchKeyword(url);
     // }
   };
 
   const copyText = async (text) => {
     if (await copy(text)) {
-      showSuccess('已复制到剪贴板！');
+      showSuccess('已复制到剪贴板!');
     } else {
       // setSearchKeyword(text);
-      Modal.error({ title: '无法复制到剪贴板，请手动复制', content: text });
+      Modal.error({ title: '无法复制到剪贴板,请手动复制', content: text });
     }
   };
 
@@ -447,7 +447,7 @@ const TokensTable = () => {
     }
     const { success, message } = res.data;
     if (success) {
-      showSuccess('操作成功完成！');
+      showSuccess('操作成功完成!');
       let token = res.data.data;
       let newTokens = [...tokens];
       // let realIdx = (activePage - 1) * ITEMS_PER_PAGE + idx;
@@ -585,7 +585,7 @@ const TokensTable = () => {
         total: tokenCount,
         showSizeChanger: true,
         pageSizeOptions: [10, 20, 50, 100],
-        formatPageText: (page) => `第 ${page.currentStart} - ${page.currentEnd} 条，共 ${tokens.length} 条`,
+        formatPageText: (page) => `第 ${page.currentStart} - ${page.currentEnd} 条,共 ${tokens.length} 条`,
         onPageSizeChange: (size) => {
           setPageSize(size);
           setActivePage(1);
@@ -604,7 +604,7 @@ const TokensTable = () => {
       <Button label="复制所选令牌" type="warning" onClick={
         async () => {
           if (selectedKeys.length === 0) {
-            showError('请至少选择一个令牌！');
+            showError('请至少选择一个令牌!');
             return;
           }
           let keys = '';

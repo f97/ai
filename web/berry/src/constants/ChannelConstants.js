@@ -205,13 +205,13 @@ export const CHANNEL_OPTIONS = {
   },
   22: {
     key: 22,
-    text: '知识库：FastGPT',
+    text: '知识库:FastGPT',
     value: 22,
     color: 'success'
   },
   21: {
     key: 21,
-    text: '知识库：AI Proxy',
+    text: '知识库:AI Proxy',
     value: 21,
     color: 'success'
   },
@@ -223,55 +223,55 @@ export const CHANNEL_OPTIONS = {
   },
   2: {
     key: 2,
-    text: '代理：API2D',
+    text: '代理:API2D',
     value: 2,
     color: 'success'
   },
   5: {
     key: 5,
-    text: '代理：OpenAI-SB',
+    text: '代理:OpenAI-SB',
     value: 5,
     color: 'success'
   },
   7: {
     key: 7,
-    text: '代理：OhMyGPT',
+    text: '代理:OhMyGPT',
     value: 7,
     color: 'success'
   },
   10: {
     key: 10,
-    text: '代理：AI Proxy',
+    text: '代理:AI Proxy',
     value: 10,
     color: 'success'
   },
   4: {
     key: 4,
-    text: '代理：CloseAI',
+    text: '代理:CloseAI',
     value: 4,
     color: 'success'
   },
   6: {
     key: 6,
-    text: '代理：OpenAI Max',
+    text: '代理:OpenAI Max',
     value: 6,
     color: 'success'
   },
   9: {
     key: 9,
-    text: '代理：AI.LS',
+    text: '代理:AI.LS',
     value: 9,
     color: 'success'
   },
   12: {
     key: 12,
-    text: '代理：API2GPT',
+    text: '代理:API2GPT',
     value: 12,
     color: 'success'
   },
   13: {
     key: 13,
-    text: '代理：AIGC2D',
+    text: '代理:AIGC2D',
     value: 13,
     color: 'success'
   }

@@ -69,11 +69,11 @@ const EditRedemption = (props) => {
     const { success, message, data } = res.data;
     if (success) {
       if (isEdit) {
-        showSuccess('兑换码更新成功！');
+        showSuccess('兑换码更新成功!');
         props.refresh();
         props.handleClose();
       } else {
-        showSuccess('兑换码创建成功！');
+        showSuccess('兑换码创建成功!');
         setInputs(originInputs);
         props.refresh();
         props.handleClose();
@@ -91,8 +91,8 @@ const EditRedemption = (props) => {
         title: '兑换码创建成功',
         content: (
           <div>
-            <p>兑换码创建成功，是否下载兑换码？</p>
-            <p>兑换码将以文本文件的形式下载，文件名为兑换码的名称。</p>
+            <p>兑换码创建成功,是否下载兑换码?</p>
+            <p>兑换码将以文本文件的形式下载,文件名为兑换码的名称.</p>
           </div>
         ),
         onOk: () => {

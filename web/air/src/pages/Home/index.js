@@ -68,10 +68,10 @@ const Home = () => {
                     title='系统信息'
                     headerExtraContent={<span
                       style={{ fontSize: '12px', color: 'var(--semi-color-text-1)' }}>系统信息总览</span>}>
-                    <p>名称：{statusState?.status?.system_name}</p>
-                    <p>版本：{statusState?.status?.version ? statusState?.status?.version : 'unknown'}</p>
+                    <p>名称:{statusState?.status?.system_name}</p>
+                    <p>版本:{statusState?.status?.version ? statusState?.status?.version : 'unknown'}</p>
                     <p>
-                      源码：
+                      源码:
                       <a
                         href='https://github.com/songquanpeng/one-api'
                         target='_blank' rel='noreferrer'
@@ -79,7 +79,7 @@ const Home = () => {
                         https://github.com/songquanpeng/one-api
                       </a>
                     </p>
-                    <p>启动时间：{getStartTimeString()}</p>
+                    <p>启动时间:{getStartTimeString()}</p>
                   </Card>
                 </Col>
                 <Col span={12}>
@@ -88,23 +88,23 @@ const Home = () => {
                     headerExtraContent={<span
                       style={{ fontSize: '12px', color: 'var(--semi-color-text-1)' }}>系统配置总览</span>}>
                     <p>
-                      邮箱验证：
+                      邮箱验证:
                       {statusState?.status?.email_verification === true ? 'Enabled' : '未启用'}
                     </p>
                     <p>
-                      GitHub 身份验证：
+                      GitHub 身份验证:
                       {statusState?.status?.github_oauth === true ? 'Enabled' : '未启用'}
                     </p>
                     <p>
-                      微信身份验证：
+                      微信身份验证:
                       {statusState?.status?.wechat_login === true ? 'Enabled' : '未启用'}
                     </p>
                     <p>
-                      Turnstile 用户校验：
+                      Turnstile 用户校验:
                       {statusState?.status?.turnstile_check === true ? 'Enabled' : '未启用'}
                     </p>
                     {/*<p>*/}
-                    {/*  Telegram 身份验证：*/}
+                    {/*  Telegram 身份验证:*/}
                     {/*  {statusState?.status?.telegram_oauth === true*/}
                     {/*    ? 'Enabled' : '未启用'}*/}
                     {/*</p>*/}

@@ -23,7 +23,7 @@ const AddUser = (props) => {
     const res = await API.post(`/api/user/`, inputs);
     const { success, message } = res.data;
     if (success) {
-      showSuccess('用户账户创建成功！');
+      showSuccess('用户账户创建成功!');
       setInputs(originInputs);
       props.refresh();
       props.handleClose();

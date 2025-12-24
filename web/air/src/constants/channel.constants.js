@@ -33,18 +33,18 @@ export const CHANNEL_OPTIONS = [
   { key: 45, text: 'xAI', value: 45, color: 'blue' },
   { key: 46, text: 'Replicate', value: 46, color: 'blue' },
   { key: 8, text: '自定义渠道', value: 8, color: 'pink' },
-  { key: 22, text: '知识库：FastGPT', value: 22, color: 'blue' },
-  { key: 21, text: '知识库：AI Proxy', value: 21, color: 'purple' },
+  { key: 22, text: '知识库:FastGPT', value: 22, color: 'blue' },
+  { key: 21, text: '知识库:AI Proxy', value: 21, color: 'purple' },
   {key: 20, text: 'OpenRouter', value: 20, color: 'black'},
-  { key: 2, text: '代理：API2D', value: 2, color: 'blue' },
-  { key: 5, text: '代理：OpenAI-SB', value: 5, color: 'brown' },
-  { key: 7, text: '代理：OhMyGPT', value: 7, color: 'purple' },
-  { key: 10, text: '代理：AI Proxy', value: 10, color: 'purple' },
-  { key: 4, text: '代理：CloseAI', value: 4, color: 'teal' },
-  { key: 6, text: '代理：OpenAI Max', value: 6, color: 'violet' },
-  { key: 9, text: '代理：AI.LS', value: 9, color: 'yellow' },
-  { key: 12, text: '代理：API2GPT', value: 12, color: 'blue' },
-  { key: 13, text: '代理：AIGC2D', value: 13, color: 'purple' }
+  { key: 2, text: '代理:API2D', value: 2, color: 'blue' },
+  { key: 5, text: '代理:OpenAI-SB', value: 5, color: 'brown' },
+  { key: 7, text: '代理:OhMyGPT', value: 7, color: 'purple' },
+  { key: 10, text: '代理:AI Proxy', value: 10, color: 'purple' },
+  { key: 4, text: '代理:CloseAI', value: 4, color: 'teal' },
+  { key: 6, text: '代理:OpenAI Max', value: 6, color: 'violet' },
+  { key: 9, text: '代理:AI.LS', value: 9, color: 'yellow' },
+  { key: 12, text: '代理:API2GPT', value: 12, color: 'blue' },
+  { key: 13, text: '代理:AIGC2D', value: 13, color: 'purple' }
 ];
 
 for (let i = 0; i < CHANNEL_OPTIONS.length; i++) {

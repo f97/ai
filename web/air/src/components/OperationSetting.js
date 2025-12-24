@@ -149,10 +149,10 @@ const OperationSetting = () => {
     const res = await API.delete(`/api/log/?target_timestamp=${Date.parse(historyTimestamp) / 1000}`);
     const { success, message, data } = res.data;
     if (success) {
-      showSuccess(`${data} 条日志已清理！`);
+      showSuccess(`${data} 条日志已清理!`);
       return;
     }
-    showError('日志清理失败：' + message);
+    showError('日志清理失败:' + message);
   };
 
   return (
@@ -261,7 +261,7 @@ const OperationSetting = () => {
               value={inputs.ChannelDisableThreshold}
               type='number'
               min='0'
-              placeholder='单位秒，当运行渠道全部测试时，超过此时间将自动禁用渠道'
+              placeholder='单位秒,当运行渠道全部测试时,超过此时间将自动禁用渠道'
             />
             <Form.Input
               label='额度提醒阈值'
@@ -304,7 +304,7 @@ const OperationSetting = () => {
               value={inputs.QuotaForNewUser}
               type='number'
               min='0'
-              placeholder='例如：100'
+              placeholder='例如:100'
             />
             <Form.Input
               label='请求预扣费额度'
@@ -324,7 +324,7 @@ const OperationSetting = () => {
               value={inputs.QuotaForInviter}
               type='number'
               min='0'
-              placeholder='例如：2000'
+              placeholder='例如:2000'
             />
             <Form.Input
               label='新用户使用邀请码奖励额度'
@@ -334,7 +334,7 @@ const OperationSetting = () => {
               value={inputs.QuotaForInvitee}
               type='number'
               min='0'
-              placeholder='例如：1000'
+              placeholder='例如:1000'
             />
           </Form.Group>
           <Form.Button onClick={() => {
@@ -352,7 +352,7 @@ const OperationSetting = () => {
               style={{ minHeight: 250, fontFamily: 'JetBrains Mono, Consolas' }}
               autoComplete='new-password'
               value={inputs.ModelRatio}
-              placeholder='为一个 JSON 文本，键为模型名称，值为倍率'
+              placeholder='为一个 JSON 文本,键为模型名称,值为倍率'
             />
           </Form.Group>
           <Form.Group widths='equal'>
@@ -363,7 +363,7 @@ const OperationSetting = () => {
               style={{ minHeight: 250, fontFamily: 'JetBrains Mono, Consolas' }}
               autoComplete='new-password'
               value={inputs.CompletionRatio}
-              placeholder='为一个 JSON 文本，键为模型名称，值为倍率，此处的倍率设置是模型补全倍率相较于提示倍率的比例，使用该设置可强制覆盖 One API 的内部比例'
+              placeholder='为一个 JSON 文本,键为模型名称,值为倍率,此处的倍率设置是模型补全倍率相较于提示倍率的比例,使用该设置可强制覆盖 One API 的内部比例'
             />
           </Form.Group>
           <Form.Group widths='equal'>
@@ -374,7 +374,7 @@ const OperationSetting = () => {
               style={{ minHeight: 250, fontFamily: 'JetBrains Mono, Consolas' }}
               autoComplete='new-password'
               value={inputs.GroupRatio}
-              placeholder='为一个 JSON 文本，键为分组名称，值为倍率'
+              placeholder='为一个 JSON 文本,键为分组名称,值为倍率'
             />
           </Form.Group>
           <Form.Button onClick={() => {

@@ -95,7 +95,7 @@ const OperationSetting = () => {
 
     if (name.endsWith("Enabled")) {
       await updateOption(name, value);
-      showSuccess("设置成功！");
+      showSuccess("设置成功!");
     } else {
       setInputs((inputs) => ({ ...inputs, [name]: value }));
     }
@@ -175,7 +175,7 @@ const OperationSetting = () => {
         break;
     }
 
-    showSuccess("保存成功！");
+    showSuccess("保存成功!");
   };
 
   const deleteHistoryLogs = async () => {
@@ -184,10 +184,10 @@ const OperationSetting = () => {
     );
     const { success, message, data } = res.data;
     if (success) {
-      showSuccess(`${data} 条日志已清理！`);
+      showSuccess(`${data} 条日志已清理!`);
       return;
     }
-    showError("日志清理失败：" + message);
+    showError("日志清理失败:" + message);
   };
 
   return (
@@ -371,7 +371,7 @@ const OperationSetting = () => {
                 value={inputs.ChannelDisableThreshold}
                 onChange={handleInputChange}
                 label="最长响应时间"
-                placeholder="单位秒，当运行渠道全部测试时，超过此时间将自动禁用渠道"
+                placeholder="单位秒,当运行渠道全部测试时,超过此时间将自动禁用渠道"
                 disabled={loading}
               />
             </FormControl>
@@ -436,7 +436,7 @@ const OperationSetting = () => {
                 value={inputs.QuotaForNewUser}
                 onChange={handleInputChange}
                 label="新用户初始额度"
-                placeholder="例如：100"
+                placeholder="例如:100"
                 disabled={loading}
               />
             </FormControl>
@@ -464,7 +464,7 @@ const OperationSetting = () => {
                 label="邀请新用户奖励额度"
                 value={inputs.QuotaForInviter}
                 onChange={handleInputChange}
-                placeholder="例如：2000"
+                placeholder="例如:2000"
                 disabled={loading}
               />
             </FormControl>
@@ -480,7 +480,7 @@ const OperationSetting = () => {
                 value={inputs.QuotaForInvitee}
                 onChange={handleInputChange}
                 autoComplete="new-password"
-                placeholder="例如：1000"
+                placeholder="例如:1000"
                 disabled={loading}
               />
             </FormControl>
@@ -508,7 +508,7 @@ const OperationSetting = () => {
               onChange={handleInputChange}
               aria-describedby="helper-text-channel-ModelRatio-label"
               minRows={5}
-              placeholder="为一个 JSON 文本，键为模型名称，值为倍率"
+              placeholder="为一个 JSON 文本,键为模型名称,值为倍率"
             />
           </FormControl>
           <FormControl fullWidth>
@@ -522,7 +522,7 @@ const OperationSetting = () => {
               onChange={handleInputChange}
               aria-describedby="helper-text-channel-CompletionRatio-label"
               minRows={5}
-              placeholder="为一个 JSON 文本，键为模型名称，值为倍率，此处的倍率设置是模型补全倍率相较于提示倍率的比例，使用该设置可强制覆盖 One API 的内部比例"
+              placeholder="为一个 JSON 文本,键为模型名称,值为倍率,此处的倍率设置是模型补全倍率相较于提示倍率的比例,使用该设置可强制覆盖 One API 的内部比例"
             />
           </FormControl>
           <FormControl fullWidth>
@@ -536,7 +536,7 @@ const OperationSetting = () => {
               onChange={handleInputChange}
               aria-describedby="helper-text-channel-GroupRatio-label"
               minRows={5}
-              placeholder="为一个 JSON 文本，键为分组名称，值为倍率"
+              placeholder="为一个 JSON 文本,键为分组名称,值为倍率"
             />
           </FormControl>
           <Button

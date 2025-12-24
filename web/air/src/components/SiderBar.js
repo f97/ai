@@ -142,7 +142,7 @@ const SiderBar = () => {
         localStorage.removeItem('chat_link2');
       }
     } else {
-      showError('无法正常连接至服务器！');
+      showError('无法正常连接至服务器!');
     }
   };
 

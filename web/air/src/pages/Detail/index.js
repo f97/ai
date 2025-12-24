@@ -269,10 +269,10 @@ const Detail = (props) => {
 
         // sort by count
         pieData.sort((a, b) => b.value - a.value);
-        spec_pie.title.subtext = `总计：${renderNumber(times)}`;
+        spec_pie.title.subtext = `总计:${renderNumber(times)}`;
         spec_pie.data[0].values = pieData;
 
-        spec_line.title.subtext = `总计：${renderQuota(consumeQuota, 2)}`;
+        spec_line.title.subtext = `总计:${renderQuota(consumeQuota, 2)}`;
         spec_line.data[0].values = lineData;
         pieChart.updateSpec(spec_pie);
         lineChart.updateSpec(spec_line);

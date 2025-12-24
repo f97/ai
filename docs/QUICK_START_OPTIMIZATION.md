@@ -220,7 +220,7 @@ systemctl start one-api
 - Storage: SSD
 - Load: Single user, moderate traffic
 
-### 结果示例
+### 结果Example
 
 | 配置 | p50 延迟 | p95 延迟 | 数据库写入
 |------|----------|----------|---------------|------------|
@@ -262,4 +262,4 @@ systemctl start one-api
 
 ---
 
-需要帮助？提交 Issue: https:
+需要Help？提交 Issue: https:

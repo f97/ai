@@ -116,7 +116,7 @@ const ChannelsTable = () => {
               <Tooltip content={'已用额度'}>
                 <Tag color="white" type="ghost" size="large">{renderQuota(record.used_quota)}</Tag>
               </Tooltip>
-              <Tooltip content={'剩余额度' + record.balance + '，点击更新'}>
+              <Tooltip content={'剩余额度' + record.balance + ',点击更新'}>
                 <Tag color="white" type="ghost" size="large" onClick={() => {
                   updateChannelBalance(record);
                 }}>${renderNumberWithPoint(record.balance)}</Tag>
@@ -184,7 +184,7 @@ const ChannelsTable = () => {
           </SplitButtonGroup> */}
           <Button theme='light' type='primary' style={{ marginRight: 1 }} onClick={() => testChannel(record)}>Test</Button>
           <Popconfirm
-            title="确定是否要删除此渠道？"
+            title="确定是否要删除此渠道?"
             content="此修改将不可逆"
             okType={'danger'}
             position={'left'}
@@ -357,7 +357,7 @@ const ChannelsTable = () => {
     }
     const { success, message } = res.data;
     if (success) {
-      showSuccess('操作成功完成！');
+      showSuccess('操作成功完成!');
       let channel = res.data.data;
       let newChannels = [...channels];
       if (action === 'delete') {
@@ -437,7 +437,7 @@ const ChannelsTable = () => {
     if (success) {
       record.response_time = time * 1000;
       record.test_time = Date.now() / 1000;
-      showInfo(`渠道 ${record.name} 测试成功，耗时 ${time.toFixed(2)} 秒。`);
+      showInfo(`渠道 ${record.name} 测试成功,耗时 ${time.toFixed(2)} 秒.`);
     } else {
       showError(message);
     }
@@ -447,7 +447,7 @@ const ChannelsTable = () => {
     const res = await API.get(`/api/channel/test?scope=${scope}`);
     const { success, message } = res.data;
     if (success) {
-      showInfo('已成功开始测试渠道，请刷新页面查看结果。');
+      showInfo('已成功开始测试渠道,请刷新页面查看结果.');
     } else {
       showError(message);
     }
@@ -457,7 +457,7 @@ const ChannelsTable = () => {
     const res = await API.delete(`/api/channel/disabled`);
     const { success, message, data } = res.data;
     if (success) {
-      showSuccess(`已删除所有禁用渠道，共计 ${data} 个`);
+      showSuccess(`已删除所有禁用渠道,共计 ${data} 个`);
       await refresh();
     } else {
       showError(message);
@@ -470,7 +470,7 @@ const ChannelsTable = () => {
     if (success) {
       record.balance = balance;
       record.balance_updated_time = Date.now() / 1000;
-      showInfo(`渠道 ${record.name} 余额更新成功！`);
+      showInfo(`渠道 ${record.name} 余额更新成功!`);
     } else {
       showError(message);
     }
@@ -481,7 +481,7 @@ const ChannelsTable = () => {
     const res = await API.get(`/api/channel/update_balance`);
     const { success, message } = res.data;
     if (success) {
-      showInfo('已更新完毕所有已启用渠道余额！');
+      showInfo('已更新完毕所有已启用渠道余额!');
     } else {
       showError(message);
     }
@@ -490,7 +490,7 @@ const ChannelsTable = () => {
 
   const batchDeleteChannels = async () => {
     if (selectedChannels.length === 0) {
-      showError('请先选择要删除的渠道！');
+      showError('请先选择要删除的渠道!');
       return;
     }
     setLoading(true);
@@ -501,7 +501,7 @@ const ChannelsTable = () => {
     const res = await API.post(`/api/channel/batch`, { ids: ids });
     const { success, message, data } = res.data;
     if (success) {
-      showSuccess(`已删除 ${data} 个渠道！`);
+      showSuccess(`已删除 ${data} 个渠道!`);
       await refresh();
     } else {
       showError(message);
@@ -513,7 +513,7 @@ const ChannelsTable = () => {
     const res = await API.post(`/api/channel/fix`);
     const { success, message, data } = res.data;
     if (success) {
-      showSuccess(`已修复 ${data} 个渠道！`);
+      showSuccess(`已修复 ${data} 个渠道!`);
       await refresh();
     } else {
       showError(message);
@@ -585,7 +585,7 @@ const ChannelsTable = () => {
               <Form.Input
                 field="search_keyword"
                 label="Search"
-                placeholder="ID，名称和密钥 ..."
+                placeholder="ID,名称和密钥 ..."
                 value={searchKeyword}
                 loading={searching}
                 onChange={(v) => {
@@ -628,7 +628,7 @@ const ChannelsTable = () => {
               }
             }>添加新的渠道</Button>
             <Popconfirm
-              title="确定？"
+              title="确定?"
               okType={'warning'}
               onConfirm={() => { testChannels("all") }}
               position={isMobile() ? 'top' : 'left'}
@@ -636,7 +636,7 @@ const ChannelsTable = () => {
               <Button theme="light" type="warning" style={{ marginRight: 8 }}>测试所有渠道</Button>
             </Popconfirm>
             <Popconfirm
-              title="确定？"
+              title="确定?"
               okType={'warning'}
               onConfirm={() => { testChannels("disabled") }}
               position={isMobile() ? 'top' : 'left'}
@@ -644,14 +644,14 @@ const ChannelsTable = () => {
               <Button theme="light" type="warning" style={{ marginRight: 8 }}>测试禁用渠道</Button>
             </Popconfirm>
             {/* <Popconfirm
-            title="确定？"
+            title="确定?"
             okType={'secondary'}
             onConfirm={updateAllChannelsBalance}
           >
             <Button theme="light" type="secondary" style={{ marginRight: 8 }}>更新所有已启用渠道余额</Button>
           </Popconfirm> */}
             <Popconfirm
-              title="确定是否要删除禁用渠道？"
+              title="确定是否要删除禁用渠道?"
               content="此修改将不可逆"
               okType={'danger'}
               onConfirm={deleteAllDisabledChannels}
@@ -673,7 +673,7 @@ const ChannelsTable = () => {
               setEnableBatchDelete(v);
             }}></Switch>
             <Popconfirm
-              title="确定是否要删除所选渠道？"
+              title="确定是否要删除所选渠道?"
               content="此修改将不可逆"
               okType={'danger'}
               onConfirm={batchDeleteChannels}
@@ -684,8 +684,8 @@ const ChannelsTable = () => {
                 style={{ marginRight: 8 }}>删除所选渠道</Button>
             </Popconfirm>
             <Popconfirm
-              title="确定是否要修复数据库一致性？"
-              content="进行该操作时，可能导致渠道访问错误，请仅在数据库出现问题时使用"
+              title="确定是否要修复数据库一致性?"
+              content="进行该操作时,可能导致渠道访问错误,请仅在数据库出现问题时使用"
               okType={'warning'}
               onConfirm={fixChannelsAbilities}
               position={'top'}

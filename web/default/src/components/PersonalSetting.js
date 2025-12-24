@@ -116,7 +116,7 @@ const PersonalSetting = () => {
 
   const deleteAccount = async () => {
     if (inputs.self_account_deletion_confirmation !== userState.user.username) {
-      showError('请输入你的账户名以确认删除！');
+      showError('请输入你的账户名以确认删除!');
       return;
     }
 
@@ -124,7 +124,7 @@ const PersonalSetting = () => {
     const { success, message } = res.data;
 
     if (success) {
-      showSuccess('账户已删除！');
+      showSuccess('账户已删除!');
       await API.get('/api/user/logout');
       userDispatch({ type: 'logout' });
       localStorage.removeItem('user');
@@ -141,7 +141,7 @@ const PersonalSetting = () => {
     );
     const { success, message } = res.data;
     if (success) {
-      showSuccess('微信账户绑定成功！');
+      showSuccess('微信账户绑定成功!');
       setShowWeChatBindModal(false);
     } else {
       showError(message);
@@ -152,7 +152,7 @@ const PersonalSetting = () => {
     setDisableButton(true);
     if (inputs.email === '') return;
     if (turnstileEnabled && turnstileToken === '') {
-      showInfo('请稍后几秒重试，Turnstile 正在检查用户环境！');
+      showInfo('请稍后几秒重试,Turnstile 正在检查用户环境!');
       return;
     }
     setLoading(true);
@@ -161,7 +161,7 @@ const PersonalSetting = () => {
     );
     const { success, message } = res.data;
     if (success) {
-      showSuccess('验证码发送成功，请检查邮箱！');
+      showSuccess('验证码发送成功,请检查邮箱!');
     } else {
       showError(message);
     }
@@ -176,7 +176,7 @@ const PersonalSetting = () => {
     );
     const { success, message } = res.data;
     if (success) {
-      showSuccess('邮箱账户绑定成功！');
+      showSuccess('邮箱账户绑定成功!');
       setShowEmailBindModal(false);
     } else {
       showError(message);

@@ -41,7 +41,7 @@ const EmailModal = ({ open, handleClose, turnstileToken }) => {
     );
     const { success, message } = res.data;
     if (success) {
-      showSuccess("邮箱账户绑定成功！");
+      showSuccess("邮箱账户绑定成功!");
       setSubmitting(false);
       setStatus({ success: true });
       handleClose();
@@ -72,7 +72,7 @@ const EmailModal = ({ open, handleClose, turnstileToken }) => {
       return;
     }
     if (turnstileToken === "") {
-      showError("请稍后几秒重试，Turnstile 正在检查用户环境！");
+      showError("请稍后几秒重试,Turnstile 正在检查用户环境!");
       return;
     }
     setLoading(true);

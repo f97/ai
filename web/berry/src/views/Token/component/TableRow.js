@@ -250,7 +250,7 @@ export default function TokensTableRow({ item, manageToken, handleOpenModal, set
       <Dialog open={openDelete} onClose={handleDeleteClose}>
         <DialogTitle>删除Token</DialogTitle>
         <DialogContent>
-          <DialogContentText>是否删除Token {item.name}？</DialogContentText>
+          <DialogContentText>是否删除Token {item.name}?</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleDeleteClose}>关闭</Button>

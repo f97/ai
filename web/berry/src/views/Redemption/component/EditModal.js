@@ -54,9 +54,9 @@ const EditModal = ({ open, redemptiondId, onCancel, onOk }) => {
     const { success, message, data } = res.data;
     if (success) {
       if (values.is_edit) {
-        showSuccess('兑换码更新成功！');
+        showSuccess('兑换码更新成功!');
       } else {
-        showSuccess('兑换码创建成功！');
+        showSuccess('兑换码创建成功!');
         if (data.length > 1) {
           let text = '';
           for (let i = 0; i < data.length; i++) {

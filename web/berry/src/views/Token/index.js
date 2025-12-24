@@ -106,7 +106,7 @@ export default function Token() {
     }
     const { success, message } = res.data;
     if (success) {
-      showSuccess('操作成功完成！');
+      showSuccess('操作成功完成!');
       if (action === 'delete') {
         await handleRefresh();
       }
@@ -156,7 +156,7 @@ export default function Token() {
       </Stack>
       <Stack mb={2}>
         <Alert severity="info">
-          将 OpenAI API 基础地址 https://api.openai.com 替换为 <b>{siteInfo.server_address}</b>，复制下面的密钥即可使用
+          将 OpenAI API 基础地址 https://api.openai.com 替换为 <b>{siteInfo.server_address}</b>,复制下面的密钥即可使用
         </Alert>
       </Stack>
       <Card>

@@ -77,11 +77,11 @@ export default function Profile() {
       const res = await API.get(`/api/oauth/wechat/bind?code=${code}`);
       const { success, message } = res.data;
       if (success) {
-        showSuccess('微信账户绑定成功！');
+        showSuccess('微信账户绑定成功!');
       }
       return { success, message };
     } catch (err) {
-      // 请求失败，设置错误信息
+      // 请求失败,设置错误信息
       return { success: false, message: '' };
     }
   };
@@ -105,7 +105,7 @@ export default function Profile() {
       const res = await API.put(`/api/user/self`, inputs);
       const { success, message } = res.data;
       if (success) {
-        showSuccess('用户信息更新成功！');
+        showSuccess('用户信息更新成功!');
       } else {
         showError(message);
       }
@@ -261,13 +261,13 @@ export default function Profile() {
             <SubCard title="其他">
               <Grid container spacing={2}>
                 <Grid xs={12}>
-                  <Alert severity="info">注意，此处生成的令牌用于系统管理，而非用于请求 OpenAI 相关的服务，请知悉。</Alert>
+                  <Alert severity="info">注意,此处生成的令牌用于系统管理,而非用于请求 OpenAI 相关的服务,请知悉.</Alert>
                 </Grid>
                 {inputs.access_token && (
                   <Grid xs={12}>
                     <Alert severity="error">
                       你的访问令牌是: <b>{inputs.access_token}</b> <br />
-                      请妥善保管。如有泄漏，请立即重置。
+                      请妥善保管.如有泄漏,请立即重置.
                     </Alert>
                   </Grid>
                 )}
@@ -298,7 +298,7 @@ export default function Profile() {
           危险操作
         </DialogTitle>
         <Divider />
-        <DialogContent>您正在删除自己的帐户，将清空所有数据且不可恢复</DialogContent>
+        <DialogContent>您正在删除自己的帐户,将清空所有数据且不可恢复</DialogContent>
         <DialogActions>
           <Button onClick={() => setShowAccountDeleteModal(false)}>Cancel</Button>
           <Button

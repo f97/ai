@@ -172,7 +172,7 @@ export default function UsersTableRow({ item, manageUser, handleOpenModal, setMo
       <Dialog open={openDelete} onClose={handleDeleteClose}>
         <DialogTitle>删除用户</DialogTitle>
         <DialogContent>
-          <DialogContentText>是否删除用户 {item.name}？</DialogContentText>
+          <DialogContentText>是否删除用户 {item.name}?</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleDeleteClose}>关闭</Button>

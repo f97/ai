@@ -73,9 +73,9 @@ const EditModal = ({ open, tokenId, onCancel, onOk }) => {
     const { success, message } = res.data;
     if (success) {
       if (values.is_edit) {
-        showSuccess('令牌更新成功！');
+        showSuccess('令牌更新成功!');
       } else {
-        showSuccess('令牌创建成功，请在列表页面点击复制获取令牌！');
+        showSuccess('令牌创建成功,请在列表页面点击复制获取令牌!');
       }
       setSubmitting(false);
       setStatus({ success: true });
@@ -135,7 +135,7 @@ const EditModal = ({ open, tokenId, onCancel, onOk }) => {
       </DialogTitle>
       <Divider />
       <DialogContent>
-        <Alert severity="info">注意，令牌的额度仅用于限制令牌本身的最大额度使用量，实际的使用受到账户的剩余额度限制。</Alert>
+        <Alert severity="info">注意,令牌的额度仅用于限制令牌本身的最大额度使用量,实际的使用受到账户的剩余额度限制.</Alert>
         <Formik initialValues={inputs} enableReinitialize validationSchema={validationSchema} onSubmit={submit}>
           {({ errors, handleBlur, handleChange, handleSubmit, touched, values, setFieldError, setFieldValue, isSubmitting }) => (
             <form noValidate onSubmit={handleSubmit}>
@@ -199,7 +199,7 @@ const EditModal = ({ open, tokenId, onCancel, onOk }) => {
                     {errors.models}
                   </FormHelperText>
                 ) : (
-                  <FormHelperText id="helper-tex-channel-models-label">请选择允许使用的模型，留空则不进行限制</FormHelperText>
+                  <FormHelperText id="helper-tex-channel-models-label">请选择允许使用的模型,留空则不进行限制</FormHelperText>
                 )}
               </FormControl>
               <FormControl fullWidth error={Boolean(touched.subnet && errors.subnet)} sx={{ ...theme.typography.otherInput }}>
@@ -221,7 +221,7 @@ const EditModal = ({ open, tokenId, onCancel, onOk }) => {
                   </FormHelperText>
                 ) : (
                   <FormHelperText id="helper-tex-channel-subnet-label">
-                    请输入允许访问的网段，例如：192.168.0.0/24，请使用英文逗号分隔多个网段
+                    请输入允许访问的网段,例如:192.168.0.0/24,请使用英文逗号分隔多个网段
                   </FormHelperText>
                 )}
               </FormControl>

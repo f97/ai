@@ -125,7 +125,7 @@ export default function RedemptionTableRow({ item, manageRedemption, handleOpenM
       <Dialog open={openDelete} onClose={handleDeleteClose}>
         <DialogTitle>删除兑换码</DialogTitle>
         <DialogContent>
-          <DialogContentText>是否删除兑换码 {item.name}？</DialogContentText>
+          <DialogContentText>是否删除兑换码 {item.name}?</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleDeleteClose}>关闭</Button>

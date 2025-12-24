@@ -54,7 +54,7 @@ func MetricDisableChannel(channelId int, successRate float64) {
 			<p>Hello!</p>
 			<p>Channel #%d has been automatically disabled by the system.</p>
 			<p>Reason for disabling:</p>
-			<p style="background-color: #f8f8f8; padding: 10px; border-radius: 4px;">该渠道在最近 %d 次调用中成功率为 <strong>%.2f%%</strong>，低于系统阈值 <strong>%.2f%%</strong>。</p>
+			<p style="background-color: #f8f8f8; padding: 10px; border-radius: 4px;">该渠道在Recent %d times调用中Success率为 <strong>%.2f%%</strong>，低于系统阈值 <strong>%.2f%%</strong>。</p>
 		`, channelId, config.MetricQueueSize, successRate*100, config.MetricSuccessRateThreshold*100),
 	)
 	notifyRootUser(subject, content)
