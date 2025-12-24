@@ -3,6 +3,8 @@
 upload
 *.exe
 *.db
+*.db-shm
+*.db-wal
 build
 *.db-journal
 logs

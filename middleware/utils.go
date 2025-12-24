@@ -46,6 +46,12 @@ func getRequestModel(c *gin.Context) (string, error) {
 			modelRequest.Model = "whisper-1"
 		}
 	}
+	// For endpoints that require explicit model field, validate it's not empty
+	// This uses shouldCheckModel to determine which endpoints need validation,
+	// but only enforces required model for endpoints without defaults
+	if modelRequest.Model == "" && shouldCheckModel(c) {
+		return "", fmt.Errorf("model is required")
+	}
 	return modelRequest.Model, nil
 }
 
