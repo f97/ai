@@ -230,12 +230,12 @@ const Dashboard = () => {
     tickFormatter: formatDate,
     interval: 0,
     minTickGap: 5,
-    padding: { left: 30, right: 30 }, // 增加两侧的内边距,确保首尾标签完整显示
+    padding: { left: 30, right: 30 }, // Increase padding on both sides to ensure complete display of first and last labels
   };
 
   return (
     <div className='dashboard-container'>
-      {/* 三个并排的折线图 */}
+      {/* Three side-by-side line charts */}
       <Grid columns={3} stackable className='charts-grid'>
         <Grid.Column>
           <Card fluid className='chart-card'>

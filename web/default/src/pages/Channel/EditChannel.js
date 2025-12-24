@@ -324,9 +324,9 @@ const EditChannel = () => {
                 </Form.Field>
                 <Form.Field>
                   <Form.Input
-                    label='默认 API 版本'
+                    label='Default API Version'
                     name='other'
-                    placeholder='请输入默认 API 版本,例如:2024-03-01-preview,该配置可以被实际的请求查询参数所覆盖'
+                    placeholder='Please enter default API version, e.g.: 2024-03-01-preview, this configuration can be overridden by actual request query parameters'
                     onChange={handleInputChange}
                     value={inputs.other}
                     autoComplete='new-password'
@@ -632,7 +632,7 @@ const EditChannel = () => {
                   name='user_id'
                   required
                   placeholder={
-                    '请输入 Account ID,例如:d8d7c61dbc334c32d3ced580e4bf42b4'
+                    'Please enter Account ID, e.g.: d8d7c61dbc334c32d3ced580e4bf42b4'
                   }
                   onChange={handleConfigChange}
                   value={config.user_id}
@@ -667,10 +667,10 @@ const EditChannel = () => {
             {inputs.type === 22 && (
               <Form.Field>
                 <Form.Input
-                  label='私有部署地址'
+                  label='Private Deployment Address'
                   name='base_url'
                   placeholder={
-                    '请输入私有部署地址,格式为:https://fastgpt.run/api/openapi'
+                    'Please enter private deployment address, format: https://fastgpt.run/api/openapi'
                   }
                   onChange={handleInputChange}
                   value={inputs.base_url}
