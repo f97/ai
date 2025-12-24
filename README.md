@@ -148,6 +148,26 @@ The initial account username is `root` and password is `123456`.
    ```
 3. Access [http://localhost:3000/](http://localhost:3000/) and log in. The initial account username is `root` and password is `123456`.
 
+#### Windows (PowerShell)
+Use the following commands to build and run the app from source on Windows:
+```powershell
+git clone https://github.com/songquanpeng/one-api.git
+
+# Build the frontend
+cd one-api\web\default
+npm install
+npm run build
+
+# Build the backend
+cd ..\..
+go mod download
+go build -ldflags "-s -w" -o one-api.exe
+
+# Run
+New-Item -ItemType Directory -Force -Path .\logs | Out-Null
+.\one-api.exe --port 3000 --log-dir .\logs
+```
+
 For more detailed deployment tutorials, please refer to [this page](https://iamazing.cn/page/how-to-deploy-a-website).
 
 ### Multi-machine Deployment
