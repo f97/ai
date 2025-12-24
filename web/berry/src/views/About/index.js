@@ -37,7 +37,7 @@ const About = () => {
         <>
           <Box>
             <Container sx={{ paddingTop: '40px' }}>
-              <MainCard title="关于">
+              <MainCard title="About">
                 <Typography variant="body2">
                   可在设置页面设置关于内容，支持 HTML & Markdown <br />
                   项目仓库地址：

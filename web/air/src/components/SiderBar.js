@@ -36,53 +36,53 @@ const SiderBar = () => {
 
   const headerButtons = useMemo(() => [
     {
-      text: '首页',
+      text: 'Home',
       itemKey: 'home',
       to: '/',
       icon: <IconHome />
     },
     {
-      text: '渠道',
+      text: 'Channels',
       itemKey: 'channel',
       to: '/channel',
       icon: <IconLayers />,
       className: isAdmin() ? 'semi-navigation-item-normal' : 'tableHiddle'
     },
     {
-      text: '聊天',
+      text: 'Chat',
       itemKey: 'chat',
       to: '/chat',
       icon: <IconComment />,
       className: localStorage.getItem('chat_link') ? 'semi-navigation-item-normal' : 'tableHiddle'
     },
     {
-      text: '令牌',
+      text: 'Tokens',
       itemKey: 'token',
       to: '/token',
       icon: <IconKey />
     },
     {
-      text: '兑换',
+      text: 'Redemption',
       itemKey: 'redemption',
       to: '/redemption',
       icon: <IconGift />,
       className: isAdmin() ? 'semi-navigation-item-normal' : 'tableHiddle'
     },
     {
-      text: '充值',
+      text: 'Top Up',
       itemKey: 'topup',
       to: '/topup',
       icon: <IconCreditCard />
     },
     {
-      text: '用户',
+      text: 'Users',
       itemKey: 'user',
       to: '/user',
       icon: <IconUser />,
       className: isAdmin() ? 'semi-navigation-item-normal' : 'tableHiddle'
     },
     {
-      text: '日志',
+      text: 'Logs',
       itemKey: 'log',
       to: '/log',
       icon: <IconHistogram />
@@ -102,13 +102,13 @@ const SiderBar = () => {
       className: localStorage.getItem('enable_drawing') === 'true' ? 'semi-navigation-item-normal' : 'tableHiddle'
     },
     {
-      text: '设置',
+      text: 'Settings',
       itemKey: 'setting',
       to: '/setting',
       icon: <IconSetting />
     }
     // {
-    //     text: '关于',
+    //     text: 'About',
     //     itemKey: 'about',
     //     to: '/about',
     //     icon: <IconAt/>

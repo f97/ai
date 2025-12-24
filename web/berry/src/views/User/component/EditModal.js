@@ -135,10 +135,10 @@ const EditModal = ({ open, userId, onCancel, onOk }) => {
           {({ errors, handleBlur, handleChange, handleSubmit, touched, values, isSubmitting }) => (
             <form noValidate onSubmit={handleSubmit}>
               <FormControl fullWidth error={Boolean(touched.username && errors.username)} sx={{ ...theme.typography.otherInput }}>
-                <InputLabel htmlFor="channel-username-label">用户名</InputLabel>
+                <InputLabel htmlFor="channel-username-label">Username</InputLabel>
                 <OutlinedInput
                   id="channel-username-label"
-                  label="用户名"
+                  label="Username"
                   type="text"
                   value={values.username}
                   name="username"
@@ -175,10 +175,10 @@ const EditModal = ({ open, userId, onCancel, onOk }) => {
               </FormControl>
 
               <FormControl fullWidth error={Boolean(touched.password && errors.password)} sx={{ ...theme.typography.otherInput }}>
-                <InputLabel htmlFor="channel-password-label">密码</InputLabel>
+                <InputLabel htmlFor="channel-password-label">Password</InputLabel>
                 <OutlinedInput
                   id="channel-password-label"
-                  label="密码"
+                  label="Password"
                   type={showPassword ? 'text' : 'password'}
                   value={values.password}
                   name="password"
@@ -210,10 +210,10 @@ const EditModal = ({ open, userId, onCancel, onOk }) => {
               {values.is_edit && (
                 <>
                   <FormControl fullWidth error={Boolean(touched.quota && errors.quota)} sx={{ ...theme.typography.otherInput }}>
-                    <InputLabel htmlFor="channel-quota-label">额度</InputLabel>
+                    <InputLabel htmlFor="channel-quota-label">Quota</InputLabel>
                     <OutlinedInput
                       id="channel-quota-label"
-                      label="额度"
+                      label="Quota"
                       type="number"
                       value={values.quota}
                       name="quota"
@@ -265,7 +265,7 @@ const EditModal = ({ open, userId, onCancel, onOk }) => {
                 </>
               )}
               <DialogActions>
-                <Button onClick={onCancel}>取消</Button>
+                <Button onClick={onCancel}>Cancel</Button>
                 <Button disableElevation disabled={isSubmitting} type="submit" variant="contained" color="primary">
                   提交
                 </Button>

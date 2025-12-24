@@ -159,7 +159,7 @@ const ForgetPasswordForm = ({ ...others }) => {
                     variant="contained"
                     color="primary"
                   >
-                    {disableButton ? `重试 (${countdown})` : "提交"}
+                    {disableButton ? `重试 (${countdown})` : "Submit"}
                   </Button>
                 </AnimateButton>
               </Box>

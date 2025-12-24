@@ -400,7 +400,7 @@ const PersonalSetting = () => {
             <Card>
               <Typography.Title heading={6}>个人信息</Typography.Title>
               <div style={{ marginTop: 20 }}>
-                <Typography.Text strong>邮箱</Typography.Text>
+                <Typography.Text strong>Email</Typography.Text>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <div>
                     <Input

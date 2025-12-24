@@ -1,13 +1,12 @@
 # Code Snippets for One-API Performance Optimization
-# 性能优化代码片段集合
 
-这个文档包含了可以直接使用的代码片段，用于各种性能优化场景。
+This document contains ready-to-use code snippets for various performance optimization scenarios.
 
 ---
 
-## 1. Async Batch SQLite Writer (异步批量写入器)
+## 1. Async Batch SQLite Writer
 
-### 基础版本
+### Basic Version
 
 ```go
 package model
@@ -115,14 +114,13 @@ func (w *AsyncBatchWriter) Close() {
 }
 ```
 
-### 使用示例
 
 ```go
-// 初始化
+// 
 batchWriter := NewAsyncBatchWriter(db, 50, 5*time.Second)
 defer batchWriter.Close()
 
-// 写入日志
+// 
 log := &Log{
 	UserId:    userId,
 	Type:      LogTypeConsume,
@@ -134,9 +132,9 @@ batchWriter.Write(log)
 
 ---
 
-## 2. TTL Cache for Key Lookup (带 TTL 的键查找缓存)
+## 2. TTL Cache for Key Lookup ( TTL )
 
-### 通用 TTL Cache 实现
+###  TTL Cache 
 
 ```go
 package cache
@@ -246,13 +244,12 @@ func (c *TTLCache) Len() int {
 }
 ```
 
-### Token Cache 使用示例
 
 ```go
-// 初始化 token cache
+//  token cache
 var tokenCache = NewTTLCache(60 * time.Second)
 
-// 获取 token（先查缓存，再查数据库）
+//  token（，）
 func GetTokenWithCache(key string) (*Token, error) {
 	// Try cache first
 	if cached, found := tokenCache.Get("token:" + key); found {
@@ -273,7 +270,7 @@ func GetTokenWithCache(key string) (*Token, error) {
 	return &token, nil
 }
 
-// 使缓存失效
+// 
 func InvalidateTokenCache(key string) {
 	tokenCache.Delete("token:" + key)
 }
@@ -281,7 +278,7 @@ func InvalidateTokenCache(key string) {
 
 ---
 
-## 3. 优化的 HTTP Transport 配置
+## 3.  HTTP Transport 
 
 ```go
 package client
@@ -325,7 +322,6 @@ func CreateOptimizedHTTPClient(timeout time.Duration) *http.Client {
 	}
 }
 
-// 使用示例
 var (
 	// For regular API calls
 	HTTPClient = CreateOptimizedHTTPClient(120 * time.Second)
@@ -340,7 +336,7 @@ var (
 
 ---
 
-## 4. SQLite PRAGMA 初始化
+## 4. SQLite PRAGMA 
 
 ```go
 package database
@@ -417,7 +413,7 @@ func VerifySQLiteSettings(db *sql.DB) {
 
 ---
 
-## 5. 连接池优化配置
+## 5. 
 
 ```go
 package database
@@ -457,7 +453,7 @@ func ConfigurePostgreSQLConnectionPool(db *sql.DB) {
 
 ---
 
-## 6. 性能监控中间件
+## 6. 
 
 ```go
 package middleware
@@ -525,7 +521,7 @@ func DBTimeTracker() gin.HandlerFunc {
 
 ---
 
-## 7. 流式响应优化
+## 7. 
 
 ```go
 package streaming
@@ -612,26 +608,25 @@ func ProxyStreamingResponse(dst http.ResponseWriter, src io.Reader) error {
 
 ---
 
-## 使用建议 / Usage Recommendations
+##  / Usage Recommendations
 
-1. **AsyncBatchWriter**: 用于日志、使用记录等可以容忍短暂延迟的写入
-2. **TTLCache**: 用于 token、用户信息、渠道配置等频繁读取的数据
-3. **HTTP Client**: 全局初始化一次，复用客户端
-4. **SQLite PRAGMA**: 在数据库连接初始化时设置
-5. **Connection Pool**: 根据数据库类型选择合适的配置
-6. **Performance Monitor**: 作为 Gin 中间件使用
-7. **SSE Writer**: 用于流式响应，减少 TTFT
-
----
-
-## 性能注意事项 / Performance Notes
-
-- Async writers 增加内存使用，但大幅减少 DB 写入
-- TTL cache 需要定期清理，避免内存泄漏
-- HTTP client 的 keep-alive 可以显著减少连接开销
-- SQLite WAL 模式需要更多磁盘空间，但性能更好
-- 流式响应要及时 flush，减少 TTFT
+1. **AsyncBatchWriter**: 、
+2. **TTLCache**:  token、、
+3. **HTTP Client**: ，
+4. **SQLite PRAGMA**: 
+5. **Connection Pool**: 
+6. **Performance Monitor**:  Gin 
+7. **SSE Writer**: ， TTFT
 
 ---
 
-需要更多示例？查看完整文档: [PERFORMANCE_OPTIMIZATION.md](./PERFORMANCE_OPTIMIZATION.md)
+
+- Async writers ， DB 
+- TTL cache ，
+- HTTP client  keep-alive 
+- SQLite WAL ，
+-  flush， TTFT
+
+---
+
+？: [PERFORMANCE_OPTIMIZATION.md](./PERFORMANCE_OPTIMIZATION.md)

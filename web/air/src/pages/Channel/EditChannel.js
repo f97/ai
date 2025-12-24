@@ -295,8 +295,8 @@ const EditChannel = (props) => {
                 footer={
                     <div style={{display: 'flex', justifyContent: 'flex-end'}}>
                         <Space>
-                            <Button theme='solid' size={'large'} onClick={submit}>提交</Button>
-                            <Button theme='solid' size={'large'} type={'tertiary'} onClick={handleCancel}>取消</Button>
+                            <Button theme='solid' size={'large'} onClick={submit}>Submit</Button>
+                            <Button theme='solid' size={'large'} type={'tertiary'} onClick={handleCancel}>Cancel</Button>
                         </Space>
                     </div>
                 }
@@ -527,7 +527,7 @@ const EditChannel = (props) => {
                     {
                         batch ?
                           <TextArea
-                            label='密钥'
+                            label='Key'
                             name='key'
                             required
                             placeholder={'请输入密钥，一行一个'}
@@ -540,7 +540,7 @@ const EditChannel = (props) => {
                           />
                           :
                           <Input
-                            label='密钥'
+                            label='Key'
                             name='key'
                             required
                             placeholder={type2secretPrompt(inputs.type)}

@@ -159,10 +159,10 @@ export default function Profile() {
               <Grid container spacing={2}>
                 <Grid xs={12}>
                   <FormControl fullWidth variant="outlined">
-                    <InputLabel htmlFor="username">用户名</InputLabel>
+                    <InputLabel htmlFor="username">Username</InputLabel>
                     <OutlinedInput
                       id="username"
-                      label="用户名"
+                      label="Username"
                       type="text"
                       value={inputs.username || ''}
                       onChange={handleInputChange}
@@ -173,10 +173,10 @@ export default function Profile() {
                 </Grid>
                 <Grid xs={12}>
                   <FormControl fullWidth variant="outlined">
-                    <InputLabel htmlFor="password">密码</InputLabel>
+                    <InputLabel htmlFor="password">Password</InputLabel>
                     <OutlinedInput
                       id="password"
-                      label="密码"
+                      label="Password"
                       type="password"
                       value={inputs.password || ''}
                       onChange={handleInputChange}
@@ -300,7 +300,7 @@ export default function Profile() {
         <Divider />
         <DialogContent>您正在删除自己的帐户，将清空所有数据且不可恢复</DialogContent>
         <DialogActions>
-          <Button onClick={() => setShowAccountDeleteModal(false)}>取消</Button>
+          <Button onClick={() => setShowAccountDeleteModal(false)}>Cancel</Button>
           <Button
             sx={{ color: 'error.main' }}
             onClick={async () => {

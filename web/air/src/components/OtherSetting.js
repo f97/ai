@@ -173,7 +173,7 @@ const OtherSetting = () => {
           <Form.Button onClick={() => submitOption('HomePageContent')}>保存首页内容</Form.Button>
           <Form.Group widths='equal'>
             <Form.TextArea
-              label='关于'
+              label='About'
               placeholder='在此输入新的关于内容，支持 Markdown & HTML 代码。如果输入的是一个链接，则会使用该链接作为 iframe 的 src 属性，这允许你设置任意网页作为关于页面。'
               value={inputs.About}
               name='About'

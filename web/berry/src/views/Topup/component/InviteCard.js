@@ -62,7 +62,7 @@ const InviteCard = () => {
             endAdornment={
               <InputAdornment position="end">
                 <Button variant="contained" onClick={handleInviteUrl}>
-                  {inviteUl ? '复制' : '生成'}
+                  {inviteUl ? 'Copy' : '生成'}
                 </Button>
               </InputAdornment>
             }

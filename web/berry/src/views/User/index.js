@@ -140,7 +140,7 @@ export default function Users() {
   return (
     <>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2.5}>
-        <Typography variant="h4">用户</Typography>
+        <Typography variant="h4">Users</Typography>
 
         <Button variant="contained" color="primary" startIcon={<IconPlus />} onClick={() => handleOpenModal(0)}>
           新建用户

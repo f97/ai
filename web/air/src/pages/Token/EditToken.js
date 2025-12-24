@@ -211,8 +211,8 @@ const EditToken = (props) => {
         footer={
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
             <Space>
-              <Button theme="solid" size={'large'} onClick={submit}>提交</Button>
-              <Button theme="solid" size={'large'} type={'tertiary'} onClick={handleCancel}>取消</Button>
+              <Button theme="solid" size={'large'} onClick={submit}>Submit</Button>
+              <Button theme="solid" size={'large'} type={'tertiary'} onClick={handleCancel}>Cancel</Button>
             </Space>
           </div>
         }
@@ -223,7 +223,7 @@ const EditToken = (props) => {
         <Spin spinning={loading}>
           <Input
             style={{ marginTop: 20 }}
-            label="名称"
+            label="Name"
             name="name"
             placeholder={'请输入名称'}
             onChange={(value) => handleInputChange('name', value)}
@@ -233,7 +233,7 @@ const EditToken = (props) => {
           />
           <Divider />
           <DatePicker
-            label="过期时间"
+            label="Expires At"
             name="expired_time"
             placeholder={'请选择过期时间'}
             onChange={(value) => handleInputChange('expired_time', value)}

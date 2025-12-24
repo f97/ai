@@ -90,19 +90,19 @@ const Dashboard = () => {
                   <Typography variant="h4">余额：</Typography>
                 </Grid>
                 <Grid item xs={8}>
-                  <Typography variant="h3"> {users?.quota ? '$' + calculateQuota(users.quota) : '未知'}</Typography>
+                  <Typography variant="h3"> {users?.quota ? '$' + calculateQuota(users.quota) : 'Unknown'}</Typography>
                 </Grid>
                 <Grid item xs={4}>
                   <Typography variant="h4">已使用：</Typography>
                 </Grid>
                 <Grid item xs={8}>
-                  <Typography variant="h3"> {users?.used_quota ? '$' + calculateQuota(users.used_quota) : '未知'}</Typography>
+                  <Typography variant="h3"> {users?.used_quota ? '$' + calculateQuota(users.used_quota) : 'Unknown'}</Typography>
                 </Grid>
                 <Grid item xs={4}>
                   <Typography variant="h4">调用次数：</Typography>
                 </Grid>
                 <Grid item xs={8}>
-                  <Typography variant="h3"> {users?.request_count || '未知'}</Typography>
+                  <Typography variant="h3"> {users?.request_count || 'Unknown'}</Typography>
                 </Grid>
               </Grid>
             </UserCard>
@@ -201,7 +201,7 @@ function getLineCardOption(lineDataGroup, field) {
 
   switch (field) {
     case 'RequestCount':
-      chartData = generateChartOptions(lineData, '次');
+      chartData = generateChartOptions(lineData, 'times');
       todayValue = renderNumber(todayValue);
       break;
     case 'Quota':

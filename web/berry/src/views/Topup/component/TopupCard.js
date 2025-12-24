@@ -36,7 +36,7 @@ const TopupCard = () => {
         showError(message);
       }
     } catch (err) {
-      showError('请求失败');
+      showError('Request failed');
     } finally {
       setIsSubmitting(false);
     }
@@ -98,7 +98,7 @@ const TopupCard = () => {
             endAdornment={
               <InputAdornment position="end">
                 <Button variant="contained" onClick={topUp} disabled={isSubmitting}>
-                  {isSubmitting ? '兑换中...' : '兑换'}
+                  {isSubmitting ? '兑换中...' : 'Redemption'}
                 </Button>
               </InputAdornment>
             }

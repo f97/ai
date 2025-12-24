@@ -194,7 +194,7 @@ export default function ChannelPage() {
   return (
     <>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2.5}>
-        <Typography variant="h4">渠道</Typography>
+        <Typography variant="h4">Channels</Typography>
         <Button variant="contained" color="primary" startIcon={<IconPlus />} onClick={() => handleOpenModal(0)}>
           新建渠道
         </Button>

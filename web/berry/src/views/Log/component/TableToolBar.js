@@ -200,10 +200,10 @@ export default function TableToolBar({
         )}
 
         <FormControl sx={{ minWidth: "22%" }}>
-          <InputLabel htmlFor="channel-type-label">类型</InputLabel>
+          <InputLabel htmlFor="channel-type-label">Type</InputLabel>
           <Select
             id="channel-type-label"
-            label="类型"
+            label="Type"
             value={filterName.type}
             name="type"
             onChange={handleFilterName}

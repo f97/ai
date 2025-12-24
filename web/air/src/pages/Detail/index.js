@@ -321,8 +321,8 @@ const Detail = (props) => {
                                          placeholder={'时间粒度'} name='data_export_default_time'
                                          optionList={
                                              [
-                                                 {label: '小时', value: 'hour'},
-                                                 {label: '天', value: 'day'},
+                                                 {label: 'hours', value: 'hour'},
+                                                 {label: 'days', value: 'day'},
                                                  {label: '周', value: 'week'}
                                              ]
                                          }

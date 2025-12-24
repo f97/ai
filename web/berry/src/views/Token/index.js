@@ -142,7 +142,7 @@ export default function Token() {
   return (
     <>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2.5}>
-        <Typography variant="h4">令牌</Typography>
+        <Typography variant="h4">Tokens</Typography>
         <Button
           variant="contained"
           color="primary"

@@ -53,7 +53,7 @@ const ChannelsTable = () => {
       dataIndex: 'id'
     },
     {
-      title: '名称',
+      title: 'Name',
       dataIndex: 'name'
     },
     // {
@@ -74,7 +74,7 @@ const ChannelsTable = () => {
     //   }
     // },
     {
-      title: '类型',
+      title: 'Type',
       dataIndex: 'type',
       render: (text, record, index) => {
         return (
@@ -85,7 +85,7 @@ const ChannelsTable = () => {
       }
     },
     {
-      title: '状态',
+      title: 'Status',
       dataIndex: 'status',
       render: (text, record, index) => {
         return (
@@ -176,13 +176,13 @@ const ChannelsTable = () => {
           {/* <SplitButtonGroup style={{ marginRight: 1 }} aria-label="测试操作项目组">
             <Button theme="light" onClick={() => {
               testChannel(record, '');
-            }}>测试</Button>
+            }}>Test</Button>
             <Dropdown trigger="click" position="bottomRight" menu={record.test_models}
             >
               <Button style={{ padding: '8px 4px' }} type="primary" icon={<IconTreeTriangleDown />}></Button>
             </Dropdown>
           </SplitButtonGroup> */}
-          <Button theme='light' type='primary' style={{ marginRight: 1 }} onClick={() => testChannel(record)}>测试</Button>
+          <Button theme='light' type='primary' style={{ marginRight: 1 }} onClick={() => testChannel(record)}>Test</Button>
           <Popconfirm
             title="确定是否要删除此渠道？"
             content="此修改将不可逆"
@@ -196,7 +196,7 @@ const ChannelsTable = () => {
               );
             }}
           >
-            <Button theme="light" type="danger" style={{ marginRight: 1 }}>删除</Button>
+            <Button theme="light" type="danger" style={{ marginRight: 1 }}>Delete</Button>
           </Popconfirm>
           {
             record.status === 1 ?
@@ -208,7 +208,7 @@ const ChannelsTable = () => {
                     record
                   );
                 }
-              }>禁用</Button> :
+              }>Disable</Button> :
               <Button theme="light" type="secondary" style={{ marginRight: 1 }} onClick={
                 async () => {
                   manageChannel(
@@ -217,14 +217,14 @@ const ChannelsTable = () => {
                     record
                   );
                 }
-              }>启用</Button>
+              }>Enable</Button>
           }
           <Button theme="light" type="tertiary" style={{ marginRight: 1 }} onClick={
             () => {
               setEditingChannel(record);
               setShowEdit(true);
             }
-          }>编辑</Button>
+          }>Edit</Button>
         </div>
       )
     }
@@ -374,7 +374,7 @@ const ChannelsTable = () => {
   const renderStatus = (status) => {
     switch (status) {
       case 1:
-        return <Tag size="large" color="green">已启用</Tag>;
+        return <Tag size="large" color="green">Enabled</Tag>;
       case 2:
         return (
           <Tag size="large" color="yellow">
@@ -584,7 +584,7 @@ const ChannelsTable = () => {
             <Space>
               <Form.Input
                 field="search_keyword"
-                label="搜索"
+                label="Search"
                 placeholder="ID，名称和密钥 ..."
                 value={searchKeyword}
                 loading={searching}
@@ -660,7 +660,7 @@ const ChannelsTable = () => {
               <Button theme="light" type="danger" style={{ marginRight: 8 }}>删除禁用渠道</Button>
             </Popconfirm>
 
-            <Button theme="light" type="primary" style={{ marginRight: 8 }} onClick={refresh}>刷新</Button>
+            <Button theme="light" type="primary" style={{ marginRight: 8 }} onClick={refresh}>Refresh</Button>
           </Space>
           {/*<div style={{width: '100%', pointerEvents: 'none', position: 'absolute'}}>*/}
 

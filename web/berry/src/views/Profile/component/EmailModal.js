@@ -173,7 +173,7 @@ const EmailModal = ({ open, handleClose, turnstileToken }) => {
                     )}
                 </FormControl>
                 <DialogActions>
-                  <Button onClick={handleClose}>取消</Button>
+                  <Button onClick={handleClose}>Cancel</Button>
                   <Button
                     disableElevation
                     disabled={loading}

@@ -34,7 +34,7 @@ const About = () => {
       {
         aboutLoaded && about === '' ? <>
           <Segment>
-            <Header as='h3'>关于</Header>
+            <Header as='h3'>About</Header>
             <p>可在设置页面设置关于内容，支持 HTML & Markdown</p>
             项目仓库地址：
             <a href='https://github.com/songquanpeng/one-api'>

@@ -144,13 +144,13 @@ export default function ChannelTableRow({
             title={(() => {
               switch (statusSwitch) {
                 case 1:
-                  return "已启用";
+                  return "Enabled";
                 case 2:
                   return "本渠道被手动禁用";
                 case 3:
                   return "本渠道被程序自动禁用";
                 default:
-                  return "未知";
+                  return "Unknown";
               }
             })()}
             placement="top"

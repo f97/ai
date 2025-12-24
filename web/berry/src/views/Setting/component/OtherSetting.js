@@ -240,7 +240,7 @@ const OtherSetting = () => {
                   multiline
                   maxRows={15}
                   id="About"
-                  label="关于"
+                  label="About"
                   value={inputs.About}
                   name="About"
                   onChange={handleInputChange}

@@ -891,7 +891,7 @@ const SystemSetting = () => {
         <Divider />
         <DialogContent>取消密码登录将导致所有未绑定其他登录方式的用户（包括管理员）无法通过密码登录，确认取消？</DialogContent>
         <DialogActions>
-          <Button onClick={() => setShowPasswordWarningModal(false)}>取消</Button>
+          <Button onClick={() => setShowPasswordWarningModal(false)}>Cancel</Button>
           <Button
             sx={{ color: 'error.main' }}
             onClick={async () => {

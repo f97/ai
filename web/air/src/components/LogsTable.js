@@ -56,9 +56,9 @@ function renderUseTime(type) {
 
 const LogsTable = () => {
   const columns = [{
-    title: '时间', dataIndex: 'timestamp2string'
+    title: 'Time', dataIndex: 'timestamp2string'
   }, {
-    title: '渠道',
+    title: 'Channels',
     dataIndex: 'channel',
     className: isAdmin() ? 'tableShow' : 'tableHiddle',
     render: (text, record, index) => {
@@ -67,7 +67,7 @@ const LogsTable = () => {
       </div> : <></> : <></>);
     }
   }, {
-    title: '用户',
+    title: 'Users',
     dataIndex: 'username',
     className: isAdmin() ? 'tableShow' : 'tableHiddle',
     render: (text, record, index) => {
@@ -80,7 +80,7 @@ const LogsTable = () => {
       </div> : <></>);
     }
   }, {
-    title: '令牌', dataIndex: 'token_name', render: (text, record, index) => {
+    title: 'Tokens', dataIndex: 'token_name', render: (text, record, index) => {
       return (record.type === 0 || record.type === 2 ? <div>
         <Tag color="grey" size="large" onClick={() => {
           copyText(text);
@@ -88,7 +88,7 @@ const LogsTable = () => {
       </div> : <></>);
     }
   }, {
-    title: '类型', dataIndex: 'type', render: (text, record, index) => {
+    title: 'Type', dataIndex: 'type', render: (text, record, index) => {
       return (<div>
         {renderType(text)}
       </div>);
@@ -391,7 +391,7 @@ const LogsTable = () => {
         refresh(parseInt(value)).then();
       }}>
         <Select.Option value="0">全部</Select.Option>
-        <Select.Option value="1">充值</Select.Option>
+        <Select.Option value="1">Top Up</Select.Option>
         <Select.Option value="2">消费</Select.Option>
         <Select.Option value="3">管理</Select.Option>
         <Select.Option value="4">系统</Select.Option>

@@ -35,7 +35,7 @@ function renderStatus(status, model_limits_enabled = false) {
       if (model_limits_enabled) {
         return <Tag color="green" size="large">已启用：限制模型</Tag>;
       } else {
-        return <Tag color="green" size="large">已启用</Tag>;
+        return <Tag color="green" size="large">Enabled</Tag>;
       }
     case 2:
       return <Tag color="red" size="large"> 已禁用 </Tag>;
@@ -72,11 +72,11 @@ const TokensTable = () => {
 
   const columns = [
     {
-      title: '名称',
+      title: 'Name',
       dataIndex: 'name'
     },
     {
-      title: '状态',
+      title: 'Status',
       dataIndex: 'status',
       key: 'status',
       render: (text, record, index) => {
@@ -111,7 +111,7 @@ const TokensTable = () => {
       }
     },
     {
-      title: '创建时间',
+      title: 'Created At',
       dataIndex: 'created_time',
       render: (text, record, index) => {
         return (
@@ -122,7 +122,7 @@ const TokensTable = () => {
       }
     },
     {
-      title: '过期时间',
+      title: 'Expires At',
       dataIndex: 'expired_time',
       render: (text, record, index) => {
         return (
@@ -144,17 +144,17 @@ const TokensTable = () => {
             style={{ padding: 20 }}
             position="top"
           >
-            <Button theme="light" type="tertiary" style={{ marginRight: 1 }}>查看</Button>
+            <Button theme="light" type="tertiary" style={{ marginRight: 1 }}>View</Button>
           </Popover>
           <Button theme="light" type="secondary" style={{ marginRight: 1 }}
                   onClick={async (text) => {
                     await copyText('sk-' + record.key);
                   }}
-          >复制</Button>
+          >Copy</Button>
           <SplitButtonGroup style={{ marginRight: 1 }} aria-label="项目操作按钮组">
             <Button theme="light" style={{ color: 'rgba(var(--semi-teal-7), 1)' }} onClick={() => {
               onOpenLink('next', record.key);
-            }}>聊天</Button>
+            }}>Chat</Button>
             <Dropdown trigger="click" position="bottomRight" menu={
               [
                 {
@@ -210,7 +210,7 @@ const TokensTable = () => {
               );
             }}
           >
-            <Button theme="light" type="danger" style={{ marginRight: 1 }}>删除</Button>
+            <Button theme="light" type="danger" style={{ marginRight: 1 }}>Delete</Button>
           </Popconfirm>
           {
             record.status === 1 ?
@@ -222,7 +222,7 @@ const TokensTable = () => {
                     record
                   );
                 }
-              }>禁用</Button> :
+              }>Disable</Button> :
               <Button theme="light" type="secondary" style={{ marginRight: 1 }} onClick={
                 async () => {
                   manageToken(
@@ -231,14 +231,14 @@ const TokensTable = () => {
                     record
                   );
                 }
-              }>启用</Button>
+              }>Enable</Button>
           }
           <Button theme="light" type="tertiary" style={{ marginRight: 1 }} onClick={
             () => {
               setEditingToken(record);
               setShowEdit(true);
             }
-          }>编辑</Button>
+          }>Edit</Button>
         </div>
       )
     }
@@ -570,7 +570,7 @@ const TokensTable = () => {
         {/* <Form.Input
           field="token"
           label="Key"
-          placeholder="密钥"
+          placeholder="Key"
           value={searchToken}
           loading={searching}
           onChange={handleSearchTokenChange}

@@ -274,12 +274,12 @@ const SystemSetting = () => {
                 size={'tiny'}
                 style={{ maxWidth: '450px' }}
               >
-                <Modal.Header>警告</Modal.Header>
+                <Modal.Header>Warning</Modal.Header>
                 <Modal.Content>
                   <p>取消密码登录将导致所有未绑定其他登录方式的用户（包括管理员）无法通过密码登录，确认取消？</p>
                 </Modal.Content>
                 <Modal.Actions>
-                  <Button onClick={() => setShowPasswordWarningModal(false)}>取消</Button>
+                  <Button onClick={() => setShowPasswordWarningModal(false)}>Cancel</Button>
                   <Button
                     color='yellow'
                     onClick={async () => {

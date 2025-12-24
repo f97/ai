@@ -138,15 +138,15 @@ const LoginForm = () => {
                 <Form>
                   <Form.Input
                     field={'username'}
-                    label={'用户名'}
-                    placeholder="用户名"
+                    label={'Username'}
+                    placeholder="Username"
                     name="username"
                     onChange={(value) => handleChange('username', value)}
                   />
                   <Form.Input
                     field={'password'}
-                    label={'密码'}
-                    placeholder="密码"
+                    label={'Password'}
+                    placeholder="Password"
                     name="password"
                     type="password"
                     onChange={(value) => handleChange('password', value)}
@@ -207,7 +207,7 @@ const LoginForm = () => {
                   maskClosable={true}
                   onOk={onSubmitWeChatVerificationCode}
                   onCancel={() => setShowWeChatLoginModal(false)}
-                  okText={'登录'}
+                  okText={'Login'}
                   size={'small'}
                   centered={true}
                 >

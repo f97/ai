@@ -34,11 +34,11 @@ const RedemptionsTable = () => {
       dataIndex: 'id'
     },
     {
-      title: '名称',
+      title: 'Name',
       dataIndex: 'name'
     },
     {
-      title: '状态',
+      title: 'Status',
       dataIndex: 'status',
       key: 'status',
       render: (text, record, index) => {
@@ -50,7 +50,7 @@ const RedemptionsTable = () => {
       }
     },
     {
-      title: '额度',
+      title: 'Quota',
       dataIndex: 'quota',
       render: (text, record, index) => {
         return (
@@ -61,7 +61,7 @@ const RedemptionsTable = () => {
       }
     },
     {
-      title: '创建时间',
+      title: 'Created At',
       dataIndex: 'created_time',
       render: (text, record, index) => {
         return (
@@ -94,13 +94,13 @@ const RedemptionsTable = () => {
             style={{ padding: 20 }}
             position="top"
           >
-            <Button theme="light" type="tertiary" style={{ marginRight: 1 }}>查看</Button>
+            <Button theme="light" type="tertiary" style={{ marginRight: 1 }}>View</Button>
           </Popover>
           <Button theme="light" type="secondary" style={{ marginRight: 1 }}
                   onClick={async (text) => {
                     await copyText(record.key);
                   }}
-          >复制</Button>
+          >Copy</Button>
           <Popconfirm
             title="确定是否要删除此兑换码？"
             content="此修改将不可逆"
@@ -114,7 +114,7 @@ const RedemptionsTable = () => {
               );
             }}
           >
-            <Button theme="light" type="danger" style={{ marginRight: 1 }}>删除</Button>
+            <Button theme="light" type="danger" style={{ marginRight: 1 }}>Delete</Button>
           </Popconfirm>
           {
             record.status === 1 ?
@@ -126,7 +126,7 @@ const RedemptionsTable = () => {
                     record
                   );
                 }
-              }>禁用</Button> :
+              }>Disable</Button> :
               <Button theme="light" type="secondary" style={{ marginRight: 1 }} onClick={
                 async () => {
                   manageRedemption(
@@ -135,14 +135,14 @@ const RedemptionsTable = () => {
                     record
                   );
                 }
-              } disabled={record.status === 3}>启用</Button>
+              } disabled={record.status === 3}>Enable</Button>
           }
           <Button theme="light" type="tertiary" style={{ marginRight: 1 }} onClick={
             () => {
               setEditingRedemption(record);
               setShowEdit(true);
             }
-          } disabled={record.status !== 1}>编辑</Button>
+          } disabled={record.status !== 1}>Edit</Button>
         </div>
       )
     }

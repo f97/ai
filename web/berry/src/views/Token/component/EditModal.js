@@ -140,10 +140,10 @@ const EditModal = ({ open, tokenId, onCancel, onOk }) => {
           {({ errors, handleBlur, handleChange, handleSubmit, touched, values, setFieldError, setFieldValue, isSubmitting }) => (
             <form noValidate onSubmit={handleSubmit}>
               <FormControl fullWidth error={Boolean(touched.name && errors.name)} sx={{ ...theme.typography.otherInput }}>
-                <InputLabel htmlFor="channel-name-label">名称</InputLabel>
+                <InputLabel htmlFor="channel-name-label">Name</InputLabel>
                 <OutlinedInput
                   id="channel-name-label"
-                  label="名称"
+                  label="Name"
                   type="text"
                   value={values.name}
                   name="name"
@@ -229,7 +229,7 @@ const EditModal = ({ open, tokenId, onCancel, onOk }) => {
                 <FormControl fullWidth error={Boolean(touched.expired_time && errors.expired_time)} sx={{ ...theme.typography.otherInput }}>
                   <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={'zh-cn'}>
                     <DateTimePicker
-                      label="过期时间"
+                      label="Expires At"
                       ampm={false}
                       value={dayjs.unix(values.expired_time)}
                       onError={(newError) => {
@@ -268,10 +268,10 @@ const EditModal = ({ open, tokenId, onCancel, onOk }) => {
               />{' '}
               永不过期
               <FormControl fullWidth error={Boolean(touched.remain_quota && errors.remain_quota)} sx={{ ...theme.typography.otherInput }}>
-                <InputLabel htmlFor="channel-remain_quota-label">额度</InputLabel>
+                <InputLabel htmlFor="channel-remain_quota-label">Quota</InputLabel>
                 <OutlinedInput
                   id="channel-remain_quota-label"
-                  label="额度"
+                  label="Quota"
                   type="number"
                   value={values.remain_quota}
                   name="remain_quota"
@@ -296,7 +296,7 @@ const EditModal = ({ open, tokenId, onCancel, onOk }) => {
               />{' '}
               无限额度
               <DialogActions>
-                <Button onClick={onCancel}>取消</Button>
+                <Button onClick={onCancel}>Cancel</Button>
                 <Button disableElevation disabled={isSubmitting} type="submit" variant="contained" color="primary">
                   提交
                 </Button>

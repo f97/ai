@@ -126,7 +126,7 @@ const EditModal = ({ open, channelId, onCancel, onOk }) => {
       const { data } = res.data;
       data.forEach((item) => {
         if (!item.owned_by) {
-          item.owned_by = '未知';
+          item.owned_by = 'Unknown';
         }
       });
       // 先对data排序
@@ -618,7 +618,7 @@ const EditModal = ({ open, channelId, onCancel, onOk }) => {
                 )}
               </FormControl>
               <DialogActions>
-                <Button onClick={onCancel}>取消</Button>
+                <Button onClick={onCancel}>Cancel</Button>
                 <Button disableElevation disabled={isSubmitting} type="submit" variant="contained" color="primary">
                   提交
                 </Button>

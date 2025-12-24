@@ -89,24 +89,24 @@ const Home = () => {
                       style={{ fontSize: '12px', color: 'var(--semi-color-text-1)' }}>系统配置总览</span>}>
                     <p>
                       邮箱验证：
-                      {statusState?.status?.email_verification === true ? '已启用' : '未启用'}
+                      {statusState?.status?.email_verification === true ? 'Enabled' : '未启用'}
                     </p>
                     <p>
                       GitHub 身份验证：
-                      {statusState?.status?.github_oauth === true ? '已启用' : '未启用'}
+                      {statusState?.status?.github_oauth === true ? 'Enabled' : '未启用'}
                     </p>
                     <p>
                       微信身份验证：
-                      {statusState?.status?.wechat_login === true ? '已启用' : '未启用'}
+                      {statusState?.status?.wechat_login === true ? 'Enabled' : '未启用'}
                     </p>
                     <p>
                       Turnstile 用户校验：
-                      {statusState?.status?.turnstile_check === true ? '已启用' : '未启用'}
+                      {statusState?.status?.turnstile_check === true ? 'Enabled' : '未启用'}
                     </p>
                     {/*<p>*/}
                     {/*  Telegram 身份验证：*/}
                     {/*  {statusState?.status?.telegram_oauth === true*/}
-                    {/*    ? '已启用' : '未启用'}*/}
+                    {/*    ? 'Enabled' : '未启用'}*/}
                     {/*</p>*/}
                   </Card>
                 </Col>

@@ -42,7 +42,7 @@ const TopUp = () => {
                 showError(message);
             }
         } catch (err) {
-            showError('请求失败');
+            showError('Request failed');
         } finally {
             setIsSubmitting(false);
         }
@@ -239,7 +239,7 @@ const TopUp = () => {
                                         }
                                         <Button type={"warning"} theme={'solid'} onClick={topUp}
                                                 disabled={isSubmitting}>
-                                            {isSubmitting ? '兑换中...' : '兑换'}
+                                            {isSubmitting ? '兑换中...' : 'Redemption'}
                                         </Button>
                                     </Space>
                                 </Form>

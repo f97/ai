@@ -22,7 +22,7 @@ const panel = {
   children: [
     {
       id: 'dashboard',
-      title: '总览',
+      title: 'Dashboard',
       type: 'item',
       url: '/panel/dashboard',
       icon: icons.IconDashboard,
@@ -31,7 +31,7 @@ const panel = {
     },
     {
       id: 'channel',
-      title: '渠道',
+      title: 'Channels',
       type: 'item',
       url: '/panel/channel',
       icon: icons.IconSitemap,
@@ -40,7 +40,7 @@ const panel = {
     },
     {
       id: 'token',
-      title: '令牌',
+      title: 'Tokens',
       type: 'item',
       url: '/panel/token',
       icon: icons.IconKey,
@@ -48,7 +48,7 @@ const panel = {
     },
     {
       id: 'log',
-      title: '日志',
+      title: 'Logs',
       type: 'item',
       url: '/panel/log',
       icon: icons.IconArticle,
@@ -56,7 +56,7 @@ const panel = {
     },
     {
       id: 'redemption',
-      title: '兑换',
+      title: 'Redemption',
       type: 'item',
       url: '/panel/redemption',
       icon: icons.IconCoin,
@@ -65,7 +65,7 @@ const panel = {
     },
     {
       id: 'topup',
-      title: '充值',
+      title: 'Top Up',
       type: 'item',
       url: '/panel/topup',
       icon: icons.IconGardenCart,
@@ -73,7 +73,7 @@ const panel = {
     },
     {
       id: 'user',
-      title: '用户',
+      title: 'Users',
       type: 'item',
       url: '/panel/user',
       icon: icons.IconUser,
@@ -91,7 +91,7 @@ const panel = {
     },
     {
       id: 'setting',
-      title: '设置',
+      title: 'Settings',
       type: 'item',
       url: '/panel/setting',
       icon: icons.IconAdjustments,

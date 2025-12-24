@@ -98,8 +98,8 @@ const EditUser = (props) => {
         footer={
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
             <Space>
-              <Button theme="solid" size={'large'} onClick={submit}>提交</Button>
-              <Button theme="solid" size={'large'} type={'tertiary'} onClick={handleCancel}>取消</Button>
+              <Button theme="solid" size={'large'} onClick={submit}>Submit</Button>
+              <Button theme="solid" size={'large'} type={'tertiary'} onClick={handleCancel}>Cancel</Button>
             </Space>
           </div>
         }
@@ -109,10 +109,10 @@ const EditUser = (props) => {
       >
         <Spin spinning={loading}>
           <div style={{ marginTop: 20 }}>
-            <Typography.Text>用户名</Typography.Text>
+            <Typography.Text>Username</Typography.Text>
           </div>
           <Input
-            label="用户名"
+            label="Username"
             name="username"
             placeholder={'请输入新的用户名'}
             onChange={value => handleInputChange('username', value)}
@@ -120,10 +120,10 @@ const EditUser = (props) => {
             autoComplete="new-password"
           />
           <div style={{ marginTop: 20 }}>
-            <Typography.Text>密码</Typography.Text>
+            <Typography.Text>Password</Typography.Text>
           </div>
           <Input
-            label="密码"
+            label="Password"
             name="password"
             type={'password'}
             placeholder={'请输入新的密码，最短 8 位'}

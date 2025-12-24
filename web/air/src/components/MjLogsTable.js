@@ -43,7 +43,7 @@ function renderType(type) {
     case 'SWAP_FACE':
       return <Tag color="light-green" size="large">换脸</Tag>;
     default:
-      return <Tag color="white" size="large">未知</Tag>;
+      return <Tag color="white" size="large">Unknown</Tag>;
   }
 }
 
@@ -59,7 +59,7 @@ function renderCode(code) {
     case 0:
       return <Tag color="yellow" size="large">未提交</Tag>;
     default:
-      return <Tag color="white" size="large">未知</Tag>;
+      return <Tag color="white" size="large">Unknown</Tag>;
   }
 }
 
@@ -68,7 +68,7 @@ function renderStatus(type) {
   // Ensure all cases are string literals by adding quotes.
   switch (type) {
     case 'SUCCESS':
-      return <Tag color="green" size="large">成功</Tag>;
+      return <Tag color="green" size="large">Success</Tag>;
     case 'NOT_START':
       return <Tag color="grey" size="large">未启动</Tag>;
     case 'SUBMITTED':
@@ -76,11 +76,11 @@ function renderStatus(type) {
     case 'IN_PROGRESS':
       return <Tag color="blue" size="large">执行中</Tag>;
     case 'FAILURE':
-      return <Tag color="red" size="large">失败</Tag>;
+      return <Tag color="red" size="large">Failed</Tag>;
     case 'MODAL':
       return <Tag color="yellow" size="large">窗口等待</Tag>;
     default:
-      return <Tag color="white" size="large">未知</Tag>;
+      return <Tag color="white" size="large">Unknown</Tag>;
   }
 }
 
@@ -114,7 +114,7 @@ const LogsTable = () => {
       }
     },
     {
-      title: '渠道',
+      title: 'Channels',
       dataIndex: 'channel_id',
       className: isAdmin() ? 'tableShow' : 'tableHiddle',
       render: (text, record, index) => {
@@ -130,7 +130,7 @@ const LogsTable = () => {
       }
     },
     {
-      title: '类型',
+      title: 'Type',
       dataIndex: 'action',
       render: (text, record, index) => {
         return (

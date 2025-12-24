@@ -14,7 +14,7 @@ const defaultConfig = {
     name: '渠道名称',
     type: '渠道类型',
     base_url: '渠道API地址',
-    key: '密钥',
+    key: 'Key',
     other: '其他参数',
     models: '模型',
     model_mapping: '模型映射关系',
