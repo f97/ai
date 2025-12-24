@@ -1,13 +1,19 @@
+# syntax=docker/dockerfile:1.5
 FROM --platform=$BUILDPLATFORM node:16 AS builder
 
 WORKDIR /web
 COPY ./VERSION .
-COPY ./web .
+COPY ./web/default/package.json ./web/default/
+COPY ./web/berry/package.json ./web/berry/
+COPY ./web/air/package.json ./web/air/
 
-RUN npm install --prefix /web/default & \
+RUN --mount=type=cache,target=/root/.npm \
+    npm install --prefix /web/default & \
     npm install --prefix /web/berry & \
     npm install --prefix /web/air & \
     wait
+
+COPY ./web .
 
 RUN DISABLE_ESLINT_PLUGIN='true' REACT_APP_VERSION=$(cat ./VERSION) npm run build --prefix /web/default & \
     DISABLE_ESLINT_PLUGIN='true' REACT_APP_VERSION=$(cat ./VERSION) npm run build --prefix /web/berry & \
@@ -29,12 +35,15 @@ ENV GO111MODULE=on \
 WORKDIR /build
 
 ADD go.mod go.sum ./
-RUN go mod download
+RUN --mount=type=cache,target=/go/pkg/mod \
+    go mod download
 
 COPY . .
 COPY --from=builder /web/build ./web/build
 
-RUN go build -trimpath -ldflags "-s -w -X 'github.com/songquanpeng/one-api/common.Version=$(cat VERSION)' -linkmode external -extldflags '-static'" -o one-api
+RUN --mount=type=cache,target=/root/.cache/go-build \
+    --mount=type=cache,target=/go/pkg/mod \
+    go build -trimpath -ldflags "-s -w -X 'github.com/songquanpeng/one-api/common.Version=$(cat VERSION)' -linkmode external -extldflags '-static'" -o one-api
 
 FROM alpine:latest
 
