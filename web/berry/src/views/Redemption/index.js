@@ -96,7 +96,7 @@ export default function Redemption() {
     }
     const { success, message } = res.data;
     if (success) {
-      showSuccess('操作成功完成！');
+      showSuccess('操作成功完成!');
       if (action === 'delete') {
         await loadRedemptions(0);
       }
@@ -142,7 +142,7 @@ export default function Redemption() {
   return (
     <>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2.5}>
-        <Typography variant="h4">兑换</Typography>
+        <Typography variant="h4">Redemption</Typography>
 
         <Button variant="contained" color="primary" startIcon={<IconPlus />} onClick={() => handleOpenModal(0)}>
           新建兑换码

@@ -248,7 +248,7 @@ const SystemSetting = () => {
           <Form.Group widths='equal'>
             <Form.Input
               label='服务器地址'
-              placeholder='例如：https://yourdomain.com'
+              placeholder='例如:https://yourdomain.com'
               value={inputs.ServerAddress}
               name='ServerAddress'
               onChange={handleInputChange}
@@ -274,12 +274,12 @@ const SystemSetting = () => {
                 size={'tiny'}
                 style={{ maxWidth: '450px' }}
               >
-                <Modal.Header>警告</Modal.Header>
+                <Modal.Header>Warning</Modal.Header>
                 <Modal.Content>
-                  <p>取消密码登录将导致所有未绑定其他登录方式的用户（包括管理员）无法通过密码登录，确认取消？</p>
+                  <p>取消密码登录将导致所有未绑定其他登录方式的用户(包括管理员)无法通过密码登录,确认取消?</p>
                 </Modal.Content>
                 <Modal.Actions>
-                  <Button onClick={() => setShowPasswordWarningModal(false)}>取消</Button>
+                  <Button onClick={() => setShowPasswordWarningModal(false)}>Cancel</Button>
                   <Button
                     color='yellow'
                     onClick={async () => {
@@ -320,7 +320,7 @@ const SystemSetting = () => {
           <Form.Group inline>
             <Form.Checkbox
               checked={inputs.RegisterEnabled === 'true'}
-              label='允许新用户注册（此项为否时，新用户将无法以任何方式进行注册）'
+              label='允许新用户注册(此项为否时,新用户将无法以任何方式进行注册)'
               name='RegisterEnabled'
               onChange={handleInputChange}
             />
@@ -391,7 +391,7 @@ const SystemSetting = () => {
               onChange={handleInputChange}
               autoComplete='new-password'
               value={inputs.SMTPServer}
-              placeholder='例如：smtp.qq.com'
+              placeholder='例如:smtp.qq.com'
             />
             <Form.Input
               label='SMTP 端口'
@@ -434,7 +434,7 @@ const SystemSetting = () => {
           <Header as='h3'>
             配置 GitHub OAuth App
             <Header.Subheader>
-              用以支持通过 GitHub 进行登录注册，
+              用以支持通过 GitHub 进行登录注册,
               <a href='https://github.com/settings/developers' target='_blank'>
                 点击此处
               </a>
@@ -443,7 +443,7 @@ const SystemSetting = () => {
           </Header>
           <Message>
             Homepage URL 填 <code>{inputs.ServerAddress}</code>
-            ，Authorization callback URL 填{' '}
+            ,Authorization callback URL 填{' '}
             <code>{`${inputs.ServerAddress}/oauth/github`}</code>
           </Message>
           <Form.Group widths={3}>
@@ -472,7 +472,7 @@ const SystemSetting = () => {
           <Header as='h3'>
             配置 WeChat Server
             <Header.Subheader>
-              用以支持通过微信进行登录注册，
+              用以支持通过微信进行登录注册,
               <a
                 href='https://github.com/songquanpeng/wechat-server'
                 target='_blank'
@@ -486,7 +486,7 @@ const SystemSetting = () => {
             <Form.Input
               label='WeChat Server 服务器地址'
               name='WeChatServerAddress'
-              placeholder='例如：https://yourdomain.com'
+              placeholder='例如:https://yourdomain.com'
               onChange={handleInputChange}
               autoComplete='new-password'
               value={inputs.WeChatServerAddress}
@@ -516,7 +516,7 @@ const SystemSetting = () => {
           <Header as='h3'>
             配置 Message Pusher
             <Header.Subheader>
-              用以推送报警信息，
+              用以推送报警信息,
               <a
                 href='https://github.com/songquanpeng/message-pusher'
                 target='_blank'
@@ -530,7 +530,7 @@ const SystemSetting = () => {
             <Form.Input
               label='Message Pusher 推送地址'
               name='MessagePusherAddress'
-              placeholder='例如：https://msgpusher.com/push/your_username'
+              placeholder='例如:https://msgpusher.com/push/your_username'
               onChange={handleInputChange}
               autoComplete='new-password'
               value={inputs.MessagePusherAddress}
@@ -552,11 +552,11 @@ const SystemSetting = () => {
           <Header as='h3'>
             配置 Turnstile
             <Header.Subheader>
-              用以支持用户校验，
+              用以支持用户校验,
               <a href='https://dash.cloudflare.com/' target='_blank'>
                 点击此处
               </a>
-              管理你的 Turnstile Sites，推荐选择 Invisible Widget Type
+              管理你的 Turnstile Sites,推荐选择 Invisible Widget Type
             </Header.Subheader>
           </Header>
           <Form.Group widths={3}>

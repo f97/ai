@@ -102,7 +102,7 @@ export default function TokensTableRow({ item, manageToken, handleOpenModal, set
 
   const actionItems = createMenu([
     {
-      text: '编辑',
+      text: 'Edit',
       icon: <IconEdit style={{ marginRight: '16px' }} />,
       onClick: () => {
         handleCloseMenu();
@@ -112,7 +112,7 @@ export default function TokensTableRow({ item, manageToken, handleOpenModal, set
       color: undefined
     },
     {
-      text: '删除',
+      text: 'Delete',
       icon: <IconTrash style={{ marginRight: '16px' }} />,
       onClick: handleDeleteOpen,
       color: 'error.main'
@@ -175,15 +175,15 @@ export default function TokensTableRow({ item, manageToken, handleOpenModal, set
             title={(() => {
               switch (statusSwitch) {
                 case 1:
-                  return '已启用';
+                  return 'Enabled';
                 case 2:
-                  return '已禁用';
+                  return 'Disabled';
                 case 3:
                   return '已过期';
                 case 4:
                   return '已耗尽';
                 default:
-                  return '未知';
+                  return 'Unknown';
               }
             })()}
             placement="top"
@@ -250,7 +250,7 @@ export default function TokensTableRow({ item, manageToken, handleOpenModal, set
       <Dialog open={openDelete} onClose={handleDeleteClose}>
         <DialogTitle>删除Token</DialogTitle>
         <DialogContent>
-          <DialogContentText>是否删除Token {item.name}？</DialogContentText>
+          <DialogContentText>是否删除Token {item.name}?</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleDeleteClose}>关闭</Button>

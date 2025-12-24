@@ -21,7 +21,7 @@ const BaseIndex = () => (
             <Typography variant="h4" sx={{ fontSize: '1.5rem', color: '#fff', lineHeight: 1.5 }}>
               All in one 的 OpenAI 接口 <br />
               整合各种 API 访问方式 <br />
-              一键部署，开箱即用
+              一键部署,开箱即用
             </Typography>
             <Button
               variant="contained"

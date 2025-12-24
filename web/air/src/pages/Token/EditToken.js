@@ -109,7 +109,7 @@ const EditToken = (props) => {
     // loadModels();
   }, [isEdit]);
 
-  // 新增 state 变量 tokenCount 来记录用户想要创建的令牌数量，默认为 1
+  // 新增 state 变量 tokenCount 来记录用户想要创建的令牌数量,默认为 1
   const [tokenCount, setTokenCount] = useState(1);
 
   // 新增处理 tokenCount 变化的函数
@@ -140,7 +140,7 @@ const EditToken = (props) => {
       if (localInputs.expired_time !== -1) {
         let time = Date.parse(localInputs.expired_time);
         if (isNaN(time)) {
-          showError('过期时间格式错误！');
+          showError('过期时间格式错误!');
           setLoading(false);
           return;
         }
@@ -150,7 +150,7 @@ const EditToken = (props) => {
       let res = await API.put(`/api/token/`, { ...localInputs, id: parseInt(props.editingToken.id) });
       const { success, message } = res.data;
       if (success) {
-        showSuccess('令牌更新成功！');
+        showSuccess('令牌更新成功!');
         props.refresh();
         props.handleClose();
       } else {
@@ -162,7 +162,7 @@ const EditToken = (props) => {
       for (let i = 0; i < tokenCount; i++) {
         let localInputs = { ...inputs };
         if (i !== 0) {
-          // 如果用户想要创建多个令牌，则给每个令牌一个序号后缀
+          // 如果用户想要创建多个令牌,则给每个令牌一个序号后缀
           localInputs.name = `${inputs.name}-${generateRandomSuffix()}`;
         }
         localInputs.remain_quota = parseInt(localInputs.remain_quota);
@@ -170,7 +170,7 @@ const EditToken = (props) => {
         if (localInputs.expired_time !== -1) {
           let time = Date.parse(localInputs.expired_time);
           if (isNaN(time)) {
-            showError('过期时间格式错误！');
+            showError('过期时间格式错误!');
             setLoading(false);
             break;
           }
@@ -184,12 +184,12 @@ const EditToken = (props) => {
           successCount++;
         } else {
           showError(message);
-          break; // 如果创建失败，终止循环
+          break; // 如果创建失败,终止循环
         }
       }
 
       if (successCount > 0) {
-        showSuccess(`${successCount}个令牌创建成功，请在列表页面点击复制获取令牌！`);
+        showSuccess(`${successCount}个令牌创建成功,请在列表页面点击复制获取令牌!`);
         props.refresh();
         props.handleClose();
       }
@@ -211,8 +211,8 @@ const EditToken = (props) => {
         footer={
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
             <Space>
-              <Button theme="solid" size={'large'} onClick={submit}>提交</Button>
-              <Button theme="solid" size={'large'} type={'tertiary'} onClick={handleCancel}>取消</Button>
+              <Button theme="solid" size={'large'} onClick={submit}>Submit</Button>
+              <Button theme="solid" size={'large'} type={'tertiary'} onClick={handleCancel}>Cancel</Button>
             </Space>
           </div>
         }
@@ -223,7 +223,7 @@ const EditToken = (props) => {
         <Spin spinning={loading}>
           <Input
             style={{ marginTop: 20 }}
-            label="名称"
+            label="Name"
             name="name"
             placeholder={'请输入名称'}
             onChange={(value) => handleInputChange('name', value)}
@@ -233,7 +233,7 @@ const EditToken = (props) => {
           />
           <Divider />
           <DatePicker
-            label="过期时间"
+            label="Expires At"
             name="expired_time"
             placeholder={'请选择过期时间'}
             onChange={(value) => handleInputChange('expired_time', value)}
@@ -260,7 +260,7 @@ const EditToken = (props) => {
 
           <Divider />
           <Banner type={'warning'}
-                  description={'注意，令牌的额度仅用于限制令牌本身的最大额度使用量，实际的使用受到账户的剩余额度限制。'}></Banner>
+                  description={'注意,令牌的额度仅用于限制令牌本身的最大额度使用量,实际的使用受到账户的剩余额度限制.'}></Banner>
           <div style={{ marginTop: 20 }}>
             <Typography.Text>{`额度${renderQuotaWithPrompt(remain_quota)}`}</Typography.Text>
           </div>
@@ -323,7 +323,7 @@ const EditToken = (props) => {
                 onChange={(e) => handleInputChange('model_limits_enabled', e.target.checked)}
               >
               </Checkbox>
-              <Typography.Text>启用模型限制（非必要，不建议启用）</Typography.Text>
+              <Typography.Text>启用模型限制(非必要,不建议启用)</Typography.Text>
             </Space>
           </div>
 

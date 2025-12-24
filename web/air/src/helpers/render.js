@@ -106,7 +106,7 @@ export function renderQuotaWithPrompt(quota, digits) {
     let displayInCurrency = localStorage.getItem('display_in_currency');
     displayInCurrency = displayInCurrency === 'true';
     if (displayInCurrency) {
-        return `（等价金额：${renderQuota(quota, digits)}）`;
+        return `(等价金额:${renderQuota(quota, digits)})`;
     }
     return '';
 }
@@ -144,16 +144,16 @@ export const modelColorMap = {
     'text-babbage-001': 'rgb(255,160,122)',  // 浅珊瑚色
     'text-curie-001': 'rgb(219,112,147)',  // 苍紫罗兰色
     'text-davinci-002': 'rgb(199,21,133)',  // 中紫罗兰红色
-    'text-davinci-003': 'rgb(219,112,147)',  // 苍紫罗兰色（与Curie相同，表示同一个系列）
+    'text-davinci-003': 'rgb(219,112,147)',  // 苍紫罗兰色(与Curie相同,表示同一个系列)
     'text-davinci-edit-001': 'rgb(255,105,180)',  // 热粉色
     'text-embedding-ada-002': 'rgb(255,182,193)',  // 浅粉红
-    'text-embedding-v1': 'rgb(255,174,185)',  // 浅粉红色（略有区别）
+    'text-embedding-v1': 'rgb(255,174,185)',  // 浅粉红色(略有区别)
     'text-moderation-latest': 'rgb(255,130,171)',  // 强粉色
-    'text-moderation-stable': 'rgb(255,160,122)',  // 浅珊瑚色（与Babbage相同，表示同一类功能）
+    'text-moderation-stable': 'rgb(255,160,122)',  // 浅珊瑚色(与Babbage相同,表示同一类功能)
     'tts-1': 'rgb(255,140,0)',  // 深橙色
     'tts-1-1106': 'rgb(255,165,0)',  // 橙色
     'tts-1-hd': 'rgb(255,215,0)',  // 金色
-    'tts-1-hd-1106': 'rgb(255,223,0)',  // 金黄色（略有区别）
+    'tts-1-hd-1106': 'rgb(255,223,0)',  // 金黄色(略有区别)
     'whisper-1': 'rgb(245,245,220)'  // 米色
 }
 

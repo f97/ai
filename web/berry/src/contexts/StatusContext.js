@@ -29,7 +29,7 @@ const StatusProvider = ({ children }) => {
         process.env.REACT_APP_VERSION !== ""
       ) {
         showNotice(
-          `新版本可用：${data.version}，请使用快捷键 Shift + F5 刷新页面`
+          `新版本可用:${data.version},请使用快捷键 Shift + F5 刷新页面`
         );
       }
       if (data.system_name) {
@@ -47,7 +47,7 @@ const StatusProvider = ({ children }) => {
           payload: data,
         });
       }
-      showError("无法正常连接至服务器！");
+      showError("无法正常连接至服务器!");
     }
 
     if (system_name) {

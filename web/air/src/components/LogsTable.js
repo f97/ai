@@ -56,9 +56,9 @@ function renderUseTime(type) {
 
 const LogsTable = () => {
   const columns = [{
-    title: '时间', dataIndex: 'timestamp2string'
+    title: 'Time', dataIndex: 'timestamp2string'
   }, {
-    title: '渠道',
+    title: 'Channels',
     dataIndex: 'channel',
     className: isAdmin() ? 'tableShow' : 'tableHiddle',
     render: (text, record, index) => {
@@ -67,7 +67,7 @@ const LogsTable = () => {
       </div> : <></> : <></>);
     }
   }, {
-    title: '用户',
+    title: 'Users',
     dataIndex: 'username',
     className: isAdmin() ? 'tableShow' : 'tableHiddle',
     render: (text, record, index) => {
@@ -80,7 +80,7 @@ const LogsTable = () => {
       </div> : <></>);
     }
   }, {
-    title: '令牌', dataIndex: 'token_name', render: (text, record, index) => {
+    title: 'Tokens', dataIndex: 'token_name', render: (text, record, index) => {
       return (record.type === 0 || record.type === 2 ? <div>
         <Tag color="grey" size="large" onClick={() => {
           copyText(text);
@@ -88,7 +88,7 @@ const LogsTable = () => {
       </div> : <></>);
     }
   }, {
-    title: '类型', dataIndex: 'type', render: (text, record, index) => {
+    title: 'Type', dataIndex: 'type', render: (text, record, index) => {
       return (<div>
         {renderType(text)}
       </div>);
@@ -216,8 +216,8 @@ const LogsTable = () => {
         title: '用户信息', content: <div style={{ padding: 12 }}>
           <p>用户名: {data.username}</p>
           <p>余额: {renderQuota(data.quota)}</p>
-          <p>已用额度：{renderQuota(data.used_quota)}</p>
-          <p>请求次数：{renderNumber(data.request_count)}</p>
+          <p>已用额度:{renderQuota(data.used_quota)}</p>
+          <p>请求次数:{renderNumber(data.request_count)}</p>
         </div>, centered: true
       });
     } else {
@@ -293,10 +293,10 @@ const LogsTable = () => {
 
   const copyText = async (text) => {
     if (await copy(text)) {
-      showSuccess('已复制：' + text);
+      showSuccess('已复制:' + text);
     } else {
       // setSearchKeyword(text);
-      Modal.error({ title: '无法复制到剪贴板，请手动复制', content: text });
+      Modal.error({ title: '无法复制到剪贴板,请手动复制', content: text });
     }
   };
 
@@ -334,11 +334,11 @@ const LogsTable = () => {
     <Layout>
       <Header>
         <Spin spinning={loadingStat}>
-          <h3>使用明细（总消耗额度：
+          <h3>使用明细(总消耗额度:
             <span onClick={handleEyeClick} style={{
               cursor: 'pointer', color: 'gray'
             }}>{showStat ? renderQuota(stat.quota) : '点击查看'}</span>
-            ）
+            )
           </h3>
         </Spin>
       </Header>
@@ -391,7 +391,7 @@ const LogsTable = () => {
         refresh(parseInt(value)).then();
       }}>
         <Select.Option value="0">全部</Select.Option>
-        <Select.Option value="1">充值</Select.Option>
+        <Select.Option value="1">Top Up</Select.Option>
         <Select.Option value="2">消费</Select.Option>
         <Select.Option value="3">管理</Select.Option>
         <Select.Option value="4">系统</Select.Option>

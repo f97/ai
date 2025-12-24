@@ -104,7 +104,7 @@ const OtherSetting = () => {
     );
     const { tag_name, body } = res.data;
     if (tag_name === process.env.REACT_APP_VERSION) {
-      showSuccess(`已是最新版本：${tag_name}`);
+      showSuccess(`已是最新版本:${tag_name}`);
     } else {
       setUpdateData({
         tag_name: tag_name,
@@ -151,11 +151,11 @@ const OtherSetting = () => {
             <Form.Input
               label={
                 <label>
-                  {t('setting.other.system.theme.title')}（
+                  {t('setting.other.system.theme.title')}(
                   <Link to='https://github.com/songquanpeng/one-api/blob/main/web/README.md'>
                     {t('setting.other.system.theme.link')}
                   </Link>
-                  ）
+                  )
                 </label>
               }
               placeholder={t('setting.other.system.theme.placeholder')}
@@ -229,7 +229,7 @@ const OtherSetting = () => {
         onOpen={() => setShowUpdateModal(true)}
         open={showUpdateModal}
       >
-        <Modal.Header>新版本：{updateData.tag_name}</Modal.Header>
+        <Modal.Header>新版本:{updateData.tag_name}</Modal.Header>
         <Modal.Content>
           <Modal.Description>
             <div dangerouslySetInnerHTML={{ __html: updateData.content }}></div>

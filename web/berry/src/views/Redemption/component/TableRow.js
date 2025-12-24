@@ -67,7 +67,7 @@ export default function RedemptionTableRow({ item, manageRedemption, handleOpenM
         <TableCell>
           {item.status !== 1 && item.status !== 2 ? (
             <Label variant="filled" color={item.status === 3 ? 'success' : 'orange'}>
-              {item.status === 3 ? '已使用' : '未知'}
+              {item.status === 3 ? '已使用' : 'Unknown'}
             </Label>
           ) : (
             <TableSwitch id={`switch-${item.id}`} checked={statusSwitch === 1} onChange={handleStatus} />
@@ -125,7 +125,7 @@ export default function RedemptionTableRow({ item, manageRedemption, handleOpenM
       <Dialog open={openDelete} onClose={handleDeleteClose}>
         <DialogTitle>删除兑换码</DialogTitle>
         <DialogContent>
-          <DialogContentText>是否删除兑换码 {item.name}？</DialogContentText>
+          <DialogContentText>是否删除兑换码 {item.name}?</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleDeleteClose}>关闭</Button>

@@ -54,9 +54,9 @@ const EditModal = ({ open, redemptiondId, onCancel, onOk }) => {
     const { success, message, data } = res.data;
     if (success) {
       if (values.is_edit) {
-        showSuccess('兑换码更新成功！');
+        showSuccess('兑换码更新成功!');
       } else {
-        showSuccess('兑换码创建成功！');
+        showSuccess('兑换码创建成功!');
         if (data.length > 1) {
           let text = '';
           for (let i = 0; i < data.length; i++) {
@@ -104,10 +104,10 @@ const EditModal = ({ open, redemptiondId, onCancel, onOk }) => {
           {({ errors, handleBlur, handleChange, handleSubmit, touched, values, isSubmitting }) => (
             <form noValidate onSubmit={handleSubmit}>
               <FormControl fullWidth error={Boolean(touched.name && errors.name)} sx={{ ...theme.typography.otherInput }}>
-                <InputLabel htmlFor="channel-name-label">名称</InputLabel>
+                <InputLabel htmlFor="channel-name-label">Name</InputLabel>
                 <OutlinedInput
                   id="channel-name-label"
-                  label="名称"
+                  label="Name"
                   type="text"
                   value={values.name}
                   name="name"
@@ -124,10 +124,10 @@ const EditModal = ({ open, redemptiondId, onCancel, onOk }) => {
               </FormControl>
 
               <FormControl fullWidth error={Boolean(touched.quota && errors.quota)} sx={{ ...theme.typography.otherInput }}>
-                <InputLabel htmlFor="channel-quota-label">额度</InputLabel>
+                <InputLabel htmlFor="channel-quota-label">Quota</InputLabel>
                 <OutlinedInput
                   id="channel-quota-label"
-                  label="额度"
+                  label="Quota"
                   type="number"
                   value={values.quota}
                   name="quota"
@@ -167,7 +167,7 @@ const EditModal = ({ open, redemptiondId, onCancel, onOk }) => {
                 </FormControl>
               )}
               <DialogActions>
-                <Button onClick={onCancel}>取消</Button>
+                <Button onClick={onCancel}>Cancel</Button>
                 <Button disableElevation disabled={isSubmitting} type="submit" variant="contained" color="primary">
                   提交
                 </Button>

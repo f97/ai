@@ -23,7 +23,7 @@ const UsersTable = () => {
   const columns = [{
     title: 'ID', dataIndex: 'id'
   }, {
-    title: '用户名', dataIndex: 'username'
+    title: 'Username', dataIndex: 'username'
   }, {
     title: '分组', dataIndex: 'group', render: (text, record, index) => {
       return (<div>
@@ -73,7 +73,7 @@ const UsersTable = () => {
     }
   },
   {
-    title: '状态', dataIndex: 'status', render: (text, record, index) => {
+    title: 'Status', dataIndex: 'status', render: (text, record, index) => {
       return (<div>
         {renderStatus(text)}
       </div>);
@@ -83,7 +83,7 @@ const UsersTable = () => {
     title: '', dataIndex: 'operate', render: (text, record, index) => (<div>
       <>
         <Popconfirm
-          title="确定？"
+          title="确定?"
           okType={'warning'}
           onConfirm={() => {
             manageUser(record.username, 'promote', record);
@@ -92,7 +92,7 @@ const UsersTable = () => {
           <Button theme="light" type="warning" style={{ marginRight: 1 }}>提升</Button>
         </Popconfirm>
         <Popconfirm
-          title="确定？"
+          title="确定?"
           okType={'warning'}
           onConfirm={() => {
             manageUser(record.username, 'demote', record);
@@ -103,18 +103,18 @@ const UsersTable = () => {
         {record.status === 1 ?
           <Button theme="light" type="warning" style={{ marginRight: 1 }} onClick={async () => {
             manageUser(record.username, 'disable', record);
-          }}>禁用</Button> :
+          }}>Disable</Button> :
           <Button theme="light" type="secondary" style={{ marginRight: 1 }} onClick={async () => {
             manageUser(record.username, 'enable', record);
-          }} disabled={record.status === 3}>启用</Button>}
+          }} disabled={record.status === 3}>Enable</Button>}
         <Button theme="light" type="tertiary" style={{ marginRight: 1 }} onClick={() => {
           setEditingUser(record);
           setShowEditUser(true);
-        }}>编辑</Button>
+        }}>Edit</Button>
       </>
       <Popconfirm
-        title="确定是否要删除此用户？"
-        content="硬删除，此修改将不可逆"
+        title="确定是否要删除此用户?"
+        content="硬删除,此修改将不可逆"
         okType={'danger'}
         position={'left'}
         onConfirm={() => {
@@ -123,7 +123,7 @@ const UsersTable = () => {
           });
         }}
       >
-        <Button theme="light" type="danger" style={{ marginRight: 1 }}>删除</Button>
+        <Button theme="light" type="danger" style={{ marginRight: 1 }}>Delete</Button>
       </Popconfirm>
     </div>)
   }];
@@ -206,7 +206,7 @@ const UsersTable = () => {
     });
     const { success, message } = res.data;
     if (success) {
-      showSuccess('操作成功完成！');
+      showSuccess('操作成功完成!');
       let user = res.data.data;
       let newUsers = [...users];
       if (action === 'delete') {
@@ -334,7 +334,7 @@ const UsersTable = () => {
           icon="search"
           field="keyword"
           iconPosition="left"
-          placeholder="搜索用户的 ID，用户名，显示名称，以及邮箱地址 ..."
+          placeholder="搜索用户的 ID,用户名,显示名称,以及邮箱地址 ..."
           value={searchKeyword}
           loading={searching}
           onChange={value => handleKeywordChange(value)}

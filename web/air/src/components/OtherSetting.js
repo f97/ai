@@ -99,7 +99,7 @@ const OtherSetting = () => {
     );
     const { tag_name, body } = res.data;
     if (tag_name === process.env.REACT_APP_VERSION) {
-      showSuccess(`已是最新版本：${tag_name}`);
+      showSuccess(`已是最新版本:${tag_name}`);
     } else {
       setUpdateData({
         tag_name: tag_name,
@@ -118,7 +118,7 @@ const OtherSetting = () => {
           <Form.Group widths='equal'>
             <Form.TextArea
               label='公告'
-              placeholder='在此输入新的公告内容，支持 Markdown & HTML 代码'
+              placeholder='在此输入新的公告内容,支持 Markdown & HTML 代码'
               value={inputs.Notice}
               name='Notice'
               onChange={handleInputChange}
@@ -140,15 +140,15 @@ const OtherSetting = () => {
           <Form.Button onClick={submitSystemName}>设置系统名称</Form.Button>
           <Form.Group widths='equal'>
             <Form.Input
-              label={<label>主题名称（<Link
-                to='https://github.com/songquanpeng/one-api/blob/main/web/README.md'>当前可用主题</Link>）</label>}
+              label={<label>主题名称(<Link
+                to='https://github.com/songquanpeng/one-api/blob/main/web/README.md'>当前可用主题</Link>)</label>}
               placeholder='请输入主题名称'
               value={inputs.Theme}
               name='Theme'
               onChange={handleInputChange}
             />
           </Form.Group>
-          <Form.Button onClick={submitTheme}>设置主题（重启生效）</Form.Button>
+          <Form.Button onClick={submitTheme}>设置主题(重启生效)</Form.Button>
           <Form.Group widths='equal'>
             <Form.Input
               label='Logo 图片地址'
@@ -163,7 +163,7 @@ const OtherSetting = () => {
           <Form.Group widths='equal'>
             <Form.TextArea
               label='首页内容'
-              placeholder='在此输入首页内容，支持 Markdown & HTML 代码，设置后首页的状态信息将不再显示。如果输入的是一个链接，则会使用该链接作为 iframe 的 src 属性，这允许你设置任意网页作为首页。'
+              placeholder='在此输入首页内容,支持 Markdown & HTML 代码,设置后首页的状态信息将不再显示.如果输入的是一个链接,则会使用该链接作为 iframe 的 src 属性,这允许你设置任意网页作为首页.'
               value={inputs.HomePageContent}
               name='HomePageContent'
               onChange={handleInputChange}
@@ -173,8 +173,8 @@ const OtherSetting = () => {
           <Form.Button onClick={() => submitOption('HomePageContent')}>保存首页内容</Form.Button>
           <Form.Group widths='equal'>
             <Form.TextArea
-              label='关于'
-              placeholder='在此输入新的关于内容，支持 Markdown & HTML 代码。如果输入的是一个链接，则会使用该链接作为 iframe 的 src 属性，这允许你设置任意网页作为关于页面。'
+              label='About'
+              placeholder='在此输入新的关于内容,支持 Markdown & HTML 代码.如果输入的是一个链接,则会使用该链接作为 iframe 的 src 属性,这允许你设置任意网页作为关于页面.'
               value={inputs.About}
               name='About'
               onChange={handleInputChange}
@@ -183,11 +183,11 @@ const OtherSetting = () => {
           </Form.Group>
           <Form.Button onClick={submitAbout}>保存关于</Form.Button>
           <Message>移除 One API
-            的版权标识必须首先获得授权，项目维护需要花费大量精力，如果本项目对你有意义，请主动支持本项目。</Message>
+            的版权标识必须首先获得授权,项目维护需要花费大量精力,如果本项目对你有意义,请主动支持本项目.</Message>
           <Form.Group widths='equal'>
             <Form.Input
               label='页脚'
-              placeholder='在此输入新的页脚，留空则使用默认页脚，支持 HTML 代码'
+              placeholder='在此输入新的页脚,留空则使用默认页脚,支持 HTML 代码'
               value={inputs.Footer}
               name='Footer'
               onChange={handleInputChange}
@@ -201,7 +201,7 @@ const OtherSetting = () => {
         onOpen={() => setShowUpdateModal(true)}
         open={showUpdateModal}
       >
-        <Modal.Header>新版本：{updateData.tag_name}</Modal.Header>
+        <Modal.Header>新版本:{updateData.tag_name}</Modal.Header>
         <Modal.Content>
           <Modal.Description>
             <div dangerouslySetInnerHTML={{ __html: updateData.content }}></div>

@@ -53,7 +53,7 @@ const PasswordResetConfirm = () => {
       let password = res.data.data;
       setNewPassword(password);
       await copy(password);
-      showNotice(`新密码已复制到剪贴板：${password}`);
+      showNotice(`新密码已复制到剪贴板:${password}`);
     } else {
       showError(message);
     }
@@ -89,7 +89,7 @@ const PasswordResetConfirm = () => {
                 onClick={(e) => {
                   e.target.select();
                   navigator.clipboard.writeText(newPassword);
-                  showNotice(`密码已复制到剪贴板：${newPassword}`);
+                  showNotice(`密码已复制到剪贴板:${newPassword}`);
                 }}
               />
             )}
@@ -101,7 +101,7 @@ const PasswordResetConfirm = () => {
               loading={loading}
               disabled={disableButton}
             >
-              {disableButton ? `密码重置完成` : '提交'}
+              {disableButton ? `密码重置完成` : 'Submit'}
             </Button>
           </Segment>
         </Form>

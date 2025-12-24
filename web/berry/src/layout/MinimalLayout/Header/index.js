@@ -131,11 +131,11 @@ const Header = () => {
                     onClick={handleCloseMenu}
                   >
                     <ListItemButton component={Link} variant="text" to="/">
-                      <ListItemText primary={<Typography variant="body2">首页</Typography>} />
+                      <ListItemText primary={<Typography variant="body2">Home</Typography>} />
                     </ListItemButton>
 
                     <ListItemButton component={Link} variant="text" to="/about">
-                      <ListItemText primary={<Typography variant="body2">关于</Typography>} />
+                      <ListItemText primary={<Typography variant="body2">About</Typography>} />
                     </ListItemButton>
                     <Divider />
                     {account.user ? (

@@ -50,7 +50,7 @@ const validationSchema = Yup.object().shape({
   base_url: Yup.string().when('type', {
     is: (value) => [3, 8].includes(value),
     then: Yup.string().required('渠道API地址 不能为空'), // base_url 是必需的
-    otherwise: Yup.string() // 在其他情况下，base_url 可以是任意字符串
+    otherwise: Yup.string() // 在其他情况下,base_url 可以是任意字符串
   }),
   model_mapping: Yup.string().test('is-json', '必须是有效的JSON字符串', function (value) {
     try {
@@ -126,7 +126,7 @@ const EditModal = ({ open, channelId, onCancel, onOk }) => {
       const { data } = res.data;
       data.forEach((item) => {
         if (!item.owned_by) {
-          item.owned_by = '未知';
+          item.owned_by = 'Unknown';
         }
       });
       // 先对data排序
@@ -187,9 +187,9 @@ const EditModal = ({ open, channelId, onCancel, onOk }) => {
     const { success, message } = res.data;
     if (success) {
       if (channelId) {
-        showSuccess('渠道更新成功！');
+        showSuccess('渠道更新成功!');
       } else {
-        showSuccess('渠道创建成功！');
+        showSuccess('渠道创建成功!');
       }
       setSubmitting(false);
       setStatus({ success: true });
@@ -215,7 +215,7 @@ const EditModal = ({ open, channelId, onCancel, onOk }) => {
       if (modelOption) {
         return modelOption;
       }
-      return { id: model, group: '自定义：点击或回车输入' };
+      return { id: model, group: '自定义:点击或回车输入' };
     });
     return modelList;
   }
@@ -433,7 +433,7 @@ const EditModal = ({ open, channelId, onCancel, onOk }) => {
                     const event = {
                       target: {
                         name: 'models',
-                        value: value.map((item) => (typeof item === 'string' ? { id: item, group: '自定义：点击或回车输入' } : item))
+                        value: value.map((item) => (typeof item === 'string' ? { id: item, group: '自定义:点击或回车输入' } : item))
                       }
                     };
                     handleChange(event);
@@ -459,7 +459,7 @@ const EditModal = ({ open, channelId, onCancel, onOk }) => {
                     if (inputValue !== '' && !isExisting) {
                       filtered.push({
                         id: inputValue,
-                        group: '自定义：点击或回车输入'
+                        group: '自定义:点击或回车输入'
                       });
                     }
                     return filtered;
@@ -530,7 +530,7 @@ const EditModal = ({ open, channelId, onCancel, onOk }) => {
                         onChange={handleChange}
                         aria-describedby="helper-text-channel-key-label"
                         minRows={5}
-                        placeholder={inputPrompt.key + '，一行一个密钥'}
+                        placeholder={inputPrompt.key + ',一行一个密钥'}
                       />
                     )}
 
@@ -618,7 +618,7 @@ const EditModal = ({ open, channelId, onCancel, onOk }) => {
                 )}
               </FormControl>
               <DialogActions>
-                <Button onClick={onCancel}>取消</Button>
+                <Button onClick={onCancel}>Cancel</Button>
                 <Button disableElevation disabled={isSubmitting} type="submit" variant="contained" color="primary">
                   提交
                 </Button>

@@ -93,7 +93,7 @@ export default function ChannelTableRow({
         test_time: Date.now() / 1000,
         response_time: time * 1000,
       });
-      showInfo(`渠道 ${item.name} 测试成功，耗时 ${time.toFixed(2)} 秒。`);
+      showInfo(`渠道 ${item.name} 测试成功,耗时 ${time.toFixed(2)} 秒.`);
     }
   };
 
@@ -103,7 +103,7 @@ export default function ChannelTableRow({
     if (success) {
       setItemBalance(balance);
 
-      showInfo(`余额更新成功！`);
+      showInfo(`余额更新成功!`);
     } else {
       showError(message);
     }
@@ -144,13 +144,13 @@ export default function ChannelTableRow({
             title={(() => {
               switch (statusSwitch) {
                 case 1:
-                  return "已启用";
+                  return "Enabled";
                 case 2:
                   return "本渠道被手动禁用";
                 case 3:
                   return "本渠道被程序自动禁用";
                 default:
-                  return "未知";
+                  return "Unknown";
               }
             })()}
             placement="top"
@@ -232,7 +232,7 @@ export default function ChannelTableRow({
       <Dialog open={openDelete} onClose={handleDeleteClose}>
         <DialogTitle>删除渠道</DialogTitle>
         <DialogContent>
-          <DialogContentText>是否删除渠道 {item.name}？</DialogContentText>
+          <DialogContentText>是否删除渠道 {item.name}?</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleDeleteClose}>关闭</Button>

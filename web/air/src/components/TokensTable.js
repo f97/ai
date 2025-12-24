@@ -33,9 +33,9 @@ function renderStatus(status, model_limits_enabled = false) {
   switch (status) {
     case 1:
       if (model_limits_enabled) {
-        return <Tag color="green" size="large">已启用：限制模型</Tag>;
+        return <Tag color="green" size="large">已启用:限制模型</Tag>;
       } else {
-        return <Tag color="green" size="large">已启用</Tag>;
+        return <Tag color="green" size="large">Enabled</Tag>;
       }
     case 2:
       return <Tag color="red" size="large"> 已禁用 </Tag>;
@@ -72,11 +72,11 @@ const TokensTable = () => {
 
   const columns = [
     {
-      title: '名称',
+      title: 'Name',
       dataIndex: 'name'
     },
     {
-      title: '状态',
+      title: 'Status',
       dataIndex: 'status',
       key: 'status',
       render: (text, record, index) => {
@@ -111,7 +111,7 @@ const TokensTable = () => {
       }
     },
     {
-      title: '创建时间',
+      title: 'Created At',
       dataIndex: 'created_time',
       render: (text, record, index) => {
         return (
@@ -122,7 +122,7 @@ const TokensTable = () => {
       }
     },
     {
-      title: '过期时间',
+      title: 'Expires At',
       dataIndex: 'expired_time',
       render: (text, record, index) => {
         return (
@@ -144,17 +144,17 @@ const TokensTable = () => {
             style={{ padding: 20 }}
             position="top"
           >
-            <Button theme="light" type="tertiary" style={{ marginRight: 1 }}>查看</Button>
+            <Button theme="light" type="tertiary" style={{ marginRight: 1 }}>View</Button>
           </Popover>
           <Button theme="light" type="secondary" style={{ marginRight: 1 }}
                   onClick={async (text) => {
                     await copyText('sk-' + record.key);
                   }}
-          >复制</Button>
+          >Copy</Button>
           <SplitButtonGroup style={{ marginRight: 1 }} aria-label="项目操作按钮组">
             <Button theme="light" style={{ color: 'rgba(var(--semi-teal-7), 1)' }} onClick={() => {
               onOpenLink('next', record.key);
-            }}>聊天</Button>
+            }}>Chat</Button>
             <Dropdown trigger="click" position="bottomRight" menu={
               [
                 {
@@ -176,7 +176,7 @@ const TokensTable = () => {
                   }
                 },
                 {
-                  node: 'item', key: 'ama', name: 'AMA 问天（BotGem）', onClick: () => {
+                  node: 'item', key: 'ama', name: 'AMA 问天(BotGem)', onClick: () => {
                     onOpenLink('ama', record.key);
                   }
                 },
@@ -198,7 +198,7 @@ const TokensTable = () => {
             </Dropdown>
           </SplitButtonGroup>
           <Popconfirm
-            title="确定是否要删除此令牌？"
+            title="确定是否要删除此令牌?"
             content="此修改将不可逆"
             okType={'danger'}
             position={'left'}
@@ -210,7 +210,7 @@ const TokensTable = () => {
               );
             }}
           >
-            <Button theme="light" type="danger" style={{ marginRight: 1 }}>删除</Button>
+            <Button theme="light" type="danger" style={{ marginRight: 1 }}>Delete</Button>
           </Popconfirm>
           {
             record.status === 1 ?
@@ -222,7 +222,7 @@ const TokensTable = () => {
                     record
                   );
                 }
-              }>禁用</Button> :
+              }>Disable</Button> :
               <Button theme="light" type="secondary" style={{ marginRight: 1 }} onClick={
                 async () => {
                   manageToken(
@@ -231,14 +231,14 @@ const TokensTable = () => {
                     record
                   );
                 }
-              }>启用</Button>
+              }>Enable</Button>
           }
           <Button theme="light" type="tertiary" style={{ marginRight: 1 }} onClick={
             () => {
               setEditingToken(record);
               setShowEdit(true);
             }
-          }>编辑</Button>
+          }>Edit</Button>
         </div>
       )
     }
@@ -349,19 +349,19 @@ const TokensTable = () => {
         url = `sk-${key}`;
     }
     // if (await copy(url)) {
-    //     showSuccess('已复制到剪贴板！');
+    //     showSuccess('已复制到剪贴板!');
     // } else {
-    //     showWarning('无法复制到剪贴板，请手动复制，已将令牌填入搜索框。');
+    //     showWarning('无法复制到剪贴板,请手动复制,已将令牌填入搜索框.');
     //     setSearchKeyword(url);
     // }
   };
 
   const copyText = async (text) => {
     if (await copy(text)) {
-      showSuccess('已复制到剪贴板！');
+      showSuccess('已复制到剪贴板!');
     } else {
       // setSearchKeyword(text);
-      Modal.error({ title: '无法复制到剪贴板，请手动复制', content: text });
+      Modal.error({ title: '无法复制到剪贴板,请手动复制', content: text });
     }
   };
 
@@ -447,7 +447,7 @@ const TokensTable = () => {
     }
     const { success, message } = res.data;
     if (success) {
-      showSuccess('操作成功完成！');
+      showSuccess('操作成功完成!');
       let token = res.data.data;
       let newTokens = [...tokens];
       // let realIdx = (activePage - 1) * ITEMS_PER_PAGE + idx;
@@ -570,7 +570,7 @@ const TokensTable = () => {
         {/* <Form.Input
           field="token"
           label="Key"
-          placeholder="密钥"
+          placeholder="Key"
           value={searchToken}
           loading={searching}
           onChange={handleSearchTokenChange}
@@ -585,7 +585,7 @@ const TokensTable = () => {
         total: tokenCount,
         showSizeChanger: true,
         pageSizeOptions: [10, 20, 50, 100],
-        formatPageText: (page) => `第 ${page.currentStart} - ${page.currentEnd} 条，共 ${tokens.length} 条`,
+        formatPageText: (page) => `第 ${page.currentStart} - ${page.currentEnd} 条,共 ${tokens.length} 条`,
         onPageSizeChange: (size) => {
           setPageSize(size);
           setActivePage(1);
@@ -604,7 +604,7 @@ const TokensTable = () => {
       <Button label="复制所选令牌" type="warning" onClick={
         async () => {
           if (selectedKeys.length === 0) {
-            showError('请至少选择一个令牌！');
+            showError('请至少选择一个令牌!');
             return;
           }
           let keys = '';

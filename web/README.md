@@ -1,16 +1,16 @@
-# One API 的前端界面
+# One API Frontend Interface
 
-> 每个文件夹代表一个主题，欢迎提交你的主题
+> Each folder represents a theme, welcome to submit your theme
 
 > [!WARNING]
-> 不是每一个主题都及时同步了所有功能，由于精力有限，优先更新默认主题，其他主题欢迎 & 期待 PR
+> Not every theme has synchronized all features. Due to limited resources, the Default theme is updated first. PRs for other themes are welcome & expected
 
-## 提交新的主题
+## Submit a New Theme
 
-> 欢迎在页面底部保留你和 One API 的版权信息以及指向链接
+> Welcome to keep copyright information and links to you and One API at the bottom
 
-1. 在 `web` 文件夹下新建一个文件夹，文件夹名为主题名。
-2. 把你的主题文件放到这个文件夹下。
+1. 在 `web` 文件夹下Create一文件夹，文件夹名为主题名。
+2. 把你的主题文件放到这文件夹下。
 3. 修改你的 `package.json` 文件，把 `build` 命令改为：`"build": "react-scripts build && mv -f build ../build/default"`，其中 `default` 为你的主题名。
 4. 修改 `common/config/config.go` 中的 `ValidThemes`，把你的主题名称注册进去。
 5. 修改 `web/THEMES` 文件，这里也需要同步修改。
@@ -19,7 +19,7 @@
 
 ### 主题：default
 
-默认主题，由 [JustSong](https://github.com/songquanpeng) 开发。
+Default主题，由 [JustSong](https://github.com/songquanpeng) 开发。
 
 预览：
 |![image](https://github.com/songquanpeng/one-api/assets/39998050/ccfbc668-3a7f-4bc1-87da-7eacfd7bf371)|![image](https://github.com/songquanpeng/one-api/assets/39998050/a63ed547-44b9-45db-b43a-ecea07d60840)|
@@ -42,6 +42,6 @@
 |:---:|:---:|
 
 
-#### 开发说明
+#### 开发Description
 
 请查看 [web/berry/README.md](https://github.com/songquanpeng/one-api/tree/main/web/berry/README.md)

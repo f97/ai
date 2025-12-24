@@ -17,7 +17,7 @@ const TopupCard = () => {
 
   const topUp = async () => {
     if (redemptionCode === '') {
-      showInfo('请输入充值码！');
+      showInfo('请输入充值码!');
       return;
     }
     setIsSubmitting(true);
@@ -27,7 +27,7 @@ const TopupCard = () => {
       });
       const { success, message, data } = res.data;
       if (success) {
-        showSuccess('充值成功！');
+        showSuccess('充值成功!');
         setUserQuota((quota) => {
           return quota + data;
         });
@@ -36,7 +36,7 @@ const TopupCard = () => {
         showError(message);
       }
     } catch (err) {
-      showError('请求失败');
+      showError('Request failed');
     } finally {
       setIsSubmitting(false);
     }
@@ -44,7 +44,7 @@ const TopupCard = () => {
 
   const openTopUpLink = () => {
     if (!topUpLink) {
-      showError('超级管理员未设置充值链接！');
+      showError('超级管理员未设置充值链接!');
       return;
     }
     window.open(topUpLink, '_blank');
@@ -98,7 +98,7 @@ const TopupCard = () => {
             endAdornment={
               <InputAdornment position="end">
                 <Button variant="contained" onClick={topUp} disabled={isSubmitting}>
-                  {isSubmitting ? '兑换中...' : '兑换'}
+                  {isSubmitting ? '兑换中...' : 'Redemption'}
                 </Button>
               </InputAdornment>
             }
@@ -108,7 +108,7 @@ const TopupCard = () => {
 
         <Stack justifyContent="center" alignItems={'center'} spacing={3} paddingTop={'20px'}>
           <Typography variant={'h4'} color={theme.palette.grey[700]}>
-            还没有兑换码？ 点击获取兑换码：
+            还没有兑换码? 点击获取兑换码:
           </Typography>
           <Button variant="contained" onClick={openTopUpLink}>
             获取兑换码

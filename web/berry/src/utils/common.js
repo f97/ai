@@ -31,21 +31,21 @@ export function showError(error) {
         if (error.name === 'AxiosError') {
             switch (error.response.status) {
                 case 429:
-                    enqueueSnackbar('错误：请求次数过多，请稍后再试！', getSnackbarOptions('ERROR'));
+                    enqueueSnackbar('错误:请求次数过多,请稍后再试!', getSnackbarOptions('ERROR'));
                     break;
                 case 500:
-                    enqueueSnackbar('错误：服务器内部错误，请联系管理员！', getSnackbarOptions('ERROR'));
+                    enqueueSnackbar('错误:服务器内部错误,请联系管理员!', getSnackbarOptions('ERROR'));
                     break;
                 case 405:
-                    enqueueSnackbar('本站仅作演示之用，无服务端！', getSnackbarOptions('INFO'));
+                    enqueueSnackbar('本站仅作演示之用,无服务端!', getSnackbarOptions('INFO'));
                     break;
                 default:
-                    enqueueSnackbar('错误：' + error.message, getSnackbarOptions('ERROR'));
+                    enqueueSnackbar('错误:' + error.message, getSnackbarOptions('ERROR'));
             }
             return;
         }
     } else {
-        enqueueSnackbar('错误：' + error, getSnackbarOptions('ERROR'));
+        enqueueSnackbar('错误:' + error, getSnackbarOptions('ERROR'));
     }
 }
 
@@ -186,7 +186,7 @@ export function renderQuotaWithPrompt(quota, digits) {
     let displayInCurrency = localStorage.getItem('display_in_currency');
     displayInCurrency = displayInCurrency === 'true';
     if (displayInCurrency) {
-        return `（等价金额：${renderQuota(quota, digits)}）`;
+        return `(等价金额:${renderQuota(quota, digits)})`;
     }
     return '';
 }
@@ -238,9 +238,9 @@ export function getChannelModels(type) {
 export function copy(text, name = '') {
     if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(() => {
-            showNotice(`复制${name}成功！`, true);
+            showNotice(`复制${name}成功!`, true);
         }, () => {
-            text = `复制${name}失败，请手动复制：<br /><br />${text}`;
+            text = `复制${name}失败,请手动复制:<br /><br />${text}`;
             enqueueSnackbar(<SnackbarHTMLContent htmlContent={text}/>, getSnackbarOptions('COPY'));
         });
     } else {
@@ -250,9 +250,9 @@ export function copy(text, name = '') {
         textArea.select();
         try {
             document.execCommand('copy');
-            showNotice(`复制${name}成功！`, true);
+            showNotice(`复制${name}成功!`, true);
         } catch (err) {
-            text = `复制${name}失败，请手动复制：<br /><br />${text}`;
+            text = `复制${name}失败,请手动复制:<br /><br />${text}`;
             enqueueSnackbar(<SnackbarHTMLContent htmlContent={text}/>, getSnackbarOptions('COPY'));
         }
         document.body.removeChild(textArea);

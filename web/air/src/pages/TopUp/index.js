@@ -22,7 +22,7 @@ const TopUp = () => {
 
     const topUp = async () => {
         if (redemptionCode === '') {
-            showInfo('请输入兑换码！')
+            showInfo('请输入兑换码!')
             return;
         }
         setIsSubmitting(true);
@@ -32,8 +32,8 @@ const TopUp = () => {
             });
             const {success, message, data} = res.data;
             if (success) {
-                showSuccess('兑换成功！');
-                Modal.success({title: '兑换成功！', content: '成功兑换额度：' + renderQuota(data), centered: true});
+                showSuccess('兑换成功!');
+                Modal.success({title: '兑换成功!', content: '成功兑换额度:' + renderQuota(data), centered: true});
                 setUserQuota((quota) => {
                     return quota + data;
                 });
@@ -42,7 +42,7 @@ const TopUp = () => {
                 showError(message);
             }
         } catch (err) {
-            showError('请求失败');
+            showError('Request failed');
         } finally {
             setIsSubmitting(false);
         }
@@ -50,7 +50,7 @@ const TopUp = () => {
 
     const openTopUpLink = () => {
         if (!topUpLink) {
-            showError('超级管理员未设置充值链接！');
+            showError('超级管理员未设置充值链接!');
             return;
         }
         window.open(topUpLink, '_blank');
@@ -58,7 +58,7 @@ const TopUp = () => {
 
     const preTopUp = async (payment) => {
         if (!enableOnlineTopUp) {
-            showError('管理员未开启在线充值！');
+            showError('管理员未开启在线充值!');
             return;
         }
         if (amount === 0) {
@@ -206,9 +206,9 @@ const TopUp = () => {
                         size={'small'}
                         centered={true}
                     >
-                        <p>充值数量：{topUpCount}$</p>
-                        <p>实付金额：{renderAmount()}</p>
-                        <p>是否确认充值？</p>
+                        <p>充值数量:{topUpCount}$</p>
+                        <p>实付金额:{renderAmount()}</p>
+                        <p>是否确认充值?</p>
                     </Modal>
                     <div style={{marginTop: 20, display: 'flex', justifyContent: 'center'}}>
                         <Card
@@ -239,7 +239,7 @@ const TopUp = () => {
                                         }
                                         <Button type={"warning"} theme={'solid'} onClick={topUp}
                                                 disabled={isSubmitting}>
-                                            {isSubmitting ? '兑换中...' : '兑换'}
+                                            {isSubmitting ? '兑换中...' : 'Redemption'}
                                         </Button>
                                     </Space>
                                 </Form>
@@ -252,8 +252,8 @@ const TopUp = () => {
                                     <Form.Input
                                         disabled={!enableOnlineTopUp}
                                         field={'redemptionCount'}
-                                        label={'实付金额：' + renderAmount()}
-                                        placeholder={'充值数量，最低' + minTopUp + '$'}
+                                        label={'实付金额:' + renderAmount()}
+                                        placeholder={'充值数量,最低' + minTopUp + '$'}
                                         name='redemptionCount'
                                         type={'number'}
                                         value={topUpCount}

@@ -14,7 +14,7 @@ import { stringToColor } from '../helpers/render';
 // HeaderBar Buttons
 let headerButtons = [
   {
-    text: '关于',
+    text: 'About',
     itemKey: 'about',
     to: '/about',
     icon: <IconHelpCircle />
@@ -23,7 +23,7 @@ let headerButtons = [
 
 if (localStorage.getItem('chat_link')) {
   headerButtons.splice(1, 0, {
-    name: '聊天',
+    name: 'Chat',
     to: '/chat',
     icon: 'comments'
   });
@@ -132,7 +132,7 @@ const HeaderBar = () => {
                       position="bottomRight"
                       render={
                         <Dropdown.Menu>
-                          <Dropdown.Item onClick={logout}>退出</Dropdown.Item>
+                          <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
                         </Dropdown.Menu>
                       }
                     >
@@ -144,8 +144,8 @@ const HeaderBar = () => {
                   </>
                   :
                   <>
-                    <Nav.Item itemKey={'login'} text={'登录'} icon={<IconKey />} />
-                    <Nav.Item itemKey={'register'} text={'注册'} icon={<IconUser />} />
+                    <Nav.Item itemKey={'login'} text={'Login'} icon={<IconKey />} />
+                    <Nav.Item itemKey={'register'} text={'Register'} icon={<IconUser />} />
                   </>
                 }
               </>

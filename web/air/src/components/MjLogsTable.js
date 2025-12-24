@@ -43,7 +43,7 @@ function renderType(type) {
     case 'SWAP_FACE':
       return <Tag color="light-green" size="large">换脸</Tag>;
     default:
-      return <Tag color="white" size="large">未知</Tag>;
+      return <Tag color="white" size="large">Unknown</Tag>;
   }
 }
 
@@ -59,7 +59,7 @@ function renderCode(code) {
     case 0:
       return <Tag color="yellow" size="large">未提交</Tag>;
     default:
-      return <Tag color="white" size="large">未知</Tag>;
+      return <Tag color="white" size="large">Unknown</Tag>;
   }
 }
 
@@ -68,7 +68,7 @@ function renderStatus(type) {
   // Ensure all cases are string literals by adding quotes.
   switch (type) {
     case 'SUCCESS':
-      return <Tag color="green" size="large">成功</Tag>;
+      return <Tag color="green" size="large">Success</Tag>;
     case 'NOT_START':
       return <Tag color="grey" size="large">未启动</Tag>;
     case 'SUBMITTED':
@@ -76,11 +76,11 @@ function renderStatus(type) {
     case 'IN_PROGRESS':
       return <Tag color="blue" size="large">执行中</Tag>;
     case 'FAILURE':
-      return <Tag color="red" size="large">失败</Tag>;
+      return <Tag color="red" size="large">Failed</Tag>;
     case 'MODAL':
       return <Tag color="yellow" size="large">窗口等待</Tag>;
     default:
-      return <Tag color="white" size="large">未知</Tag>;
+      return <Tag color="white" size="large">Unknown</Tag>;
   }
 }
 
@@ -88,11 +88,11 @@ const renderTimestamp = (timestampInSeconds) => {
   const date = new Date(timestampInSeconds * 1000); // 从秒转换为毫秒
 
   const year = date.getFullYear(); // 获取年份
-  const month = ('0' + (date.getMonth() + 1)).slice(-2); // 获取月份，从0开始需要+1，并保证两位数
-  const day = ('0' + date.getDate()).slice(-2); // 获取日期，并保证两位数
-  const hours = ('0' + date.getHours()).slice(-2); // 获取小时，并保证两位数
-  const minutes = ('0' + date.getMinutes()).slice(-2); // 获取分钟，并保证两位数
-  const seconds = ('0' + date.getSeconds()).slice(-2); // 获取秒钟，并保证两位数
+  const month = ('0' + (date.getMonth() + 1)).slice(-2); // 获取月份,从0开始需要+1,并保证两位数
+  const day = ('0' + date.getDate()).slice(-2); // 获取日期,并保证两位数
+  const hours = ('0' + date.getHours()).slice(-2); // 获取小时,并保证两位数
+  const minutes = ('0' + date.getMinutes()).slice(-2); // 获取分钟,并保证两位数
+  const seconds = ('0' + date.getSeconds()).slice(-2); // 获取秒钟,并保证两位数
 
   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`; // 格式化输出
 };
@@ -114,7 +114,7 @@ const LogsTable = () => {
       }
     },
     {
-      title: '渠道',
+      title: 'Channels',
       dataIndex: 'channel_id',
       className: isAdmin() ? 'tableShow' : 'tableHiddle',
       render: (text, record, index) => {
@@ -130,7 +130,7 @@ const LogsTable = () => {
       }
     },
     {
-      title: '类型',
+      title: 'Type',
       dataIndex: 'action',
       render: (text, record, index) => {
         return (
@@ -182,7 +182,7 @@ const LogsTable = () => {
         return (
           <div>
             {
-              // 转换例如100%为数字100，如果text未定义，返回0
+              // 转换例如100%为数字100,如果text未定义,返回0
               <Progress stroke={record.status === 'FAILURE' ? 'var(--semi-color-warning)' : null}
                         percent={text ? parseInt(text.replace('%', '')) : 0} showInfo={true}
                         aria-label="drawing progress" />
@@ -214,7 +214,7 @@ const LogsTable = () => {
       title: 'Prompt',
       dataIndex: 'prompt',
       render: (text, record, index) => {
-        // 如果text未定义，返回替代文本，例如空字符串''或其他
+        // 如果text未定义,返回替代文本,例如空字符串''或其他
         if (!text) {
           return '无';
         }
@@ -237,7 +237,7 @@ const LogsTable = () => {
       title: 'PromptEn',
       dataIndex: 'prompt_en',
       render: (text, record, index) => {
-        // 如果text未定义，返回替代文本，例如空字符串''或其他
+        // 如果text未定义,返回替代文本,例如空字符串''或其他
         if (!text) {
           return '无';
         }
@@ -260,7 +260,7 @@ const LogsTable = () => {
       title: '失败原因',
       dataIndex: 'fail_reason',
       render: (text, record, index) => {
-        // 如果text未定义，返回替代文本，例如空字符串''或其他
+        // 如果text未定义,返回替代文本,例如空字符串''或其他
         if (!text) {
           return '无';
         }
@@ -370,10 +370,10 @@ const LogsTable = () => {
 
   const copyText = async (text) => {
     if (await copy(text)) {
-      showSuccess('已复制：' + text);
+      showSuccess('已复制:' + text);
     } else {
       // setSearchKeyword(text);
-      Modal.error({ title: '无法复制到剪贴板，请手动复制', content: text });
+      Modal.error({ title: '无法复制到剪贴板,请手动复制', content: text });
     }
   };
 
@@ -394,7 +394,7 @@ const LogsTable = () => {
       <Layout>
         {isAdminUser && showBanner ? <Banner
           type="info"
-          description="当前未开启Midjourney回调，部分项目可能无法获得绘图结果，可在运营设置中开启。"
+          description="当前未开启Midjourney回调,部分项目可能无法获得绘图结果,可在运营设置中开启."
         /> : <></>
         }
         <Form layout="horizontal" style={{ marginTop: 10 }}>

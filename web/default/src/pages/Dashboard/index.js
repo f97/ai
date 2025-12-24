@@ -110,11 +110,11 @@ const Dashboard = () => {
     setSummaryData(summary);
   };
 
-  // 处理数据以供折线图使用，补充缺失的日期
+  // Process data for line chart use, fill in missing dates
   const processTimeSeriesData = () => {
     const dailyData = {};
 
-    // 获取日期范围
+    // Get date range
     const dates = data.map((item) => item.Day);
     const maxDate = new Date(); // 总是使用今天作为最后一天
     let minDate =
@@ -230,12 +230,12 @@ const Dashboard = () => {
     tickFormatter: formatDate,
     interval: 0,
     minTickGap: 5,
-    padding: { left: 30, right: 30 }, // 增加两侧的内边距，确保首尾标签完整显示
+    padding: { left: 30, right: 30 }, // Increase padding on both sides to ensure complete display of first and last labels
   };
 
   return (
     <div className='dashboard-container'>
-      {/* 三个并排的折线图 */}
+      {/* Three side-by-side line charts */}
       <Grid columns={3} stackable className='charts-grid'>
         <Grid.Column>
           <Card fluid className='chart-card'>

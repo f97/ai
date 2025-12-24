@@ -120,7 +120,7 @@ const SystemSetting = () => {
         ...inputs,
         [key]: value
       }));
-      showSuccess('设置成功！');
+      showSuccess('设置成功!');
     } else {
       showError(message);
     }
@@ -251,9 +251,9 @@ const SystemSetting = () => {
         inputs.OidcAuthorizationEndpoint = res.data['authorization_endpoint'];
         inputs.OidcTokenEndpoint = res.data['token_endpoint'];
         inputs.OidcUserinfoEndpoint = res.data['userinfo_endpoint'];
-        showSuccess('获取 OIDC 配置成功！');
+        showSuccess('获取 OIDC 配置成功!');
       } catch (err) {
-        showError("获取 OIDC 配置失败，请检查网络状况和 Well-Known URL 是否正确");
+        showError("获取 OIDC 配置失败,请检查网络状况和 Well-Known URL 是否正确");
       }
     }
 
@@ -291,7 +291,7 @@ const SystemSetting = () => {
                   value={inputs.ServerAddress || ''}
                   onChange={handleInputChange}
                   label="服务器地址"
-                  placeholder="例如：https://yourdomain.com"
+                  placeholder="例如:https://yourdomain.com"
                   disabled={loading}
                 />
               </FormControl>
@@ -357,7 +357,7 @@ const SystemSetting = () => {
             </Grid>
             <Grid xs={12} md={3}>
               <FormControlLabel
-                label="允许新用户注册（此项为否时，新用户将无法以任何方式进行注册）"
+                label="允许新用户注册(此项为否时,新用户将无法以任何方式进行注册)"
                 control={<Checkbox checked={inputs.RegisterEnabled === 'true'} onChange={handleInputChange} name="RegisterEnabled" />}
               />
             </Grid>
@@ -434,7 +434,7 @@ const SystemSetting = () => {
                   value={inputs.SMTPServer || ''}
                   onChange={handleInputChange}
                   label="SMTP 服务器地址"
-                  placeholder="例如：smtp.qq.com"
+                  placeholder="例如:smtp.qq.com"
                   disabled={loading}
                 />
               </FormControl>
@@ -507,7 +507,7 @@ const SystemSetting = () => {
           subTitle={
             <span>
               {' '}
-              用以支持通过 GitHub 进行登录注册，
+              用以支持通过 GitHub 进行登录注册,
               <a href="https://github.com/settings/developers" target="_blank" rel="noopener noreferrer">
                 点击此处
               </a>
@@ -519,7 +519,7 @@ const SystemSetting = () => {
             <Grid xs={12}>
               <Alert severity="info" sx={{ wordWrap: 'break-word' }}>
                 Homepage URL 填 <b>{inputs.ServerAddress}</b>
-                ，Authorization callback URL 填 <b>{`${inputs.ServerAddress}/oauth/github`}</b>
+                ,Authorization callback URL 填 <b>{`${inputs.ServerAddress}/oauth/github`}</b>
               </Alert>
             </Grid>
             <Grid xs={12} md={6}>
@@ -562,7 +562,7 @@ const SystemSetting = () => {
           subTitle={
             <span>
               {' '}
-              用以支持通过飞书进行登录注册，
+              用以支持通过飞书进行登录注册,
               <a href="https://open.feishu.cn/app" target="_blank" rel="noreferrer">
                 点击此处
               </a>
@@ -574,7 +574,7 @@ const SystemSetting = () => {
             <Grid xs={12}>
               <Alert severity="info" sx={{ wordWrap: 'break-word' }}>
                 主页链接填 <code>{inputs.ServerAddress}</code>
-                ，重定向 URL 填 <code>{`${inputs.ServerAddress}/oauth/lark`}</code>
+                ,重定向 URL 填 <code>{`${inputs.ServerAddress}/oauth/lark`}</code>
               </Alert>
             </Grid>
             <Grid xs={12} md={6}>
@@ -616,7 +616,7 @@ const SystemSetting = () => {
           title="配置 WeChat Server"
           subTitle={
             <span>
-              用以支持通过微信进行登录注册，
+              用以支持通过微信进行登录注册,
               <a href="https://github.com/songquanpeng/wechat-server" target="_blank" rel="noopener noreferrer">
                 点击此处
               </a>
@@ -634,7 +634,7 @@ const SystemSetting = () => {
                   value={inputs.WeChatServerAddress || ''}
                   onChange={handleInputChange}
                   label="WeChat Server 服务器地址"
-                  placeholder="例如：https://yourdomain.com"
+                  placeholder="例如:https://yourdomain.com"
                   disabled={loading}
                 />
               </FormControl>
@@ -679,7 +679,7 @@ const SystemSetting = () => {
           title="配置 OIDC"
           subTitle={
             <span>
-              用以支持通过 OIDC 登录，例如 Okta、Auth0 等兼容 OIDC 协议的 IdP
+              用以支持通过 OIDC 登录,例如 Okta, Auth0 等兼容 OIDC 协议的 IdP
             </span>
           }
         >
@@ -687,10 +687,10 @@ const SystemSetting = () => {
             <Grid xs={ 12 } md={ 12 }>
               <Alert severity="info" sx={ { wordWrap: 'break-word' } }>
                 主页链接填 <code>{ inputs.ServerAddress }</code>
-                ，重定向 URL 填 <code>{ `${ inputs.ServerAddress }/oauth/oidc` }</code>
+                ,重定向 URL 填 <code>{ `${ inputs.ServerAddress }/oauth/oidc` }</code>
               </Alert> <br />
               <Alert severity="info" sx={ { wordWrap: 'break-word' } }>
-                若你的 OIDC Provider 支持 Discovery Endpoint，你可以仅填写 OIDC Well-Known URL，系统会自动获取 OIDC 配置
+                若你的 OIDC Provider 支持 Discovery Endpoint,你可以仅填写 OIDC Well-Known URL,系统会自动获取 OIDC 配置
               </Alert>
             </Grid>
             <Grid xs={ 12 } md={ 6 }>
@@ -789,7 +789,7 @@ const SystemSetting = () => {
           title="配置 Message Pusher"
           subTitle={
             <span>
-              用以推送报警信息，
+              用以推送报警信息,
               <a href="https://github.com/songquanpeng/message-pusher" target="_blank" rel="noreferrer">
                 点击此处
               </a>
@@ -807,7 +807,7 @@ const SystemSetting = () => {
                   value={inputs.MessagePusherAddress || ''}
                   onChange={handleInputChange}
                   label="Message Pusher 推送地址"
-                  placeholder="例如：https://msgpusher.com/push/your_username"
+                  placeholder="例如:https://msgpusher.com/push/your_username"
                   disabled={loading}
                 />
               </FormControl>
@@ -838,11 +838,11 @@ const SystemSetting = () => {
           title="配置 Turnstile"
           subTitle={
             <span>
-              用以支持用户校验，
+              用以支持用户校验,
               <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer">
                 点击此处
               </a>
-              管理你的 Turnstile Sites，推荐选择 Invisible Widget Type
+              管理你的 Turnstile Sites,推荐选择 Invisible Widget Type
             </span>
           }
         >
@@ -889,9 +889,9 @@ const SystemSetting = () => {
           警告
         </DialogTitle>
         <Divider />
-        <DialogContent>取消密码登录将导致所有未绑定其他登录方式的用户（包括管理员）无法通过密码登录，确认取消？</DialogContent>
+        <DialogContent>取消密码登录将导致所有未绑定其他登录方式的用户(包括管理员)无法通过密码登录,确认取消?</DialogContent>
         <DialogActions>
-          <Button onClick={() => setShowPasswordWarningModal(false)}>取消</Button>
+          <Button onClick={() => setShowPasswordWarningModal(false)}>Cancel</Button>
           <Button
             sx={{ color: 'error.main' }}
             onClick={async () => {

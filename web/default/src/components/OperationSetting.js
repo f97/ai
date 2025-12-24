@@ -176,10 +176,10 @@ const OperationSetting = () => {
     );
     const { success, message, data } = res.data;
     if (success) {
-      showSuccess(`${data} 条日志已清理！`);
+      showSuccess(`${data} 条日志已清理!`);
       return;
     }
-    showError('日志清理失败：' + message);
+    showError('日志清理失败:' + message);
   };
 
   return (

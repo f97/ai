@@ -37,7 +37,7 @@ type OidcUser struct {
 
 func getOidcUserInfoByCode(code string) (*OidcUser, error) {
 	if code == "" {
-		return nil, errors.New("无效的参数")
+		return nil, errors.New("invalid parameter")
 	}
 	values := map[string]string{
 		"client_id":     config.OidcClientId,
@@ -62,7 +62,7 @@ func getOidcUserInfoByCode(code string) (*OidcUser, error) {
 	res, err := client.Do(req)
 	if err != nil {
 		logger.SysLog(err.Error())
-		return nil, errors.New("无法连接至 OIDC 服务器，请稍后重试！")
+		return nil, errors.New("unable to connect to OIDC server, please retry later!")
 	}
 	defer res.Body.Close()
 	var oidcResponse OidcResponse
@@ -78,7 +78,7 @@ func getOidcUserInfoByCode(code string) (*OidcUser, error) {
 	res2, err := client.Do(req)
 	if err != nil {
 		logger.SysLog(err.Error())
-		return nil, errors.New("无法连接至 OIDC 服务器，请稍后重试！")
+		return nil, errors.New("unable to connect to OIDC server, please retry later!")
 	}
 	var oidcUser OidcUser
 	err = json.NewDecoder(res2.Body).Decode(&oidcUser)
@@ -107,7 +107,7 @@ func OidcAuth(c *gin.Context) {
 	if !config.OidcEnabled {
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
-			"message": "管理员未开启通过 OIDC 登录以及注册",
+			"message": "administrator has not enabled login and registration via OIDC",
 		})
 		return
 	}
@@ -156,7 +156,7 @@ func OidcAuth(c *gin.Context) {
 		} else {
 			c.JSON(http.StatusOK, gin.H{
 				"success": false,
-				"message": "管理员关闭了新用户注册",
+				"message": "administrator disabled new user registration",
 			})
 			return
 		}
@@ -164,7 +164,7 @@ func OidcAuth(c *gin.Context) {
 
 	if user.Status != model.UserStatusEnabled {
 		c.JSON(http.StatusOK, gin.H{
-			"message": "用户已被封禁",
+			"message": "user has been banned",
 			"success": false,
 		})
 		return
@@ -176,7 +176,7 @@ func OidcBind(c *gin.Context) {
 	if !config.OidcEnabled {
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
-			"message": "管理员未开启通过 OIDC 登录以及注册",
+			"message": "administrator has not enabled login and registration via OIDC",
 		})
 		return
 	}
@@ -195,7 +195,7 @@ func OidcBind(c *gin.Context) {
 	if model.IsOidcIdAlreadyTaken(user.OidcId) {
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
-			"message": "该 OIDC 账户已被绑定",
+			"message": "this OIDC account has been bound",
 		})
 		return
 	}

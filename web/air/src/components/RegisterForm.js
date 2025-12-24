@@ -46,7 +46,7 @@ const RegisterForm = () => {
 
   async function handleSubmit(e) {
     if (password.length < 8) {
-      showInfo('密码长度不得小于 8 位！');
+      showInfo('密码长度不得小于 8 位!');
       return;
     }
     if (password !== password2) {
@@ -55,7 +55,7 @@ const RegisterForm = () => {
     }
     if (username && password) {
       if (turnstileEnabled && turnstileToken === '') {
-        showInfo('请稍后几秒重试，Turnstile 正在检查用户环境！');
+        showInfo('请稍后几秒重试,Turnstile 正在检查用户环境!');
         return;
       }
       setLoading(true);
@@ -70,7 +70,7 @@ const RegisterForm = () => {
       const { success, message } = res.data;
       if (success) {
         navigate('/login');
-        showSuccess('注册成功！');
+        showSuccess('注册成功!');
       } else {
         showError(message);
       }
@@ -81,7 +81,7 @@ const RegisterForm = () => {
   const sendVerificationCode = async () => {
     if (inputs.email === '') return;
     if (turnstileEnabled && turnstileToken === '') {
-      showInfo('请稍后几秒重试，Turnstile 正在检查用户环境！');
+      showInfo('请稍后几秒重试,Turnstile 正在检查用户环境!');
       return;
     }
     setLoading(true);
@@ -90,7 +90,7 @@ const RegisterForm = () => {
     );
     const { success, message } = res.data;
     if (success) {
-      showSuccess('验证码发送成功，请检查你的邮箱！');
+      showSuccess('验证码发送成功,请检查你的邮箱!');
     } else {
       showError(message);
     }
@@ -109,7 +109,7 @@ const RegisterForm = () => {
               fluid
               icon="user"
               iconPosition="left"
-              placeholder="输入用户名，最长 12 位"
+              placeholder="输入用户名,最长 12 位"
               onChange={handleChange}
               name="username"
             />
@@ -117,7 +117,7 @@ const RegisterForm = () => {
               fluid
               icon="lock"
               iconPosition="left"
-              placeholder="输入密码，最短 8 位，最长 20 位"
+              placeholder="输入密码,最短 8 位,最长 20 位"
               onChange={handleChange}
               name="password"
               type="password"
@@ -126,7 +126,7 @@ const RegisterForm = () => {
               fluid
               icon="lock"
               iconPosition="left"
-              placeholder="输入密码，最短 8 位，最长 20 位"
+              placeholder="输入密码,最短 8 位,最长 20 位"
               onChange={handleChange}
               name="password2"
               type="password"
@@ -181,7 +181,7 @@ const RegisterForm = () => {
           </Segment>
         </Form>
         <Message>
-          已有账户？
+          已有账户?
           <Link to="/login" className="btn btn-link">
             点击登录
           </Link>

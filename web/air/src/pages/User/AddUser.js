@@ -23,7 +23,7 @@ const AddUser = (props) => {
     const res = await API.post(`/api/user/`, inputs);
     const { success, message } = res.data;
     if (success) {
-      showSuccess('用户账户创建成功！');
+      showSuccess('用户账户创建成功!');
       setInputs(originInputs);
       props.refresh();
       props.handleClose();
@@ -48,8 +48,8 @@ const AddUser = (props) => {
         footer={
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
             <Space>
-              <Button theme="solid" size={'large'} onClick={submit}>提交</Button>
-              <Button theme="solid" size={'large'} type={'tertiary'} onClick={handleCancel}>取消</Button>
+              <Button theme="solid" size={'large'} onClick={submit}>Submit</Button>
+              <Button theme="solid" size={'large'} type={'tertiary'} onClick={handleCancel}>Cancel</Button>
             </Space>
           </div>
         }
@@ -60,9 +60,9 @@ const AddUser = (props) => {
         <Spin spinning={loading}>
           <Input
             style={{ marginTop: 20 }}
-            label="用户名"
+            label="Username"
             name="username"
-            addonBefore={'用户名'}
+            addonBefore={'Username'}
             placeholder={'请输入用户名'}
             onChange={value => handleInputChange('username', value)}
             value={username}
@@ -83,7 +83,7 @@ const AddUser = (props) => {
             label="密 码"
             name="password"
             type={'password'}
-            addonBefore={'密码'}
+            addonBefore={'Password'}
             placeholder={'请输入密码'}
             onChange={value => handleInputChange('password', value)}
             value={password}

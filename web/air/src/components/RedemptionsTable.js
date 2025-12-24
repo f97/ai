@@ -34,11 +34,11 @@ const RedemptionsTable = () => {
       dataIndex: 'id'
     },
     {
-      title: '名称',
+      title: 'Name',
       dataIndex: 'name'
     },
     {
-      title: '状态',
+      title: 'Status',
       dataIndex: 'status',
       key: 'status',
       render: (text, record, index) => {
@@ -50,7 +50,7 @@ const RedemptionsTable = () => {
       }
     },
     {
-      title: '额度',
+      title: 'Quota',
       dataIndex: 'quota',
       render: (text, record, index) => {
         return (
@@ -61,7 +61,7 @@ const RedemptionsTable = () => {
       }
     },
     {
-      title: '创建时间',
+      title: 'Created At',
       dataIndex: 'created_time',
       render: (text, record, index) => {
         return (
@@ -94,15 +94,15 @@ const RedemptionsTable = () => {
             style={{ padding: 20 }}
             position="top"
           >
-            <Button theme="light" type="tertiary" style={{ marginRight: 1 }}>查看</Button>
+            <Button theme="light" type="tertiary" style={{ marginRight: 1 }}>View</Button>
           </Popover>
           <Button theme="light" type="secondary" style={{ marginRight: 1 }}
                   onClick={async (text) => {
                     await copyText(record.key);
                   }}
-          >复制</Button>
+          >Copy</Button>
           <Popconfirm
-            title="确定是否要删除此兑换码？"
+            title="确定是否要删除此兑换码?"
             content="此修改将不可逆"
             okType={'danger'}
             position={'left'}
@@ -114,7 +114,7 @@ const RedemptionsTable = () => {
               );
             }}
           >
-            <Button theme="light" type="danger" style={{ marginRight: 1 }}>删除</Button>
+            <Button theme="light" type="danger" style={{ marginRight: 1 }}>Delete</Button>
           </Popconfirm>
           {
             record.status === 1 ?
@@ -126,7 +126,7 @@ const RedemptionsTable = () => {
                     record
                   );
                 }
-              }>禁用</Button> :
+              }>Disable</Button> :
               <Button theme="light" type="secondary" style={{ marginRight: 1 }} onClick={
                 async () => {
                   manageRedemption(
@@ -135,14 +135,14 @@ const RedemptionsTable = () => {
                     record
                   );
                 }
-              } disabled={record.status === 3}>启用</Button>
+              } disabled={record.status === 3}>Enable</Button>
           }
           <Button theme="light" type="tertiary" style={{ marginRight: 1 }} onClick={
             () => {
               setEditingRedemption(record);
               setShowEdit(true);
             }
-          } disabled={record.status !== 1}>编辑</Button>
+          } disabled={record.status !== 1}>Edit</Button>
         </div>
       )
     }
@@ -216,10 +216,10 @@ const RedemptionsTable = () => {
 
   const copyText = async (text) => {
     if (await copy(text)) {
-      showSuccess('已复制到剪贴板！');
+      showSuccess('已复制到剪贴板!');
     } else {
       // setSearchKeyword(text);
-      Modal.error({ title: '无法复制到剪贴板，请手动复制', content: text });
+      Modal.error({ title: '无法复制到剪贴板,请手动复制', content: text });
     }
   };
 
@@ -263,7 +263,7 @@ const RedemptionsTable = () => {
     }
     const { success, message } = res.data;
     if (success) {
-      showSuccess('操作成功完成！');
+      showSuccess('操作成功完成!');
       let redemption = res.data.data;
       let newRedemptions = [...redemptions];
       // let realIdx = (activePage - 1) * ITEMS_PER_PAGE + idx;
@@ -370,7 +370,7 @@ const RedemptionsTable = () => {
         total: tokenCount,
         // showSizeChanger: true,
         // pageSizeOptions: [10, 20, 50, 100],
-        formatPageText: (page) => `第 ${page.currentStart} - ${page.currentEnd} 条，共 ${redemptions.length} 条`,
+        formatPageText: (page) => `第 ${page.currentStart} - ${page.currentEnd} 条,共 ${redemptions.length} 条`,
         // onPageSizeChange: (size) => {
         //   setPageSize(size);
         //   setActivePage(1);
@@ -389,7 +389,7 @@ const RedemptionsTable = () => {
       <Button label="复制所选兑换码" type="warning" onClick={
         async () => {
           if (selectedKeys.length === 0) {
-            showError('请至少选择一个兑换码！');
+            showError('请至少选择一个兑换码!');
             return;
           }
           let keys = '';

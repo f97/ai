@@ -70,7 +70,7 @@ const RegisterForm = ({ ...others }) => {
       return;
     }
     if (turnstileEnabled && turnstileToken === '') {
-      showError('请稍后几秒重试，Turnstile 正在检查用户环境！');
+      showError('请稍后几秒重试,Turnstile 正在检查用户环境!');
       return;
     }
 
@@ -116,7 +116,7 @@ const RegisterForm = ({ ...others }) => {
         })}
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
           if (turnstileEnabled && turnstileToken === '') {
-            showInfo('请稍后几秒重试，Turnstile 正在检查用户环境！');
+            showInfo('请稍后几秒重试,Turnstile 正在检查用户环境!');
             setSubmitting(false);
             return;
           }
@@ -135,7 +135,7 @@ const RegisterForm = ({ ...others }) => {
         {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
           <form noValidate onSubmit={handleSubmit} {...others}>
             <FormControl fullWidth error={Boolean(touched.username && errors.username)} sx={{ ...theme.typography.customInput }}>
-              <InputLabel htmlFor="outlined-adornment-username-register">用户名</InputLabel>
+              <InputLabel htmlFor="outlined-adornment-username-register">Username</InputLabel>
               <OutlinedInput
                 id="outlined-adornment-username-register"
                 type="text"
@@ -153,7 +153,7 @@ const RegisterForm = ({ ...others }) => {
             </FormControl>
 
             <FormControl fullWidth error={Boolean(touched.password && errors.password)} sx={{ ...theme.typography.customInput }}>
-              <InputLabel htmlFor="outlined-adornment-password-register">密码</InputLabel>
+              <InputLabel htmlFor="outlined-adornment-password-register">Password</InputLabel>
               <OutlinedInput
                 id="outlined-adornment-password-register"
                 type={showPassword ? 'text' : 'password'}

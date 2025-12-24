@@ -31,7 +31,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (searchParams.get('expired')) {
-      showError('未登录或登录已过期，请重新登录！');
+      showError('未登录或登录已过期,请重新登录!');
     }
     let status = localStorage.getItem('status');
     if (status) {
@@ -52,7 +52,7 @@ const LoginForm = () => {
 
   const onSubmitWeChatVerificationCode = async () => {
     if (turnstileEnabled && turnstileToken === '') {
-      showInfo('请稍后几秒重试，Turnstile 正在检查用户环境！');
+      showInfo('请稍后几秒重试,Turnstile 正在检查用户环境!');
       return;
     }
     const res = await API.get(
@@ -63,7 +63,7 @@ const LoginForm = () => {
       userDispatch({ type: 'login', payload: data });
       localStorage.setItem('user', JSON.stringify(data));
       navigate('/');
-      showSuccess('登录成功！');
+      showSuccess('登录成功!');
       setShowWeChatLoginModal(false);
     } else {
       showError(message);
@@ -76,7 +76,7 @@ const LoginForm = () => {
 
   async function handleSubmit(e) {
     if (turnstileEnabled && turnstileToken === '') {
-      showInfo('请稍后几秒重试，Turnstile 正在检查用户环境！');
+      showInfo('请稍后几秒重试,Turnstile 正在检查用户环境!');
       return;
     }
     setSubmitted(true);
@@ -89,16 +89,16 @@ const LoginForm = () => {
       if (success) {
         userDispatch({ type: 'login', payload: data });
         localStorage.setItem('user', JSON.stringify(data));
-        showSuccess('登录成功！');
+        showSuccess('登录成功!');
         if (username === 'root' && password === '123456') {
-          Modal.error({ title: '您正在使用默认密码！', content: '请立刻修改默认密码！', centered: true });
+          Modal.error({ title: '您正在使用默认密码!', content: '请立刻修改默认密码!', centered: true });
         }
         navigate('/token');
       } else {
         showError(message);
       }
     } else {
-      showError('请输入用户名和密码！');
+      showError('请输入用户名和密码!');
     }
   }
 
@@ -116,7 +116,7 @@ const LoginForm = () => {
     if (success) {
       userDispatch({ type: 'login', payload: data });
       localStorage.setItem('user', JSON.stringify(data));
-      showSuccess('登录成功！');
+      showSuccess('登录成功!');
       navigate('/');
     } else {
       showError(message);
@@ -138,15 +138,15 @@ const LoginForm = () => {
                 <Form>
                   <Form.Input
                     field={'username'}
-                    label={'用户名'}
-                    placeholder="用户名"
+                    label={'Username'}
+                    placeholder="Username"
                     name="username"
                     onChange={(value) => handleChange('username', value)}
                   />
                   <Form.Input
                     field={'password'}
-                    label={'密码'}
-                    placeholder="密码"
+                    label={'Password'}
+                    placeholder="Password"
                     name="password"
                     type="password"
                     onChange={(value) => handleChange('password', value)}
@@ -207,7 +207,7 @@ const LoginForm = () => {
                   maskClosable={true}
                   onOk={onSubmitWeChatVerificationCode}
                   onCancel={() => setShowWeChatLoginModal(false)}
-                  okText={'登录'}
+                  okText={'Login'}
                   size={'small'}
                   centered={true}
                 >
@@ -216,7 +216,7 @@ const LoginForm = () => {
                   </div>
                   <div style={{ textAlign: 'center' }}>
                     <p>
-                      微信扫码关注公众号，输入「验证码」获取验证码（三分钟内有效）
+                      微信扫码关注公众号,输入「验证码」获取验证码(三分钟内有效)
                     </p>
                   </div>
                   <Form size="large">

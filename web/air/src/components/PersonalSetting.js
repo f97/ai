@@ -152,7 +152,7 @@ const PersonalSetting = () => {
 
   const deleteAccount = async () => {
     if (inputs.self_account_deletion_confirmation !== userState.user.username) {
-      showError('请输入你的账户名以确认删除！');
+      showError('请输入你的账户名以确认删除!');
       return;
     }
 
@@ -160,7 +160,7 @@ const PersonalSetting = () => {
     const { success, message } = res.data;
 
     if (success) {
-      showSuccess('账户已删除！');
+      showSuccess('账户已删除!');
       await API.get('/api/user/logout');
       userDispatch({ type: 'logout' });
       localStorage.removeItem('user');
@@ -177,7 +177,7 @@ const PersonalSetting = () => {
     );
     const { success, message } = res.data;
     if (success) {
-      showSuccess('微信账户绑定成功！');
+      showSuccess('微信账户绑定成功!');
       setShowWeChatBindModal(false);
     } else {
       showError(message);
@@ -186,7 +186,7 @@ const PersonalSetting = () => {
 
   const changePassword = async () => {
     if (inputs.set_new_password !== inputs.set_new_password_confirmation) {
-      showError('两次输入的密码不一致！');
+      showError('两次输入的密码不一致!');
       return;
     }
     const res = await API.put(
@@ -197,7 +197,7 @@ const PersonalSetting = () => {
     );
     const { success, message } = res.data;
     if (success) {
-      showSuccess('密码修改成功！');
+      showSuccess('密码修改成功!');
       setShowWeChatBindModal(false);
     } else {
       showError(message);
@@ -228,12 +228,12 @@ const PersonalSetting = () => {
 
   const sendVerificationCode = async () => {
     if (inputs.email === '') {
-      showError('请输入邮箱！');
+      showError('请输入邮箱!');
       return;
     }
     setDisableButton(true);
     if (turnstileEnabled && turnstileToken === '') {
-      showInfo('请稍后几秒重试，Turnstile 正在检查用户环境！');
+      showInfo('请稍后几秒重试,Turnstile 正在检查用户环境!');
       return;
     }
     setLoading(true);
@@ -242,7 +242,7 @@ const PersonalSetting = () => {
     );
     const { success, message } = res.data;
     if (success) {
-      showSuccess('验证码发送成功，请检查邮箱！');
+      showSuccess('验证码发送成功,请检查邮箱!');
     } else {
       showError(message);
     }
@@ -251,7 +251,7 @@ const PersonalSetting = () => {
 
   const bindEmail = async () => {
     if (inputs.email_verification_code === '') {
-      showError('请输入邮箱验证码！');
+      showError('请输入邮箱验证码!');
       return;
     }
     setLoading(true);
@@ -260,7 +260,7 @@ const PersonalSetting = () => {
     );
     const { success, message } = res.data;
     if (success) {
-      showSuccess('邮箱账户绑定成功！');
+      showSuccess('邮箱账户绑定成功!');
       setShowEmailBindModal(false);
       userState.user.email = inputs.email;
     } else {
@@ -283,10 +283,10 @@ const PersonalSetting = () => {
 
   const copyText = async (text) => {
     if (await copy(text)) {
-      showSuccess('已复制：' + text);
+      showSuccess('已复制:' + text);
     } else {
       // setSearchKeyword(text);
-      Modal.error({ title: '无法复制到剪贴板，请手动复制', content: text });
+      Modal.error({ title: '无法复制到剪贴板,请手动复制', content: text });
     }
   };
 
@@ -344,7 +344,7 @@ const PersonalSetting = () => {
               }
             >
               <Typography.Title heading={6}>调用信息</Typography.Title>
-              <p>可用模型（可点击复制）</p>
+              <p>可用模型(可点击复制)</p>
               <div style={{ marginTop: 10 }}>
                 <Space wrap>
                   {models.map((model) => (
@@ -400,7 +400,7 @@ const PersonalSetting = () => {
             <Card>
               <Typography.Title heading={6}>个人信息</Typography.Title>
               <div style={{ marginTop: 20 }}>
-                <Typography.Text strong>邮箱</Typography.Text>
+                <Typography.Text strong>Email</Typography.Text>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <div>
                     <Input
@@ -518,7 +518,7 @@ const PersonalSetting = () => {
                   <Image src={status.wechat_qrcode} />
                   <div style={{ textAlign: 'center' }}>
                     <p>
-                      微信扫码关注公众号，输入「验证码」获取验证码（三分钟内有效）
+                      微信扫码关注公众号,输入「验证码」获取验证码(三分钟内有效)
                     </p>
                   </div>
                   <Input
@@ -586,7 +586,7 @@ const PersonalSetting = () => {
               <div style={{ marginTop: 20 }}>
                 <Banner
                   type="danger"
-                  description="您正在删除自己的帐户，将清空所有数据且不可恢复"
+                  description="您正在删除自己的帐户,将清空所有数据且不可恢复"
                   closeIcon={null}
                 />
               </div>

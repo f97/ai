@@ -78,7 +78,7 @@ const EditUser = (props) => {
     }
     const { success, message } = res.data;
     if (success) {
-      showSuccess('用户信息更新成功！');
+      showSuccess('用户信息更新成功!');
       props.refresh();
       props.handleClose();
     } else {
@@ -98,8 +98,8 @@ const EditUser = (props) => {
         footer={
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
             <Space>
-              <Button theme="solid" size={'large'} onClick={submit}>提交</Button>
-              <Button theme="solid" size={'large'} type={'tertiary'} onClick={handleCancel}>取消</Button>
+              <Button theme="solid" size={'large'} onClick={submit}>Submit</Button>
+              <Button theme="solid" size={'large'} type={'tertiary'} onClick={handleCancel}>Cancel</Button>
             </Space>
           </div>
         }
@@ -109,10 +109,10 @@ const EditUser = (props) => {
       >
         <Spin spinning={loading}>
           <div style={{ marginTop: 20 }}>
-            <Typography.Text>用户名</Typography.Text>
+            <Typography.Text>Username</Typography.Text>
           </div>
           <Input
-            label="用户名"
+            label="Username"
             name="username"
             placeholder={'请输入新的用户名'}
             onChange={value => handleInputChange('username', value)}
@@ -120,13 +120,13 @@ const EditUser = (props) => {
             autoComplete="new-password"
           />
           <div style={{ marginTop: 20 }}>
-            <Typography.Text>密码</Typography.Text>
+            <Typography.Text>Password</Typography.Text>
           </div>
           <Input
-            label="密码"
+            label="Password"
             name="password"
             type={'password'}
-            placeholder={'请输入新的密码，最短 8 位'}
+            placeholder={'请输入新的密码,最短 8 位'}
             onChange={value => handleInputChange('password', value)}
             value={password}
             autoComplete="new-password"
@@ -154,7 +154,7 @@ const EditUser = (props) => {
                 search
                 selection
                 allowAdditions
-                additionLabel={'请在系统设置页面编辑分组倍率以添加新的分组：'}
+                additionLabel={'请在系统设置页面编辑分组倍率以添加新的分组:'}
                 onChange={value => handleInputChange('group', value)}
                 value={inputs.group}
                 autoComplete="new-password"
@@ -181,7 +181,7 @@ const EditUser = (props) => {
             name="github_id"
             value={github_id}
             autoComplete="new-password"
-            placeholder="此项只读，需要用户通过个人设置页面的相关绑定按钮进行绑定，不可直接修改"
+            placeholder="此项只读,需要用户通过个人设置页面的相关绑定按钮进行绑定,不可直接修改"
             readonly
           />
           <div style={{ marginTop: 20 }}>
@@ -191,14 +191,14 @@ const EditUser = (props) => {
             name="wechat_id"
             value={wechat_id}
             autoComplete="new-password"
-            placeholder="此项只读，需要用户通过个人设置页面的相关绑定按钮进行绑定，不可直接修改"
+            placeholder="此项只读,需要用户通过个人设置页面的相关绑定按钮进行绑定,不可直接修改"
             readonly
           />
           <Input
             name="telegram_id"
             value={telegram_id}
             autoComplete="new-password"
-            placeholder="此项只读，需要用户通过个人设置页面的相关绑定按钮进行绑定，不可直接修改"
+            placeholder="此项只读,需要用户通过个人设置页面的相关绑定按钮进行绑定,不可直接修改"
             readonly
           />
           <div style={{ marginTop: 20 }}>
@@ -208,7 +208,7 @@ const EditUser = (props) => {
             name="email"
             value={email}
             autoComplete="new-password"
-            placeholder="此项只读，需要用户通过个人设置页面的相关绑定按钮进行绑定，不可直接修改"
+            placeholder="此项只读,需要用户通过个人设置页面的相关绑定按钮进行绑定,不可直接修改"
             readonly
           />
         </Spin>

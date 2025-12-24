@@ -269,10 +269,10 @@ const Detail = (props) => {
 
         // sort by count
         pieData.sort((a, b) => b.value - a.value);
-        spec_pie.title.subtext = `总计：${renderNumber(times)}`;
+        spec_pie.title.subtext = `总计:${renderNumber(times)}`;
         spec_pie.data[0].values = pieData;
 
-        spec_line.title.subtext = `总计：${renderQuota(consumeQuota, 2)}`;
+        spec_line.title.subtext = `总计:${renderQuota(consumeQuota, 2)}`;
         spec_line.data[0].values = lineData;
         pieChart.updateSpec(spec_pie);
         lineChart.updateSpec(spec_line);
@@ -321,8 +321,8 @@ const Detail = (props) => {
                                          placeholder={'时间粒度'} name='data_export_default_time'
                                          optionList={
                                              [
-                                                 {label: '小时', value: 'hour'},
-                                                 {label: '天', value: 'day'},
+                                                 {label: 'hours', value: 'hour'},
+                                                 {label: 'days', value: 'day'},
                                                  {label: '周', value: 'week'}
                                              ]
                                          }

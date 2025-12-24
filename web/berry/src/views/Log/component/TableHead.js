@@ -5,15 +5,15 @@ const LogTableHead = ({ userIsAdmin }) => {
   return (
     <TableHead>
       <TableRow>
-        <TableCell>时间</TableCell>
-        {userIsAdmin && <TableCell>渠道</TableCell>}
-        {userIsAdmin && <TableCell>用户</TableCell>}
-        <TableCell>令牌</TableCell>
-        <TableCell>类型</TableCell>
+        <TableCell>Time</TableCell>
+        {userIsAdmin && <TableCell>Channels</TableCell>}
+        {userIsAdmin && <TableCell>Users</TableCell>}
+        <TableCell>Tokens</TableCell>
+        <TableCell>Type</TableCell>
         <TableCell>模型</TableCell>
         <TableCell>提示</TableCell>
         <TableCell>补全</TableCell>
-        <TableCell>额度</TableCell>
+        <TableCell>Quota</TableCell>
         <TableCell>详情</TableCell>
       </TableRow>
     </TableHead>

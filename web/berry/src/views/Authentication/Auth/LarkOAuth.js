@@ -33,13 +33,13 @@ const LarkOAuth = () => {
         showError(message);
       }
       if (count === 0) {
-        setPrompt(`操作失败，重定向至登录界面中...`);
+        setPrompt(`操作失败,重定向至登录界面中...`);
         await new Promise((resolve) => setTimeout(resolve, 2000));
         navigate('/login');
         return;
       }
       count++;
-      setPrompt(`出现错误，第 ${count} 次重试中...`);
+      setPrompt(`出现错误,第 ${count} 次重试中...`);
       await new Promise((resolve) => setTimeout(resolve, 2000));
       await sendCode(code, state, count);
     }
