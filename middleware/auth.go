@@ -91,11 +91,7 @@ func RootAuth() func(c *gin.Context) {
 func TokenAuth() func(c *gin.Context) {
 	return func(c *gin.Context) {
 		ctx := c.Request.Context()
-		key := c.Request.Header.Get("Authorization")
-		key = strings.TrimPrefix(key, "Bearer ")
-		key = strings.TrimPrefix(key, "sk-")
-		parts := strings.Split(key, "-")
-		key = parts[0]
+		key, channelId := parseAuthToken(c.Request.Header.Get("Authorization"))
 		token, err := model.ValidateUserToken(key)
 		if err != nil {
 			abortWithMessage(c, http.StatusUnauthorized, err.Error())
@@ -132,9 +128,9 @@ func TokenAuth() func(c *gin.Context) {
 		c.Set(ctxkey.Id, token.UserId)
 		c.Set(ctxkey.TokenId, token.Id)
 		c.Set(ctxkey.TokenName, token.Name)
-		if len(parts) > 1 {
+		if channelId != "" {
 			if model.IsAdmin(token.UserId) {
-				c.Set(ctxkey.SpecificChannelId, parts[1])
+				c.Set(ctxkey.SpecificChannelId, channelId)
 			} else {
 				abortWithMessage(c, http.StatusForbidden, "regular users cannot specify channel")
 				return
@@ -148,6 +144,42 @@ func TokenAuth() func(c *gin.Context) {
 
 		c.Next()
 	}
+}
+
+func parseAuthToken(raw string) (string, string) {
+	key := strings.TrimSpace(raw)
+	if key == "" {
+		return "", ""
+	}
+	// Accept case-insensitive Bearer prefix and trim extra whitespace
+	if len(key) >= 7 && strings.EqualFold(key[:7], "Bearer ") {
+		key = strings.TrimSpace(key[7:])
+	}
+	key = strings.TrimPrefix(key, "sk-")
+	if key == "" {
+		return "", ""
+	}
+	// Support optional channel suffix when it is a numeric ID
+	if idx := strings.LastIndex(key, "-"); idx > 0 && idx < len(key)-1 {
+		candidate := key[:idx]
+		suffix := key[idx+1:]
+		if isAllDigits(suffix) {
+			return candidate, suffix
+		}
+	}
+	return key, ""
+}
+
+func isAllDigits(value string) bool {
+	if value == "" {
+		return false
+	}
+	for _, ch := range value {
+		if ch < '0' || ch > '9' {
+			return false
+		}
+	}
+	return true
 }
 
 func shouldCheckModel(c *gin.Context) bool {
