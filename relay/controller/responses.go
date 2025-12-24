@@ -10,6 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"github.com/songquanpeng/one-api/common"
+	"github.com/songquanpeng/one-api/common/ctxkey"
 	"github.com/songquanpeng/one-api/common/logger"
 	"github.com/songquanpeng/one-api/relay/adaptor/openai"
 	"github.com/songquanpeng/one-api/relay/model"
@@ -67,6 +68,8 @@ func RelayResponsesHelper(c *gin.Context) *model.ErrorWithStatusCode {
 	// Replace request body with chat completions format
 	c.Request.Body = io.NopCloser(strings.NewReader(string(reqBody)))
 	c.Request.ContentLength = int64(len(reqBody))
+	// Update cached request body so downstream validation uses the converted payload
+	c.Set(ctxkey.KeyRequestBody, reqBody)
 
 	// Store original stream setting for response conversion
 	c.Set("responses_mode", true)
