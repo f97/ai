@@ -47,18 +47,12 @@ func getRequestModel(c *gin.Context) (string, error) {
 		}
 	}
 	// For endpoints that require explicit model field, validate it's not empty
-	if modelRequest.Model == "" && requiresExplicitModel(c) {
+	// This uses shouldCheckModel to determine which endpoints need validation,
+	// but only enforces required model for endpoints without defaults
+	if modelRequest.Model == "" && shouldCheckModel(c) {
 		return "", fmt.Errorf("model is required")
 	}
 	return modelRequest.Model, nil
-}
-
-func requiresExplicitModel(c *gin.Context) bool {
-	// These endpoints require an explicit model field without defaults
-	path := c.Request.URL.Path
-	return strings.HasPrefix(path, "/v1/completions") ||
-		strings.HasPrefix(path, "/v1/chat/completions") ||
-		strings.HasPrefix(path, "/v1/responses")
 }
 
 func isModelInList(modelName string, models string) bool {
