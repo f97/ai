@@ -48,6 +48,9 @@ func main() {
 		logger.FatalLog("database init error: " + err.Error())
 	}
 	defer func() {
+		// Flush any pending batch logs before closing DB
+		model.FlushPendingLogs()
+		
 		err := model.CloseDB()
 		if err != nil {
 			logger.FatalLog("failed to close database: " + err.Error())
@@ -67,6 +70,13 @@ func main() {
 		// for compatibility with old versions
 		config.MemoryCacheEnabled = true
 	}
+	
+	// Initialize local cache for single-user optimization
+	model.InitLocalCache()
+	
+	// Initialize async batch log processor
+	model.InitLogBatchProcessor()
+	
 	if config.MemoryCacheEnabled {
 		logger.SysLog("memory cache enabled")
 		logger.SysLog(fmt.Sprintf("sync frequency: %d seconds", config.SyncFrequency))

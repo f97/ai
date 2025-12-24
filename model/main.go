@@ -102,10 +102,35 @@ func openMySQL(dsn string) (*gorm.DB, error) {
 func openSQLite() (*gorm.DB, error) {
 	logger.SysLog("SQL_DSN not set, using SQLite as database")
 	common.UsingSQLite = true
-	dsn := fmt.Sprintf("%s?_busy_timeout=%d", common.SQLitePath, common.SQLiteBusyTimeout)
-	return gorm.Open(sqlite.Open(dsn), &gorm.Config{
+	
+	// Get optimizer config
+	optimizerConfig := common.GetSQLiteOptimizerConfig()
+	busyTimeout := optimizerConfig.BusyTimeout
+	if busyTimeout <= 0 {
+		busyTimeout = common.SQLiteBusyTimeout
+	}
+	
+	dsn := fmt.Sprintf("%s?_busy_timeout=%d", common.SQLitePath, busyTimeout)
+	db, err := gorm.Open(sqlite.Open(dsn), &gorm.Config{
 		PrepareStmt: true, // precompile SQL
 	})
+	
+	if err != nil {
+		return nil, err
+	}
+	
+	// Apply SQLite optimizations for single-user workload
+	sqlDB, err := db.DB()
+	if err != nil {
+		return nil, err
+	}
+	
+	if err := common.ApplySQLiteOptimizations(sqlDB, optimizerConfig); err != nil {
+		logger.SysError("failed to apply SQLite optimizations: " + err.Error())
+		// Continue anyway - optimizations are not critical for functionality
+	}
+	
+	return db, nil
 }
 
 func InitDB() {
@@ -211,8 +236,18 @@ func setDBConns(db *gorm.DB) *sql.DB {
 		return nil
 	}
 
-	sqlDB.SetMaxIdleConns(env.Int("SQL_MAX_IDLE_CONNS", 100))
-	sqlDB.SetMaxOpenConns(env.Int("SQL_MAX_OPEN_CONNS", 1000))
+	// Use optimized settings for SQLite, default for others
+	var maxOpen, maxIdle int
+	if common.UsingSQLite {
+		maxOpen, maxIdle = common.GetOptimalConnectionPoolSettings()
+		logger.SysLog(fmt.Sprintf("SQLite connection pool: MaxOpenConns=%d, MaxIdleConns=%d (optimized for single-user)", maxOpen, maxIdle))
+	} else {
+		maxOpen = env.Int("SQL_MAX_OPEN_CONNS", 1000)
+		maxIdle = env.Int("SQL_MAX_IDLE_CONNS", 100)
+	}
+
+	sqlDB.SetMaxIdleConns(maxIdle)
+	sqlDB.SetMaxOpenConns(maxOpen)
 	sqlDB.SetConnMaxLifetime(time.Second * time.Duration(env.Int("SQL_MAX_LIFETIME", 60)))
 	return sqlDB
 }
