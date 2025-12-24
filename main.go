@@ -19,6 +19,7 @@ import (
 	"github.com/songquanpeng/one-api/controller"
 	"github.com/songquanpeng/one-api/middleware"
 	"github.com/songquanpeng/one-api/model"
+	"github.com/songquanpeng/one-api/monitor"
 	"github.com/songquanpeng/one-api/relay/adaptor/openai"
 	"github.com/songquanpeng/one-api/router"
 )
@@ -103,6 +104,10 @@ func main() {
 	}
 	openai.InitTokenEncoders()
 	client.Init()
+	
+	// Initialize performance monitoring
+	monitor.InitPprof()
+	monitor.InitMetrics()
 
 	// Initialize i18n
 	if err := i18n.Init(); err != nil {
@@ -116,6 +121,7 @@ func main() {
 	//server.Use(gzip.Gzip(gzip.DefaultCompression))
 	server.Use(middleware.RequestId())
 	server.Use(middleware.Language())
+	server.Use(middleware.PerformanceMonitor())
 	middleware.SetUpLogger(server)
 	// Initialize session store
 	store := cookie.NewStore([]byte(config.SessionSecret))
