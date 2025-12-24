@@ -311,7 +311,7 @@ var ModelRatio = map[string]float64{
 	"llama3-groq-8b-8192-tool-use-preview":  0.19 / 1000000 * USD,
 	"mixtral-8x7b-32768":                    0.24 / 1000000 * USD,
 
-	// https://platform.lingyiwanwu.com/docs#-计费单元
+	// https://platform.lingyiwanwu.com/docs#-billing-unit
 	"yi-34b-chat-0205": 2.5 / 1000 * RMB,
 	"yi-34b-chat-200k": 12.0 / 1000 * RMB,
 	"yi-vl-plus":       6.0 / 1000 * RMB,

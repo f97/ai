@@ -20,7 +20,7 @@ import (
 	"github.com/songquanpeng/one-api/relay/model"
 )
 
-// https://docs.aiproxy.io/dev/library#使用已经定制好的知识库进行对话问答
+// https://docs.aiproxy.io/dev/library#using-customized-knowledge-base-for-qa
 
 func ConvertRequest(request model.GeneralOpenAIRequest) *LibraryRequest {
 	query := ""
