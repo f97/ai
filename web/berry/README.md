@@ -1,10 +1,10 @@
-# One API 前端界面
+# One API Frontend Interface
 
-这items目是 One API 的前端界面，它基于 [Berry Free React Admin Template](https://github.com/codedthemes/berry-free-react-admin-template) 进行开发。
+This project is the frontend interface for One API, based on [Berry Free React Admin Template](https://github.com/codedthemes/berry-free-react-admin-template).
 
-## 使用的开源items目
+## Open Source Projects Used
 
-使用了以下开源items目作为我们items目的一部minute：
+The following open source projects are used as part of our project:
 
 - [Berry Free React Admin Template](https://github.com/codedthemes/berry-free-react-admin-template)
 - [minimal-ui-kit](minimal-ui-kit)

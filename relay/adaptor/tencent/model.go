@@ -16,7 +16,7 @@ type ChatRequest struct {
 	// Note:
 	// 1. Maximum length is 40, arranged in the array from oldest to newest by conversation time.
 	// 2. Message.Role options: system, user, assistant.
-	// 其中，system 角色Optional，如存在则必须位于列表的最开始。user 和 assistant 需交替出现（一问一答），以 user 提问开始和结束，且 Content 不能为空。Role 的顺序Example：[system（Optional） user assistant user assistant user ...]。
+	// Among them, the system role is optional. If it exists, it must be at the beginning of the list. User and assistant must alternate (one question, one answer), starting and ending with user questions, and Content cannot be empty. Role order example: [system (optional) user assistant user assistant user ...].
 	// 3. The total length of Content in Messages cannot exceed the model input length limit (refer to [Product Overview](https://cloud.tencent.com/document/product/1729/104753) document). If exceeded, the beginning content will be truncated, keeping only the tail content.
 	Messages []*Message `json:"Messages"`
 	// Streaming call switch.

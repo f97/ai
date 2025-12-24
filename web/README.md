@@ -1,13 +1,13 @@
-# One API 的前端界面
+# One API Frontend Interface
 
-> 每文件夹代表一主题，欢迎提交你的主题
+> Each folder represents a theme, welcome to submit your theme
 
 > [!WARNING]
-> 不是每一主题都及hour同步了所有功能，由于精力有限，优先更新Default主题，其他主题欢迎 & 期待 PR
+> Not every theme has synchronized all features. Due to limited resources, the Default theme is updated first. PRs for other themes are welcome & expected
 
-## 提交新的主题
+## Submit a New Theme
 
-> 欢迎在面底部保留你和 One API 的版权信息以及指向链接
+> Welcome to keep copyright information and links to you and One API at the bottom
 
 1. 在 `web` 文件夹下Create一文件夹，文件夹名为主题名。
 2. 把你的主题文件放到这文件夹下。

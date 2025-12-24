@@ -110,11 +110,11 @@ const Dashboard = () => {
     setSummaryData(summary);
   };
 
-  // 处理数据以供折线图使用,补充缺失的日期
+  // Process data for line chart use, fill in missing dates
   const processTimeSeriesData = () => {
     const dailyData = {};
 
-    // 获取日期范围
+    // Get date range
     const dates = data.map((item) => item.Day);
     const maxDate = new Date(); // 总是使用今天作为最后一天
     let minDate =
