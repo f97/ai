@@ -55,31 +55,31 @@ export const CHANNEL_OPTIONS = {
   },
   15: {
     key: 15,
-    text: '百度文心千帆',
+    text: 'Baidu Wenxin Qianfan',
     value: 15,
     color: 'primary'
   },
   17: {
     key: 17,
-    text: '阿里通义千问',
+    text: 'Alibaba Tongyi Qianwen',
     value: 17,
     color: 'primary'
   },
   18: {
     key: 18,
-    text: '讯飞星火认知',
+    text: 'iFlytek Spark认知',
     value: 18,
     color: 'primary'
   },
   16: {
     key: 16,
-    text: '智谱 ChatGLM',
+    text: 'Zhipu AI ChatGLM',
     value: 16,
     color: 'primary'
   },
   19: {
     key: 19,
-    text: '360 智脑',
+    text: '360 360 AI',
     value: 19,
     color: 'primary'
   },
@@ -91,13 +91,13 @@ export const CHANNEL_OPTIONS = {
   },
   23: {
     key: 23,
-    text: '腾讯混元',
+    text: 'Tencent Hunyuan',
     value: 23,
     color: 'primary'
   },
   26: {
     key: 26,
-    text: '百川大模型',
+    text: 'Baichuan大模型',
     value: 26,
     color: 'primary'
   },
@@ -121,13 +121,13 @@ export const CHANNEL_OPTIONS = {
   },
   31: {
     key: 31,
-    text: '零一万物',
+    text: 'Yi AI',
     value: 31,
     color: 'primary'
   },
   32: {
     key: 32,
-    text: '阶跃星辰',
+    text: 'StepFun',
     value: 32,
     color: 'primary'
   },
@@ -199,19 +199,19 @@ export const CHANNEL_OPTIONS = {
   },
   8: {
     key: 8,
-    text: '自定义渠道',
+    text: 'Custom Channel',
     value: 8,
     color: 'error'
   },
   22: {
     key: 22,
-    text: '知识库:FastGPT',
+    text: 'Knowledge Base:FastGPT',
     value: 22,
     color: 'success'
   },
   21: {
     key: 21,
-    text: '知识库:AI Proxy',
+    text: 'Knowledge Base:AI Proxy',
     value: 21,
     color: 'success'
   },
@@ -223,55 +223,55 @@ export const CHANNEL_OPTIONS = {
   },
   2: {
     key: 2,
-    text: '代理:API2D',
+    text: 'Proxy:API2D',
     value: 2,
     color: 'success'
   },
   5: {
     key: 5,
-    text: '代理:OpenAI-SB',
+    text: 'Proxy:OpenAI-SB',
     value: 5,
     color: 'success'
   },
   7: {
     key: 7,
-    text: '代理:OhMyGPT',
+    text: 'Proxy:OhMyGPT',
     value: 7,
     color: 'success'
   },
   10: {
     key: 10,
-    text: '代理:AI Proxy',
+    text: 'Proxy:AI Proxy',
     value: 10,
     color: 'success'
   },
   4: {
     key: 4,
-    text: '代理:CloseAI',
+    text: 'Proxy:CloseAI',
     value: 4,
     color: 'success'
   },
   6: {
     key: 6,
-    text: '代理:OpenAI Max',
+    text: 'Proxy:OpenAI Max',
     value: 6,
     color: 'success'
   },
   9: {
     key: 9,
-    text: '代理:AI.LS',
+    text: 'Proxy:AI.LS',
     value: 9,
     color: 'success'
   },
   12: {
     key: 12,
-    text: '代理:API2GPT',
+    text: 'Proxy:API2GPT',
     value: 12,
     color: 'success'
   },
   13: {
     key: 13,
-    text: '代理:AIGC2D',
+    text: 'Proxy:AIGC2D',
     value: 13,
     color: 'success'
   }
