@@ -19,6 +19,7 @@ import (
 	"github.com/songquanpeng/one-api/controller"
 	"github.com/songquanpeng/one-api/middleware"
 	"github.com/songquanpeng/one-api/model"
+	"github.com/songquanpeng/one-api/monitor"
 	"github.com/songquanpeng/one-api/relay/adaptor/openai"
 	"github.com/songquanpeng/one-api/router"
 )
@@ -48,6 +49,9 @@ func main() {
 		logger.FatalLog("database init error: " + err.Error())
 	}
 	defer func() {
+		// Flush any pending batch logs before closing DB
+		model.FlushPendingLogs()
+		
 		err := model.CloseDB()
 		if err != nil {
 			logger.FatalLog("failed to close database: " + err.Error())
@@ -67,6 +71,13 @@ func main() {
 		// for compatibility with old versions
 		config.MemoryCacheEnabled = true
 	}
+	
+	// Initialize local cache for single-user optimization
+	model.InitLocalCache()
+	
+	// Initialize async batch log processor
+	model.InitLogBatchProcessor()
+	
 	if config.MemoryCacheEnabled {
 		logger.SysLog("memory cache enabled")
 		logger.SysLog(fmt.Sprintf("sync frequency: %d seconds", config.SyncFrequency))
@@ -93,6 +104,10 @@ func main() {
 	}
 	openai.InitTokenEncoders()
 	client.Init()
+	
+	// Initialize performance monitoring
+	monitor.InitPprof()
+	monitor.InitMetrics()
 
 	// Initialize i18n
 	if err := i18n.Init(); err != nil {
@@ -106,6 +121,7 @@ func main() {
 	//server.Use(gzip.Gzip(gzip.DefaultCompression))
 	server.Use(middleware.RequestId())
 	server.Use(middleware.Language())
+	server.Use(middleware.PerformanceMonitor())
 	middleware.SetUpLogger(server)
 	// Initialize session store
 	store := cookie.NewStore([]byte(config.SessionSecret))

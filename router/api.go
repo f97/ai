@@ -117,5 +117,13 @@ func SetApiRouter(router *gin.Engine) {
 		{
 			groupRoute.GET("/", controller.GetGroups)
 		}
+		
+		// Performance metrics endpoint (admin only)
+		metricsRoute := apiRouter.Group("/metrics")
+		metricsRoute.Use(middleware.AdminAuth())
+		{
+			metricsRoute.GET("/", controller.GetMetrics)
+			metricsRoute.POST("/reset", controller.ResetMetrics)
+		}
 	}
 }
