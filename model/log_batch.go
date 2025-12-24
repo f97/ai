@@ -22,6 +22,7 @@ var (
 	logBatchBuffer  []*Log
 	logBatchMutex   sync.Mutex
 	logBatchOnce    sync.Once
+	logBatchWg      sync.WaitGroup  // Add WaitGroup for proper synchronization
 )
 
 // InitLogBatchProcessor initializes the async batch log processor
@@ -39,6 +40,7 @@ func InitLogBatchProcessor() {
 		logger.SysLog(fmt.Sprintf("batch size: %d, flush interval: %ds", logBatchSize, logBatchFlushInterval))
 		
 		// Start batch processor goroutine
+		logBatchWg.Add(2)
 		go processBatchLogs()
 		
 		// Start periodic flush goroutine
@@ -48,6 +50,8 @@ func InitLogBatchProcessor() {
 
 // processBatchLogs processes log entries from the channel
 func processBatchLogs() {
+	defer logBatchWg.Done()
+	
 	for log := range logBatchChannel {
 		logBatchMutex.Lock()
 		logBatchBuffer = append(logBatchBuffer, log)
@@ -58,10 +62,15 @@ func processBatchLogs() {
 			flushLogBatch()
 		}
 	}
+	
+	// Flush remaining logs when channel is closed
+	flushLogBatch()
 }
 
 // periodicFlushLogs flushes logs periodically
 func periodicFlushLogs() {
+	defer logBatchWg.Done()
+	
 	ticker := time.NewTicker(time.Duration(logBatchFlushInterval) * time.Second)
 	defer ticker.Stop()
 	
@@ -118,8 +127,12 @@ func FlushPendingLogs() {
 	}
 	
 	logger.SysLog("flushing pending batch logs...")
-	flushLogBatch()
 	
-	// Give it a moment to finish
-	time.Sleep(100 * time.Millisecond)
+	// Close the channel to signal goroutines to finish
+	close(logBatchChannel)
+	
+	// Wait for all goroutines to finish
+	logBatchWg.Wait()
+	
+	logger.SysLog("all batch logs flushed successfully")
 }

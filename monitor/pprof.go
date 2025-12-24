@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"net/http"
 	_ "net/http/pprof"
-	"os"
 
 	"github.com/songquanpeng/one-api/common/env"
 	"github.com/songquanpeng/one-api/common/logger"
@@ -30,8 +29,8 @@ func InitPprof() {
 
 	go func() {
 		if err := http.ListenAndServe(addr, nil); err != nil {
-			logger.SysError(fmt.Sprintf("pprof server error: %v", err))
-			os.Exit(1)
+			logger.SysError(fmt.Sprintf("pprof server failed to start: %v", err))
+			logger.SysError("pprof will not be available, but the main service will continue")
 		}
 	}()
 }

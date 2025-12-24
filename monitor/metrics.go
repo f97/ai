@@ -3,6 +3,7 @@ package monitor
 import (
 	"context"
 	"fmt"
+	"sort"
 	"sync"
 	"time"
 
@@ -127,10 +128,16 @@ func GetMetrics() *MetricsSnapshot {
 	globalMetrics.mu.RLock()
 	defer globalMetrics.mu.RUnlock()
 
+	// Avoid division by zero
+	totalRequests := globalMetrics.TotalRequests
+	if totalRequests == 0 {
+		totalRequests = 1
+	}
+
 	snapshot := &MetricsSnapshot{
 		TotalRequests:       globalMetrics.TotalRequests,
 		FailedRequests:      globalMetrics.FailedRequests,
-		SuccessRate:         float64(globalMetrics.TotalRequests-globalMetrics.FailedRequests) / float64(globalMetrics.TotalRequests) * 100,
+		SuccessRate:         float64(globalMetrics.TotalRequests-globalMetrics.FailedRequests) / float64(totalRequests) * 100,
 		TotalDuration:       globalMetrics.TotalDuration,
 		AverageDuration:     time.Duration(int64(globalMetrics.TotalDuration) / max(globalMetrics.TotalRequests, 1)),
 		MinDuration:         globalMetrics.MinDuration,
@@ -179,19 +186,13 @@ func calculatePercentiles(latencies []time.Duration) (p50, p95, p99 time.Duratio
 		return 0, 0, 0
 	}
 
-	// Simple percentile calculation (not sorting to avoid overhead)
-	// For production, consider using a more efficient algorithm or library
+	// Use Go's built-in sort for efficiency
 	sorted := make([]time.Duration, len(latencies))
 	copy(sorted, latencies)
-
-	// Sort
-	for i := 0; i < len(sorted); i++ {
-		for j := i + 1; j < len(sorted); j++ {
-			if sorted[i] > sorted[j] {
-				sorted[i], sorted[j] = sorted[j], sorted[i]
-			}
-		}
-	}
+	
+	sort.Slice(sorted, func(i, j int) bool {
+		return sorted[i] < sorted[j]
+	})
 
 	p50 = sorted[len(sorted)*50/100]
 	p95 = sorted[len(sorted)*95/100]
